@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-20T16:02:05.495Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="GdE9xnZ6zM3TtzXSQ5im" version="20.8.9" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-01-20T16:07:33.382Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="WPFA-Pd7EhWVuVlYZNA-" version="20.8.9" type="github" pages="3">
   <diagram name="Sherwin" id="28oHaZ7TTUWBsoayeWru">
-    <mxGraphModel dx="988" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1427" dy="1040" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -124,6 +124,14 @@
           <mxGeometry x="530" y="540" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="dLALtqNOrKIN_6BH4FMm-23" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" vertex="1" parent="dLALtqNOrKIN_6BH4FMm-22">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-24" y="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SFRLz57LKw7xivKxe6bV-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Zoo&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ Attribute1: Type&lt;br&gt;+ Attribute2: Type&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" vertex="1" parent="1">
+          <mxGeometry x="10" y="430" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="SFRLz57LKw7xivKxe6bV-2" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" vertex="1" parent="SFRLz57LKw7xivKxe6bV-1">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
             <mxPoint x="-24" y="4" as="offset" />
           </mxGeometry>
