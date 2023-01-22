@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-22T22:41:12.231Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="EQEUFzt-YvSYpWn0ZXke" version="20.8.10" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-01-22T22:43:34.207Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="__saMOhkO62vhObZOrh4" version="20.8.10" type="github" pages="3">
   <diagram name="Sherwin" id="28oHaZ7TTUWBsoayeWru">
-    <mxGraphModel dx="1510" dy="1548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2022" dy="1832" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -29,7 +29,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="dLALtqNOrKIN_6BH4FMm-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Enclos&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;u&gt;id&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;designation&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;situation&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
-          <mxGeometry x="530" y="690" width="180" height="90" as="geometry" />
+          <mxGeometry x="400" y="690" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="dLALtqNOrKIN_6BH4FMm-2" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" parent="dLALtqNOrKIN_6BH4FMm-1" vertex="1">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
@@ -279,6 +279,23 @@
           <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="41" y="20" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="m2Mg_kIqTNQkipoIy9RM-1" value="" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;shape=connector;exitX=1.012;exitY=0.191;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.003;entryY=0.815;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="dLALtqNOrKIN_6BH4FMm-1" target="trpj8ivaGUFWtv2OQ3Op-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="710" as="sourcePoint" />
+            <mxPoint x="720" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2Mg_kIqTNQkipoIy9RM-2" value="Enferme" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;" connectable="0" vertex="1" parent="m2Mg_kIqTNQkipoIy9RM-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2Mg_kIqTNQkipoIy9RM-3" value="1..1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontFamily=Helvetica;fontSize=11;fontColor=default;" connectable="0" vertex="1" parent="m2Mg_kIqTNQkipoIy9RM-1">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m2Mg_kIqTNQkipoIy9RM-4" value="0..*" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;fontFamily=Helvetica;fontSize=11;fontColor=default;" connectable="0" vertex="1" parent="m2Mg_kIqTNQkipoIy9RM-1">
+          <mxGeometry x="1" relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
