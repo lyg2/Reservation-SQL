@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-01-29T01:04:58.083Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="K-HUdB6ZiYnE2VhVW04s" version="20.8.13" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-01-29T01:05:14.949Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="8VutdZC3Pt8YUX3O-JnP" version="20.8.13" type="github" pages="3">
   <diagram name="Sherwin" id="28oHaZ7TTUWBsoayeWru">
     <mxGraphModel dx="794" dy="430" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -610,9 +610,6 @@
         </mxCell>
         <mxCell id="146nci4GNnsRClj2c9Vw-1" value="Les associations entre Espece-Population, Famille-Espece, Espece-Animal sont compositions. La pinte de flèche, s&#39;il y a lieu, indique la direction de l&#39;association." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-1583" y="-150.06" width="200" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="146nci4GNnsRClj2c9Vw-3" value="Object" style="html=1;" vertex="1" parent="1">
-          <mxGeometry x="-1390" y="-640" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="146nci4GNnsRClj2c9Vw-7" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-1571" y="-250" width="171" height="60" as="geometry" />
