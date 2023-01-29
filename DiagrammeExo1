@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-01-29T01:05:14.949Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="8VutdZC3Pt8YUX3O-JnP" version="20.8.13" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-01-29T01:11:28.151Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="bTmYpeSerWSyurctaGf0" version="20.8.13" type="github" pages="3">
   <diagram name="Sherwin" id="28oHaZ7TTUWBsoayeWru">
     <mxGraphModel dx="794" dy="430" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -348,7 +348,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="s4gQPZRDvFIYE3c0Kx0Q" name="Juliette">
-    <mxGraphModel dx="3098" dy="1951" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2150" dy="1438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -437,7 +437,7 @@
             <mxPoint x="22" y="79" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UNYjQ8f-YD72eloTjBdl-10" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Espece&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; nom&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;nomScientifique&lt;u&gt;&lt;br&gt;&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;nomVulgaire&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/effectifPopulationTotale&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;remarque[0..*]&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
+        <mxCell id="UNYjQ8f-YD72eloTjBdl-10" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Espece&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; nom&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;cle alternative : nomScientifique&lt;u&gt;&lt;br&gt;&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;cle alternative : nomVulgaire&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/effectifPopulationTotale&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;remarque[0..*]&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="-1471" y="-590.11" width="180" height="130" as="geometry" />
         </mxCell>
         <mxCell id="3T_frptLL2BuWMfHN_RS-44" value="contient" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=open;align=left;verticalAlign=top;endFill=0;dashed=1;" parent="1" source="UNYjQ8f-YD72eloTjBdl-12" target="UNYjQ8f-YD72eloTjBdl-14" edge="1">
