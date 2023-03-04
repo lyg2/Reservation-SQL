@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-04T18:17:40.024Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="u5Ju3mrrLtiZL93Vklhb" version="20.8.20" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-04T18:21:53.178Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="66aHes6GJV3gGOdBriqg" version="20.8.20" type="github">
   <diagram name="Sherwin" id="_lbZI7uZ-QepwtqZpzey">
     <mxGraphModel dx="3163" dy="2007" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -139,6 +139,33 @@
         </mxCell>
         <mxCell id="sCB3IG0rdzC2e4coQaYl-51" value="Entite Faible" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-1114" y="-160" width="86" height="30.11" as="geometry" />
+        </mxCell>
+        <mxCell id="sCB3IG0rdzC2e4coQaYl-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;align=left;verticalAlign=bottom;endFill=0;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;exitX=1.021;exitY=0.322;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="sCB3IG0rdzC2e4coQaYl-4" target="sCB3IG0rdzC2e4coQaYl-5">
+          <mxGeometry x="0.169" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-1020" y="-650" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="-875" y="-625" />
+              <mxPoint x="-875" y="-430" />
+              <mxPoint x="-930" y="-430" />
+              <mxPoint x="-930" y="-330" />
+              <mxPoint x="-830" y="-330" />
+              <mxPoint x="-830" y="-340" />
+              <mxPoint x="-780" y="-340" />
+              <mxPoint x="-780" y="-190" />
+            </Array>
+            <mxPoint x="-780" y="-170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sCB3IG0rdzC2e4coQaYl-53" value="1..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="sCB3IG0rdzC2e4coQaYl-52">
+          <mxGeometry x="0.4133" y="-2" relative="1" as="geometry">
+            <mxPoint x="-153" y="88" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sCB3IG0rdzC2e4coQaYl-54" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="sCB3IG0rdzC2e4coQaYl-52">
+          <mxGeometry x="-0.836" y="-3" relative="1" as="geometry">
+            <mxPoint x="115" y="442" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
