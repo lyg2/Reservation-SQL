@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-04T18:16:31.957Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="jCWF30rTr5sJOseh3Vfb" version="20.8.20" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-04T18:17:11.730Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="qSZHZdiLXcgOSqrOCnU8" version="20.8.20" type="github">
   <diagram name="Sherwin" id="_lbZI7uZ-QepwtqZpzey">
     <mxGraphModel dx="3728" dy="1861" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -133,6 +133,9 @@
           <mxGeometry x="0.8587" relative="1" as="geometry">
             <mxPoint x="20" y="20" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="sCB3IG0rdzC2e4coQaYl-50" value="Entite Forte" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1200" y="-720" width="86" height="30.11" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
