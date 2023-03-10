@@ -1,17 +1,17 @@
-<mxfile host="app.diagrams.net" modified="2023-03-10T15:17:45.089Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="JR4nKK4Z2xwQqfsXpPcJ" version="21.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-10T15:30:29.017Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="meuGGr1yxNkz8H_C23TE" version="21.0.6" type="github">
   <diagram name="Sherwin" id="-7APqkKBxGGa0uES_Ne3">
-    <mxGraphModel dx="2821" dy="2020" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4621" dy="2729" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="M3E42oCDsxzo1UA0HN21-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Car&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;registrationPlate&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;type&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;rechargeHour&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
-          <mxGeometry x="-1630" y="-620" width="120" height="140" as="geometry" />
+          <mxGeometry x="-1690" y="-690" width="120" height="140" as="geometry" />
         </mxCell>
         <mxCell id="M3E42oCDsxzo1UA0HN21-2" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Insurer&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;numInsurance&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;nameInsurance&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
-          <mxGeometry x="-1360" y="-620" width="110" height="140" as="geometry" />
+          <mxGeometry x="-1310" y="-690" width="110" height="140" as="geometry" />
         </mxCell>
         <mxCell id="M3E42oCDsxzo1UA0HN21-3" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Odometer&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;idOdometer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;serviceDate&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;value&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;consommation&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
-          <mxGeometry x="-1654" y="-260" width="120" height="140" as="geometry" />
+          <mxGeometry x="-1700" y="-440" width="120" height="140" as="geometry" />
         </mxCell>
         <mxCell id="M3E42oCDsxzo1UA0HN21-4" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Emplacement&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;nameEmplacement&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;adress&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;coord&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="-1430" y="-200" width="140" height="140" as="geometry" />
@@ -45,6 +45,28 @@
         </mxCell>
         <mxCell id="WFUrKXKauV-WpA-6W8eK-4" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;faire une relation start Odo&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;faire une relaiton end Odo&lt;br&gt;pour avoir les tables.&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;Faire une relation utilisation&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" vertex="1" parent="1">
           <mxGeometry x="-1520" y="-370" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="WFUrKXKauV-WpA-6W8eK-9" value="is_insured_by" style="endArrow=open;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;strokeColor=default;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="M3E42oCDsxzo1UA0HN21-1" target="M3E42oCDsxzo1UA0HN21-2">
+          <mxGeometry y="-10" relative="1" as="geometry">
+            <mxPoint x="-1550" y="-630" as="sourcePoint" />
+            <mxPoint x="-1345.03" y="-625" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-1570" y="-630" />
+              <mxPoint x="-1510" y="-630" />
+              <mxPoint x="-1510" y="-620" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WFUrKXKauV-WpA-6W8eK-10" value="1..*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="WFUrKXKauV-WpA-6W8eK-9">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="10" y="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WFUrKXKauV-WpA-6W8eK-11" value="1..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="WFUrKXKauV-WpA-6W8eK-9">
+          <mxGeometry x="0.8587" relative="1" as="geometry">
+            <mxPoint y="20" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
