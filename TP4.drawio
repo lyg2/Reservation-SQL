@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-12T21:34:40.688Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="FeLDo9mkMyn42fm8wugh" version="21.0.6" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-03-12T21:34:45.053Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="DsUhKKOVgfy-6cX2lhQv" version="21.0.6" type="github" pages="2">
   <diagram name="Sherwin" id="-7APqkKBxGGa0uES_Ne3">
     <mxGraphModel dx="4687" dy="2394" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -148,9 +148,6 @@
           <mxGeometry x="0.8587" relative="1" as="geometry">
             <mxPoint x="84" y="-10" as="offset" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="7HFjjkbVGah8hPraaPFe-1" value="reserve" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-610" y="-180" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="mHWsdiL32UCATrs-e6U8-1" value="has" style="endArrow=open;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;strokeColor=default;dashed=1;" edge="1" parent="1" target="WFUrKXKauV-WpA-6W8eK-3">
           <mxGeometry y="-10" relative="1" as="geometry">
