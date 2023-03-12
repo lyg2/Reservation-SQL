@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-12T17:53:46.300Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="POdk8avNaE_DuImuMcDp" version="21.0.6" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-03-12T17:54:25.179Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="znlClB1vADIbIqnSIbVN" version="21.0.6" type="github" pages="2">
   <diagram name="Sherwin" id="-7APqkKBxGGa0uES_Ne3">
     <mxGraphModel dx="2918" dy="1589" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -122,7 +122,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="1Q8vwiqwppwkb_u345Qj" name="Juliette">
-    <mxGraphModel dx="1133" dy="1625" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1223" dy="1436" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -301,6 +301,12 @@
         </mxCell>
         <mxCell id="J1ZWch1vj42ntNgL-vWM-20" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Conducteur&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;permis&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;dateNaissance&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;dateDernierAccident&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" vertex="1" parent="1">
           <mxGeometry x="-550" y="340" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="J1ZWch1vj42ntNgL-vWM-33" value="Text" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-250" y="180" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J1ZWch1vj42ntNgL-vWM-34" value="Membres à démêler&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-310" y="390" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
