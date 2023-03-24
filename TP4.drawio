@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-03-24T15:14:28.592Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="cGufK1drSIkA82CE0_Wb" version="21.1.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-03-24T16:34:15.666Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="NBX-Ps7BPPnQFS3wmkql" version="21.1.0" type="github" pages="2">
   <diagram name="Sherwin" id="-7APqkKBxGGa0uES_Ne3">
-    <mxGraphModel dx="4315" dy="2506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3915" dy="1965" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -276,7 +276,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="1Q8vwiqwppwkb_u345Qj" name="Juliette">
-    <mxGraphModel dx="1767" dy="1769" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2284" dy="1896" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -298,7 +298,7 @@
         <mxCell id="hOzor8cP5crJEZ15Ewv0-2" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Car&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; licensePlate&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;cType&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;brand&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;startingDate&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;gazConsumption&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;hourlyPrice&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;kilometerPrice&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;kilometerLimit&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;powerRecharge&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;odometer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="330" y="140" width="150" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="3rSryUKwoYUxESDkVGLp-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Assurance&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; idAssurance&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;assureur&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
+        <mxCell id="3rSryUKwoYUxESDkVGLp-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Insurance&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; idInsurance&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;insurer&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="610" y="135" width="95" height="100" as="geometry" />
         </mxCell>
         <mxCell id="J1ZWch1vj42ntNgL-vWM-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;startArrow=blockThin;startFill=1;" parent="1" source="3rSryUKwoYUxESDkVGLp-2" target="hOzor8cP5crJEZ15Ewv0-2" edge="1">
