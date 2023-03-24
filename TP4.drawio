@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-24T14:47:03.661Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="K2DCZxyoenjJaDydeIdc" version="21.1.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-03-24T15:14:17.155Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="RhCBZVBGGHPQa7YiwtpX" version="21.1.0" type="github" pages="2">
   <diagram name="Sherwin" id="-7APqkKBxGGa0uES_Ne3">
     <mxGraphModel dx="4315" dy="2506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -295,7 +295,7 @@
             <mxPoint y="-12" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="hOzor8cP5crJEZ15Ewv0-2" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Car&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; licensePlate&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;cType&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;brand&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;startingDate&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;gazConsumption&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;hourlyPrice&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;kilometerPrice&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;kilometerLimit&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;powerRecharge&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
+        <mxCell id="hOzor8cP5crJEZ15Ewv0-2" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Car&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; licensePlate&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;cType&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;brand&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;startingDate&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;gazConsumption&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;hourlyPrice&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;kilometerPrice&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;kilometerLimit&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;powerRecharge&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;odometer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="330" y="140" width="150" height="180" as="geometry" />
         </mxCell>
         <mxCell id="3rSryUKwoYUxESDkVGLp-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Assurance&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; idAssurance&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;assureur&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
@@ -402,11 +402,8 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RJo5sdf2-zOXnr7siss-8" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Trajet&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; heureDepart (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; heureArrivee (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/distanceParcourue&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/cout&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
+        <mxCell id="3RJo5sdf2-zOXnr7siss-8" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Trajet&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; heureDepart (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; heureArrivee (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/distanceParcourue&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/cout&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;odometerInterval&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="-80" y="-40" width="180" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="3RJo5sdf2-zOXnr7siss-9" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Odometre&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; valeurDepart (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; valeurFin (partial)&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
-          <mxGeometry x="180" y="-20" width="137.5" height="90" as="geometry" />
         </mxCell>
         <mxCell id="J1ZWch1vj42ntNgL-vWM-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="J1ZWch1vj42ntNgL-vWM-1" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -508,13 +505,6 @@
         </mxCell>
         <mxCell id="rtNvQzeynBmRWWZrDn1m-4" value="Peut on mettre 2 valeurs dans odomètre et agrégation a 2 entités fortes&lt;br&gt;Odomètre PK?" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="147.5" y="-110" width="150" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fUlNZnL1xdeh9NLC503q-2" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="3RJo5sdf2-zOXnr7siss-9" edge="1">
-          <mxGeometry x="-0.8106" y="-5" relative="1" as="geometry">
-            <mxPoint x="330" y="185" as="sourcePoint" />
-            <mxPoint x="220" y="50" as="targetPoint" />
-            <mxPoint as="offset" />
-          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
