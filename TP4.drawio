@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-26T17:49:05.967Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="UlGsPT7gBJFjwnsDZYdY" version="21.1.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-03-26T18:22:11.025Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="ZbqhtPN4WyLOdgAC5yIa" version="21.1.0" type="github" pages="2">
   <diagram name="Sherwin" id="-7APqkKBxGGa0uES_Ne3">
     <mxGraphModel dx="2926" dy="1480" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -276,7 +276,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="1Q8vwiqwppwkb_u345Qj" name="Juliette">
-    <mxGraphModel dx="1847" dy="1398" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1677" dy="1398" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -319,7 +319,7 @@
             <mxPoint y="-12" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3rSryUKwoYUxESDkVGLp-2" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Parking&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;parkingName&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;carLimit&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;address&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;coordinates&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&amp;nbsp; &amp;nbsp;longitude&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&amp;nbsp; &amp;nbsp;latitude&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
+        <mxCell id="3rSryUKwoYUxESDkVGLp-2" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Parking&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;parkingName&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;carLimit&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;address&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;coordinates&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="337.5" y="-80" width="135" height="130" as="geometry" />
         </mxCell>
         <mxCell id="J1ZWch1vj42ntNgL-vWM-9" value="has" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=blockThin;dashed=1;endFill=1;" parent="1" source="3RJo5sdf2-zOXnr7siss-1" target="J1ZWch1vj42ntNgL-vWM-8" edge="1">
@@ -402,7 +402,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RJo5sdf2-zOXnr7siss-8" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Route&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;startingHour (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; endingHour (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/distance&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/cost&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;odometerInterval&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
+        <mxCell id="3RJo5sdf2-zOXnr7siss-8" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Route&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;startingHour (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; endingHour (partial)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/distance&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;/fees&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;odometerInterval&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="-80" y="-40" width="180" height="110" as="geometry" />
         </mxCell>
         <mxCell id="J1ZWch1vj42ntNgL-vWM-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="J1ZWch1vj42ntNgL-vWM-1" edge="1">
@@ -497,7 +497,7 @@
         <mxCell id="m2rFjFg3t929gNoy3GP_-12" value="Entité faible" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="20" y="-90" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="m2rFjFg3t929gNoy3GP_-14" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Reservation&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt; period (partial)&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;requirements&lt;/span&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
+        <mxCell id="m2rFjFg3t929gNoy3GP_-14" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Reservation&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;&lt;b&gt;PK&lt;/b&gt;&amp;nbsp;reservedPeriod (partial)&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); margin: 0px 0px 0px 8px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;requirements&lt;/span&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="-40" y="130" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="7sGX4bIcImyPwW7MQyDx-1" value="Hypothèse : effacée quand membre est effacé" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -505,6 +505,9 @@
         </mxCell>
         <mxCell id="rtNvQzeynBmRWWZrDn1m-4" value="Peut on mettre 2 valeurs dans odomètre et agrégation a 2 entités fortes&lt;br&gt;Odomètre PK?" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="147.5" y="-110" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="F9hN4axVJAKTrqaEFZgx-1" value="change to traveled period or time" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="-20" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
