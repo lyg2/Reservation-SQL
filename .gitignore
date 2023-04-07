@@ -1,17 +1,3 @@
-#ignoring .vscode folder but we keep some files for debuging
-/.vscode/chrome
-/.vs/
-
-package-lock.json
-.DS_Store
-
-# Code Coverage Folder
-coverage/
-
-#Node Modules
-/node_modules
-
-
 # Windows thumbnail cache files
 Thumbs.db
 ehthumbs.db
@@ -31,3 +17,9 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# =========================
+# Operating System Files
+# =========================
+.vscode
+package-lock.json
