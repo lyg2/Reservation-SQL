@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
+import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./modules/app-routing.module";
@@ -27,7 +28,8 @@ import { MemberPageComponent } from './pages/member-page/member-page.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    MatTableModule,
   ],
   providers: [CommunicationService],
   entryComponents: [],
