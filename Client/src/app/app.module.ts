@@ -8,10 +8,12 @@ import { AppComponent } from "./app.component";
 import { CommunicationService } from "./services/communication.service";
 import { AppMaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReservationComponent
   ],
   imports: [
     CommonModule,
