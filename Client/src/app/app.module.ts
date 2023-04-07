@@ -8,8 +8,8 @@ import { AppComponent } from "./app.component";
 import { CommunicationService } from "./services/communication.service";
 import { AppMaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReservationComponent } from './reservation/reservation.component';
-import { CreateReservationComponent } from './create-reservation/create-reservation.component';
+import { ReservationComponent } from './pages/reservation/reservation.component';
+import { CreateReservationComponent } from './pages/create-reservation/create-reservation.component';
 
 @NgModule({
   declarations: [
