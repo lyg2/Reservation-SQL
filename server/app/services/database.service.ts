@@ -14,4 +14,20 @@ export class DatabaseService {
   };
 
   public pool: pg.Pool = new pg.Pool(this.connectionConfig);
+
+  async getAllMembers(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT * FROM CoopMember;`;
+    const res = await client.query(queryText);
+    client.release();
+    return res;
+  }
+
+  async getMemberWithName(memberName: string) {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT * FROM CoopMember WHERE memberName = %${memberName}%;`;
+    const res = await client.query(queryText);
+    client.release();
+    return res;
+  }
 }
