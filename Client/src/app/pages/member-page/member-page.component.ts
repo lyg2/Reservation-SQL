@@ -42,6 +42,7 @@ const DATA : CoopMember [] = [
 })
 export class MemberPageComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    query: string;
     obs: Observable<CoopMember[]>;
     dataSource: MatTableDataSource<CoopMember>;
 
@@ -53,5 +54,9 @@ export class MemberPageComponent implements OnInit {
       this.obs = this.dataSource.connect();
       this.dataSource.paginator = this.paginator;
     };
+
+    sendQuery(): void {
+      console.log(this.query);
+    }
 
 }

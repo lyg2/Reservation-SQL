@@ -1,3 +1,7 @@
+<div>
+    <input type="text" [(ngModel)]="query"/>
+    <button type="button" mat-raised-button color="primary" (click)="sendQuery()">Appliquer filtre</button>
+</div>
 <div id="member-container">
     <mat-card *ngFor="let memberCard of obs | async" class="member-card">
         
