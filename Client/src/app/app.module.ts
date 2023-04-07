@@ -6,18 +6,21 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./modules/app-routing.module";
 import { AppComponent } from "./app.component";
 import { CommunicationService } from "./services/communication.service";
-import { AppMaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReservationComponent } from './pages/reservation/reservation.component';
 import { CreateReservationComponent } from './pages/create-reservation/create-reservation.component';
 import { MemberPageComponent } from './pages/member-page/member-page.component';
+import { ReservationFormComponent } from './pages/reservation-form/reservation-form.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReservationComponent,
     CreateReservationComponent,
-    MemberPageComponent
+    MemberPageComponent,
+    ReservationFormComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -27,7 +30,7 @@ import { MemberPageComponent } from './pages/member-page/member-page.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AppMaterialModule
+    MaterialModule,
   ],
   providers: [CommunicationService],
   entryComponents: [],
