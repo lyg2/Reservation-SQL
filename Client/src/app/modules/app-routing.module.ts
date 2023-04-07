@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: "app", component: AppComponent },
   { path: "reservation", component: ReservationComponent },
   { path: "reservation/create", component: CreateReservationComponent },
-  {path: "member-page", component: MemberPageComponent}
+  { path: "member-page", component: MemberPageComponent}
 ];
 
 @NgModule({
