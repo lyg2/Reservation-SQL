@@ -9,11 +9,13 @@ import { CommunicationService } from "./services/communication.service";
 import { AppMaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReservationComponent } from './reservation/reservation.component';
+import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReservationComponent
+    ReservationComponent,
+    CreateReservationComponent
   ],
   imports: [
     CommonModule,
