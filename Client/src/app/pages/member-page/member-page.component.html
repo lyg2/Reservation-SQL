@@ -1,1 +1,10 @@
-<p>member-page works!</p>
+<div>
+    <input type="text" [(ngModel)]="query"/>
+    <button type="button" mat-raised-button color="primary" (click)="sendQuery()">Appliquer filtre</button>
+</div>
+<div id="member-container">
+    <mat-card *ngFor="let memberCard of obs | async" class="member-card">
+        <app-member-card [memberCard]="memberCard"></app-member-card>
+    </mat-card>
+    <mat-paginator [pageSize]="4" [pageSizeOptions]="[4]" aria-label="Select page" mat-raised-button color="primary"></mat-paginator>
+</div>
