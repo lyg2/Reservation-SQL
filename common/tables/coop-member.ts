@@ -7,4 +7,5 @@ export interface CoopMember {
     lastAccidentDate: string;
     mailingAdress: string;
     email: string;
+    annualMembership : number|null;
 }
