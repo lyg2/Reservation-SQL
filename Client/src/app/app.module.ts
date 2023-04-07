@@ -12,13 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReservationComponent } from './pages/reservation/reservation.component';
 import { CreateReservationComponent } from './pages/create-reservation/create-reservation.component';
 import { MemberPageComponent } from './pages/member-page/member-page.component';
+import { MemberCardComponent } from './components/member-card/member-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReservationComponent,
     CreateReservationComponent,
-    MemberPageComponent
+    MemberPageComponent,
+    MemberCardComponent
   ],
   imports: [
     CommonModule,
