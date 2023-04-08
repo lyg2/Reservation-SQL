@@ -1,22 +1,22 @@
 <div class="member-info-container">
     <div id="member-info-container">
         <mat-card-header class="title-container">
-            <mat-card-title class="title">Numéro du membre: {{ memberCard.idMember }}</mat-card-title>
+            <mat-card-title class="title">Numéro du membre: {{ memberCard.idmember }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Numéro de banque: {{memberCard.idBankAccount}}</p>
-            <p>Nom du membre: {{memberCard.memberName}}</p>
-            <p>Emplacement préféré: {{memberCard.preferredParking}}</p>
-            <p>Mot de passe: {{memberCard.memberPassword}}</p>
-            <p>Numéro de pemrmis: {{memberCard.licenseNo}}</p>
-            <p>Type de personne: {{memberCard.entityType}}</p>
-            <p>Date de naissance: {{memberCard.birthDate}}</p>
-            <p>Dernier accident: {{memberCard.lastAccidentDate}}</p>
-            <p>Adresse postale: {{memberCard.mailingAdress}}</p>
+            <p>Numéro de banque: {{memberCard.idmember}}</p>
+            <p>Nom du membre: {{memberCard.membername}}</p>
+            <p>Emplacement préféré: {{memberCard.preferredparking}}</p>
+            <p>Mot de passe: {{memberCard.memberpassword}}</p>
+            <p>Numéro de pemrmis: {{memberCard.licenseno}}</p>
+            <p>Type de personne: {{memberCard.entitytype}}</p>
+            <p>Date de naissance: {{memberCard.birthdate}}</p>
+            <p>Dernier accident: {{memberCard.lastaccidentdate}}</p>
+            <p>Adresse postale: {{memberCard.mailingadress}}</p>
             <p>Email: {{memberCard.email}}</p>
-            <p>Cotisation annuelle: {{memberCard.annualMembership}}</p>
-            <p *ngIf="memberCard.annualMembership">Membre de l'autopartage'</p>
-            <p *ngIf="!memberCard.annualMembership">Membre de la coopérative</p>
+            <p>Cotisation annuelle: {{memberCard.annualmembership}}</p>
+            <p *ngIf="memberCard.annualmembership">Membre de l'autopartage'</p>
+            <p *ngIf="!memberCard.annualmembership">Membre de la coopérative</p>
         </mat-card-content>
     </div>
     

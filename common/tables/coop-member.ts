@@ -1,14 +1,15 @@
+
 export interface CoopMember {
-    idMember: string;
-    idBankAccount: string;
-    memberName: string;
-    preferredParking: string;
-    memberPassword: string;
-    licenseNo: string;
-    entityType: string;
-    birthDate: string;
-    lastAccidentDate: string;
-    mailingAdress: string;
+    idmember: string;
+    idbankaccount: string;
+    membername: string;
+    preferredparking: string;
+    memberpassword: string;
+    licenseno: string;
+    entitytype: string;
+    birthdate: string;
+    lastaccidentdate: string;
+    mailingadress: string;
     email: string;
-    annualMembership : number|null;
+    annualmembership : number|null;
 }

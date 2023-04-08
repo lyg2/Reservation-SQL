@@ -16,24 +16,26 @@ export class DatabaseController {
     const router: Router = Router();
 
     router.get("/members/", (req: Request, res: Response, _: NextFunction) => {
+      console.log('members');
         this.databaseService
         .getAllMembers()
         .then((result: pg.QueryResult) => {
-          const jardins: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
-            idMember: coopMember.idMember,
-            idBankAccount: coopMember.idBankAccount,
-            memberName: coopMember.memberName,
-            preferredParking: coopMember.preferredParking,
-            memberPassword: coopMember.memberPassword,
-            licenseNo: coopMember.licenseNo,
-            entityType :coopMember.entityType,
-            birthDate: coopMember.birthDate,
-            lastAccidentDate: coopMember.lastAccidentDate,
-            mailingAdress: coopMember.mailingAdress,
+          const coopMember: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
+            idmember: coopMember.idmember,
+            idbankaccount: coopMember.idbankaccount,
+            membername: coopMember.membername,
+            preferredparking: coopMember.preferredparking,
+            memberpassword: coopMember.memberpassword,
+            licenseno: coopMember.licenseno,
+            entitytype :coopMember.entitytype,
+            birthdate: coopMember.birthdate,
+            lastaccidentdate: coopMember.lastaccidentdate,
+            mailingadress: '',
             email: coopMember.email,
-            annualMembership : 0,
+            annualmembership : 0,
           } as CoopMember));
-          res.json(jardins);
+          res.json(coopMember);
+          console.log(coopMember);
         })
         .catch((e: Error) => {
           console.error(e.stack);
