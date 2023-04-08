@@ -32,4 +32,12 @@ export class DatabaseService {
     client.release();
     return res;
   }
+
+  async getReservations(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation ;`;
+    const res = await client.query(queryText);
+    client.release();
+    return res;
+  }
 }
