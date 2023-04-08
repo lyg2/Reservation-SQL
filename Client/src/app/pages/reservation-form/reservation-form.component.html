@@ -1,4 +1,3 @@
-
 <div class="form-group" *ngIf="!submitted">
   <label for="cars">Emplacement</label>
   <mat-form-field>
@@ -59,7 +58,9 @@
       name="password">
     </mat-form-field>
 
-    <input matInput onclick="onValidate()" type="submit" value="Envoyer" />
-
+    <mat-form-field>
+      <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
+    </mat-form-field>
+  
 
  </div>

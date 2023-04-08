@@ -1,7 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./modules/app-routing.module";
@@ -13,9 +12,7 @@ import { CreateReservationComponent } from './pages/create-reservation/create-re
 import { MemberPageComponent } from './pages/member-page/member-page.component';
 import { MemberCardComponent } from './components/member-card/member-card.component';
 import { ReservationFormComponent } from './pages/reservation-form/reservation-form.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatCardModule} from '@angular/material/card';
+import { MaterialModule } from './modules/material.module';
 
 
 @NgModule({
@@ -35,10 +32,9 @@ import {MatCardModule} from '@angular/material/card';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatTableModule,MatIconModule,
-    MatPaginatorModule,
-    MatCardModule
+    MaterialModule
   ],
+  exports:[ReservationFormComponent],
   providers: [CommunicationService],
   entryComponents: [],
   bootstrap: [AppComponent],
