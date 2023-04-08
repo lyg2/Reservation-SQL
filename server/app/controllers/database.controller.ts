@@ -2,6 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import { DatabaseService } from "../services/database.service";
 import {CoopMember} from '../../../common/tables/coop-member';
+import {Reservation} from '../../../common/tables/reservation';
 import * as pg from "pg";
 import Types from "../types";
 
@@ -20,7 +21,7 @@ export class DatabaseController {
         this.databaseService
         .getAllMembers()
         .then((result: pg.QueryResult) => {
-          const coopMember: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
+          const coopMembers: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
             idmember: coopMember.idmember,
             idbankaccount: coopMember.idbankaccount,
             membername: coopMember.membername,
@@ -34,8 +35,8 @@ export class DatabaseController {
             email: coopMember.email,
             annualmembership : coopMember.annualmembership,
           } as CoopMember));
-          console.log(coopMember);
-          res.json(coopMember);
+          console.log(coopMembers);
+          res.json(coopMembers);
         })
         .catch((e: Error) => {
           console.error(e.stack);
@@ -47,7 +48,7 @@ export class DatabaseController {
           this.databaseService
           .getMembersWithName(req.params.name)
           .then((result: pg.QueryResult) => {
-            const coopMember: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
+            const coopMembers: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
               idmember: coopMember.idmember,
               idbankaccount: coopMember.idbankaccount,
               membername: coopMember.membername,
@@ -61,8 +62,8 @@ export class DatabaseController {
               email: coopMember.email,
               annualmembership : coopMember.annualmembership,
             } as CoopMember));
-            console.log(coopMember);
-            res.json(coopMember);
+            console.log(coopMembers);
+            res.json(coopMembers);
           })
           .catch((e: Error) => {
             console.error(e.stack);
@@ -70,7 +71,27 @@ export class DatabaseController {
   
         });
 
-      
+    router.get("/reservations/", (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+        .getAllMembers()
+        .then((result: pg.QueryResult) => {
+          const reservations: Reservation[] = result.rows.map((reservation: Reservation) => ({
+            reservedperiod : reservation.reservedperiod,
+            idmember : reservation.idmember,
+            licenseplate: reservation.licenseplate,
+            requirements : reservation.requirements,
+            idbill : reservation.idbill,
+            fee : reservation.fee,
+            odometerstart : reservation.odometerstart,
+            odometerend : reservation.odometerend,
+          } as Reservation));
+          res.json(reservations);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+
+      });
 
     return router;
 
