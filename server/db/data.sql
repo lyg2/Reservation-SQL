@@ -4,10 +4,10 @@ INSERT INTO Parking(parkingName, carLimit, parkingAddress, coordinates)
 	VALUES('Parking 1', 20, ('1234', 'Chemin de Polytechnique', 'Montréal', 'A1B2C3'), (1, 2));
 	
 INSERT INTO Parking(parkingName, carLimit, parkingAddress, coordinates) 
-	VALUES('Parking 2', 15, ('4039', 'Rue Notre-Dame', 'Montréal', 'B1C2D3'), (38, -90));
+	VALUES('Parking 2', 15, ROW('4039', 'Rue Notre-Dame', 'Montréal', 'B1C2D3')::ADDRESS, (38, -90));
 	
 INSERT INTO Parking(parkingName, carLimit, parkingAddress, coordinates) 
-	VALUES('Parking 3', 10, ('2391', 'Rue Sherbrooke', 'Québec', 'C1D2E3'), (20, 20));
+	VALUES('Parking 3', 10, ROW('2391', 'Rue Sherbrooke', 'Québec', 'C1D2E3')::ADDRESS, (20, 20));
 	
 INSERT INTO Model(modelName, hourlyPrice, kilometerPrice, kilometerLimit)
 	VALUES('HYBRID', 20, 5, 200000);
@@ -59,11 +59,11 @@ INSERT INTO BankAccount(idBankAccount, bank)
 	
 INSERT INTO CoopMember(idMember, idBankAccount, memberName, preferredParking, memberPassword, licenseNo, entityType,
 	birthDate, lastAccidentDate, mailingAddress, email)
-	VALUES('1', '123456', 'Gia-Sherwin Ly', 'Parking 1', '123', '12342', 'PERSON', '2002-02-21', NULL, ('1234', 'Rue Sherbrooke', 'Montréal', 'D1E2F3'), 'gia@hotmail.com');
+	VALUES('1', '123456', 'Gia-Sherwin Ly', 'Parking 1', '123', '12342', 'PERSON', '2002-02-21', NULL, ROW('1234', 'Rue Sherbrooke', 'Montréal', 'D1E2F3')::ADDRESS, 'gia@hotmail.com');
 	
 INSERT INTO CoopMember(idMember, idBankAccount, memberName, preferredParking, memberPassword, licenseNo, entityType,
 	birthDate, lastAccidentDate, mailingAddress, email)
-	VALUES('2', '234567', 'Haroun Mili', 'Parking 2', 'password', '67589', 'PERSON', '1999-05-13', '2012-11-01', ('2374', 'Rue Sainte-Catherine', 'Montréal', 'E1F2G3'), 'haroun@hotmail.com');
+	VALUES('2', '234567', 'Haroun Mili', 'Parking 2', 'password', '67589', 'PERSON', '1999-05-13', '2012-11-01', ROW('2374', 'Rue Sainte-Catherine', 'Montréal', 'E1F2G3')::ADDRESS, 'haroun@hotmail.com');
 	
 INSERT INTO ShareMember(idMember)
 	VALUES('1');

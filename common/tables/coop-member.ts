@@ -1,4 +1,3 @@
-
 export interface CoopMember {
     idmember: string;
     idbankaccount: string;

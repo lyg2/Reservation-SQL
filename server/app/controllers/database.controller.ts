@@ -30,12 +30,12 @@ export class DatabaseController {
             entitytype :coopMember.entitytype,
             birthdate: coopMember.birthdate,
             lastaccidentdate: coopMember.lastaccidentdate,
-            mailingadress: '',
+            mailingadress: coopMember.mailingadress,
             email: coopMember.email,
-            annualmembership : 0,
+            annualmembership : coopMember.annualmembership,
           } as CoopMember));
-          res.json(coopMember);
           console.log(coopMember);
+          res.json(coopMember);
         })
         .catch((e: Error) => {
           console.error(e.stack);

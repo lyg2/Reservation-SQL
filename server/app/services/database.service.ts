@@ -17,7 +17,7 @@ export class DatabaseService {
 
   async getAllMembers(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember;`;
+    const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember ;`;
     const res = await client.query(queryText);
     console.log(res);
     client.release();
