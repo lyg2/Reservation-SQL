@@ -1,9 +1,5 @@
 SET search_path TO CARSHARING_DB;
 
-SELECT * FROM Reservation;
-SELECT * FROM Bill;
-SELECT * FROM ForSale;
-
 -- 1. Retourne la marque, le modèle et l’emplacement d’origine des véhicules
 SELECT  brand, modelName, parkingName
 FROM Car
