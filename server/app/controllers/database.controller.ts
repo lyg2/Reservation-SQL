@@ -1,6 +1,8 @@
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import { DatabaseService } from "../services/database.service";
+import {CoopMember} from '../../../common/tables/coop-member';
+import * as pg from "pg";
 import Types from "../types";
 
 @injectable()
@@ -12,6 +14,64 @@ export class DatabaseController {
 
   public get router(): Router {
     const router: Router = Router();
+
+    router.get("/members/", (req: Request, res: Response, _: NextFunction) => {
+      console.log('members');
+        this.databaseService
+        .getAllMembers()
+        .then((result: pg.QueryResult) => {
+          const coopMember: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
+            idmember: coopMember.idmember,
+            idbankaccount: coopMember.idbankaccount,
+            membername: coopMember.membername,
+            preferredparking: coopMember.preferredparking,
+            memberpassword: coopMember.memberpassword,
+            licenseno: coopMember.licenseno,
+            entitytype :coopMember.entitytype,
+            birthdate: coopMember.birthdate,
+            lastaccidentdate: coopMember.lastaccidentdate,
+            mailingadress: coopMember.mailingadress,
+            email: coopMember.email,
+            annualmembership : coopMember.annualmembership,
+          } as CoopMember));
+          console.log(coopMember);
+          res.json(coopMember);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+
+      });
+      router.get("/members/:name?", (req: Request, res: Response, _: NextFunction) => {
+        console.log(req.params.name);
+          this.databaseService
+          .getMembersWithName(req.params.name)
+          .then((result: pg.QueryResult) => {
+            const coopMember: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
+              idmember: coopMember.idmember,
+              idbankaccount: coopMember.idbankaccount,
+              membername: coopMember.membername,
+              preferredparking: coopMember.preferredparking,
+              memberpassword: coopMember.memberpassword,
+              licenseno: coopMember.licenseno,
+              entitytype :coopMember.entitytype,
+              birthdate: coopMember.birthdate,
+              lastaccidentdate: coopMember.lastaccidentdate,
+              mailingadress: coopMember.mailingadress,
+              email: coopMember.email,
+              annualmembership : coopMember.annualmembership,
+            } as CoopMember));
+            console.log(coopMember);
+            res.json(coopMember);
+          })
+          .catch((e: Error) => {
+            console.error(e.stack);
+          });
+  
+        });
+
     return router;
+
+    
   }
 }
