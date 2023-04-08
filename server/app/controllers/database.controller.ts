@@ -30,7 +30,7 @@ export class DatabaseController {
             entitytype :coopMember.entitytype,
             birthdate: coopMember.birthdate,
             lastaccidentdate: coopMember.lastaccidentdate,
-            mailingadress: coopMember.mailingadress,
+            mailingaddress: coopMember.mailingaddress,
             email: coopMember.email,
             annualmembership : coopMember.annualmembership,
           } as CoopMember));
@@ -57,7 +57,7 @@ export class DatabaseController {
               entitytype :coopMember.entitytype,
               birthdate: coopMember.birthdate,
               lastaccidentdate: coopMember.lastaccidentdate,
-              mailingadress: coopMember.mailingadress,
+              mailingaddress: coopMember.mailingaddress,
               email: coopMember.email,
               annualmembership : coopMember.annualmembership,
             } as CoopMember));

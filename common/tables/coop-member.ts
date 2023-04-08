@@ -8,7 +8,7 @@ export interface CoopMember {
     entitytype: string;
     birthdate: string;
     lastaccidentdate: string;
-    mailingadress: string;
+    mailingaddress: string;
     email: string;
     annualmembership : number|null;
 }
