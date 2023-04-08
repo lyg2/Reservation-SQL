@@ -26,7 +26,7 @@ export class DatabaseService {
 
   async getMembersWithName(memberName: string) {
     const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember WHERE memberName LIKE $1 ;`
+    const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember WHERE LOWER(memberName) LIKE $1 ;`
     const pattern: string [] = [`%${memberName}%`];
     const res = await client.query(queryText, pattern);
     client.release();
