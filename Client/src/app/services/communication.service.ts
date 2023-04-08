@@ -26,6 +26,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<CoopMember[]>("getAllMembers")));
   }
 
+  getMembersWithName(name: string): Observable<CoopMember[]> {
+    return this.http
+      .get<CoopMember[]>(this.BASE_URL + "/members/"+name)
+      .pipe(catchError(this.handleError<CoopMember[]>("getMembersWithName")));
+  }
+
   
   private handleError<T>(
     request: string,

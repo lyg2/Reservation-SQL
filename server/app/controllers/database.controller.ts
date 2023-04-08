@@ -42,6 +42,33 @@ export class DatabaseController {
         });
 
       });
+      router.get("/members/:name?", (req: Request, res: Response, _: NextFunction) => {
+        console.log(req.params.name);
+          this.databaseService
+          .getMembersWithName(req.params.name)
+          .then((result: pg.QueryResult) => {
+            const coopMember: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
+              idmember: coopMember.idmember,
+              idbankaccount: coopMember.idbankaccount,
+              membername: coopMember.membername,
+              preferredparking: coopMember.preferredparking,
+              memberpassword: coopMember.memberpassword,
+              licenseno: coopMember.licenseno,
+              entitytype :coopMember.entitytype,
+              birthdate: coopMember.birthdate,
+              lastaccidentdate: coopMember.lastaccidentdate,
+              mailingadress: coopMember.mailingadress,
+              email: coopMember.email,
+              annualmembership : coopMember.annualmembership,
+            } as CoopMember));
+            console.log(coopMember);
+            res.json(coopMember);
+          })
+          .catch((e: Error) => {
+            console.error(e.stack);
+          });
+  
+        });
 
     return router;
 

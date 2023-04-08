@@ -63,8 +63,19 @@ export class MemberPageComponent implements OnInit {
       });
     }
 
+    getMembersWithName(): void {
+      this.communicationService.getMembersWithName(this.query).subscribe((members: CoopMember [])=> {
+        this.dataSource = new MatTableDataSource<CoopMember>(members);
+        this.changeDetectorRef.detectChanges();
+        this.obs = this.dataSource.connect();
+        this.dataSource.paginator = this.paginator;
+
+      });
+    }
+
     sendQuery(): void {
       console.log(this.query);
+      this.getMembersWithName();
     }
 
 }
