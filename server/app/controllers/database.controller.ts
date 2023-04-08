@@ -73,7 +73,7 @@ export class DatabaseController {
 
     router.get("/reservations/", (req: Request, res: Response, _: NextFunction) => {
         this.databaseService
-        .getAllMembers()
+        .getReservations()
         .then((result: pg.QueryResult) => {
           const reservations: Reservation[] = result.rows.map((reservation: Reservation) => ({
             reservedperiod : reservation.reservedperiod,

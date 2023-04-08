@@ -13,6 +13,7 @@ import { MemberPageComponent } from './pages/member-page/member-page.component';
 import { MemberCardComponent } from './components/member-card/member-card.component';
 import { ReservationFormComponent } from './pages/reservation-form/reservation-form.component';
 import { MaterialModule } from './modules/material.module';
+import { ReservationCardComponent } from './components/reservation-card/reservation-card.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MaterialModule } from './modules/material.module';
     MemberPageComponent,
     MemberCardComponent,
     ReservationFormComponent,
+    ReservationCardComponent,
   ],
   imports: [
     CommonModule,

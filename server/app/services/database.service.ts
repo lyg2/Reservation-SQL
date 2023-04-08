@@ -37,6 +37,7 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation ;`;
     const res = await client.query(queryText);
+    console.log(res.rows);
     client.release();
     return res;
   }

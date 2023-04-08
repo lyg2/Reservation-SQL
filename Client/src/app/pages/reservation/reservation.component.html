@@ -1,3 +1,10 @@
 <button mat-raised-button color="primary" class="btn" routerLink="/reservation/create">Créer une réservation
     <mat-icon>arrow_right</mat-icon>
 </button>
+
+<div id="member-container">
+    <mat-card *ngFor="let reservationCard of obs | async" class="member-card">
+        <app-reservation-card [reservationCard]="reservationCard"></app-reservation-card>
+    </mat-card>
+    <mat-paginator [pageSize]="4" [pageSizeOptions]="[4]" aria-label="Select page" mat-raised-button color="primary"></mat-paginator>
+</div>
