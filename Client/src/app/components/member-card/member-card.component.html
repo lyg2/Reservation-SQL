@@ -8,14 +8,15 @@
             <p>Nom du membre: {{memberCard.membername}}</p>
             <p>Emplacement préféré: {{memberCard.preferredparking}}</p>
             <p>Mot de passe: {{memberCard.memberpassword}}</p>
-            <p>Numéro de pemrmis: {{memberCard.licenseno}}</p>
+            <p>Numéro de permis: {{memberCard.licenseno}}</p>
             <p>Type de personne: {{memberCard.entitytype}}</p>
             <p>Date de naissance: {{memberCard.birthdate}}</p>
             <p>Dernier accident: {{memberCard.lastaccidentdate}}</p>
             <p>Adresse postale: {{memberCard.mailingaddress}}</p>
             <p>Email: {{memberCard.email}}</p>
             <p>Cotisation annuelle: {{memberCard.annualmembership}}</p>
-            <p *ngIf="memberCard.annualmembership">Membre de l'autopartage'</p>
+            <!-- TODO: add share holders details -->
+            <p *ngIf="memberCard.annualmembership">Membre de l'autopartage</p>
             <p *ngIf="!memberCard.annualmembership">Membre de la coopérative</p>
         </mat-card-content>
     </div>
