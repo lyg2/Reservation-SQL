@@ -57,4 +57,12 @@ export class DatabaseService {
     client.release();
     return res;
   }
+
+  async getAllCars(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT licensePlate, parkingName, modelName, brand FROM CARSHARING_DB.Car;`
+    const res = await client.query(queryText);
+    client.release();
+    return res;
+  }
 }

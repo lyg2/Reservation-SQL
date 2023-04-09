@@ -14,6 +14,7 @@ import { MemberCardComponent } from './components/member-card/member-card.compon
 import { ReservationFormComponent } from './pages/reservation-form/reservation-form.component';
 import { MaterialModule } from './modules/material.module';
 import { ReservationCardComponent } from './components/reservation-card/reservation-card.component';
+import { MAT_DATE_LOCALE } from "@angular/material/core";
 
 
 @NgModule({
@@ -37,7 +38,10 @@ import { ReservationCardComponent } from './components/reservation-card/reservat
     MaterialModule
   ],
   exports:[ReservationFormComponent],
-  providers: [CommunicationService],
+  providers: [
+    CommunicationService,
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+  ],
   entryComponents: [],
   bootstrap: [AppComponent],
 })

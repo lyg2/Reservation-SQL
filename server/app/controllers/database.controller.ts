@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import { DatabaseService } from "../services/database.service";
+import { Car } from '../../../common/tables/car'
 import {CoopMember} from '../../../common/tables/coop-member';
 import { Parking } from '../../../common/tables/parking'
 import {Reservation} from '../../../common/tables/reservation';
@@ -77,6 +78,17 @@ export class DatabaseController {
         .then((result: pg.QueryResult) => {
           console.log(result.rows as Parking[]);
           res.json(result.rows as Parking[]);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });;
+      });
+
+      router.get("/cars", (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+        .getAllCars()
+        .then((result: pg.QueryResult) => {
+          res.json(result.rows as Car[]);
         })
         .catch((e: Error) => {
           console.error(e.stack);

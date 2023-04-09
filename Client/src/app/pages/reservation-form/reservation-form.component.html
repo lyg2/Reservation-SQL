@@ -1,66 +1,58 @@
 <div class="form-group" *ngIf="!submitted">
   <label for="cars">Emplacement</label>
   <mat-form-field>
-  <mat-select  id="place" required>
-    <mat-option *ngFor="let location of locations" [value]="location">{{location.parkingname}}</mat-option>
-  </mat-select>
-</mat-form-field>
-
-    <label for="cars">Marque</label>
-    <mat-form-field>
-    <mat-select  id="cars" required>
-      <mat-option *ngFor="let car of cars" [value]="car">{{car}}</mat-option>
+    <mat-select id="place" required (selectionChange)="manageLocationChoice($event)">
+      <mat-option *ngFor="let location of locations" [value]="location">{{location.parkingname}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-    <label for="model">Type</label>
-    <mat-form-field>
-    <mat-select  id="model" required>
-      <mat-option *ngFor="let model of models" [value]="model">{{model}}</mat-option>
+  <label for="cars">Voiture</label>
+  <mat-form-field>
+    <mat-select id="cars" required>
+      <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.brand }} </mat-option>
     </mat-select>
   </mat-form-field>
 
-
-    <label for="date">Date de réservation</label>
-    <mat-form-field> 
-      <input matInput type="date" class="form-control" id="date"
-    required name="name">
+  <label for="date">Date de réservation</label>
+  <mat-form-field appearance="fill">
+    <mat-label>Choisissez une date</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matIconSuffix [for]="picker">
+    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-    <label for="periodStart">Heure de début:  </label>
-    <mat-form-field>
-      <input [(ngModel)]="startTime"  matInput type="time" step="900" id="periodStart" name="periodStart"
-           min="09:00" max="22:00" required>
-    </mat-form-field>
-    <label for="periodEnd">Heure de fin:  </label>
-    <mat-form-field>
-      <input [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd"
-      min="09:00" max="22:00" required>
-    </mat-form-field>
-    <mat-form-field>
 
+  <label for="periodStart">Heure de début: </label>
+  <mat-form-field>
+    <input [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart" min="09:00"
+      max="22:00" required>
+  </mat-form-field>
+
+  <label for="periodEnd">Heure de fin: </label>
+  <mat-form-field>
+    <input [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00"
+      required>
+  </mat-form-field>
+
+  <mat-form-field>
     <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
   </mat-form-field>
 </div>
-  
-  <div class="form-group"*ngIf="submitted">
-    <label for="numeroId">ID:</label>
-    <mat-form-field>
 
-    <input matInput type="text"  id="numeroId"
-    required
-     name="numeroId">
-    </mat-form-field>
+<div class="form-group" *ngIf="submitted">
+  <label for="numeroId">ID:</label>
+  <mat-form-field>
 
-     <label for="password">Mot de passe:</label>
-     <mat-form-field>
-     <input matInput type="text"  id="password"
-     required
-      name="password">
-    </mat-form-field>
+    <input matInput type="text" id="numeroId" required name="numeroId">
+  </mat-form-field>
 
-    <mat-form-field>
-      <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
-    </mat-form-field>
-  
+  <label for="password">Mot de passe:</label>
+  <mat-form-field>
+    <input matInput type="text" id="password" required name="password">
+  </mat-form-field>
 
- </div>
+  <mat-form-field>
+    <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
+  </mat-form-field>
+</div>
