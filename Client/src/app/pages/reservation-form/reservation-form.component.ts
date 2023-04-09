@@ -6,11 +6,13 @@ import { CommunicationService } from 'src/app/services/communication.service';
 import { Parking } from '../../../../../common/tables/parking'
 import { Car } from '../../../../../common/tables/car';
 import { Reservation } from '../../../../../common/tables/reservation';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
   styleUrls: ['./reservation-form.component.css'],
+  providers: [DatePipe],
 })
 export class ReservationFormComponent implements OnInit {
   @Input('startHour') startTime:Time;
@@ -27,8 +29,9 @@ export class ReservationFormComponent implements OnInit {
   location: Parking;
   filteredCars: Car[];
   reservations: Reservation [] = [];
+  selectedDate: Date;
 
-  constructor( private reservationService:ReservationService, private communicationService: CommunicationService) {}
+  constructor( private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.getAllParkingNames();
@@ -59,17 +62,18 @@ export class ReservationFormComponent implements OnInit {
     //   return car.parkingname === this.location.parkingname;
     // })
     this.reservations = [];
+    console.log(this.selectedDate);
     this.communicationService.getCarsByParkingName(this.location.parkingname).subscribe(cars => this.filteredCars = cars);
   }
 
   manageCarChoice(event: any): void {
     const licensePlate: string = event.value;
+    console.log(this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd'));
     console.log(licensePlate);
     this.communicationService.getReservationsByLicensePlate(licensePlate).subscribe((reservations: Reservation [])=> {
       this.reservations = reservations;
       console.log(this.reservations);
     });
-}
-
+  }
 }
 

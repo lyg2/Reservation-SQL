@@ -6,17 +6,10 @@
     </mat-select>
   </mat-form-field>
 
-  <label for="cars">Voiture</label>
-  <mat-form-field>
-    <mat-select id="cars" required (selectionChange)="manageCarChoice($event)">
-      <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.brand }} </mat-option>
-    </mat-select>
-  </mat-form-field>
-
   <label for="date">Date de réservation</label>
   <mat-form-field appearance="fill">
     <mat-label>Choisissez une date</mat-label>
-  <input matInput [matDatepicker]="picker">
+  <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
   <mat-datepicker-toggle matIconSuffix [for]="picker">
     <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
   </mat-datepicker-toggle>
@@ -33,6 +26,13 @@
   <mat-form-field>
     <input [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00"
       required>
+  </mat-form-field>
+
+  <label for="cars">Voiture</label>
+  <mat-form-field>
+    <mat-select id="cars" required (selectionChange)="manageCarChoice($event)">
+      <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.brand }} </mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field>
