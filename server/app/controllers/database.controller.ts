@@ -7,6 +7,7 @@ import { Parking } from '../../../common/tables/parking'
 import {Reservation} from '../../../common/tables/reservation';
 import * as pg from "pg";
 import Types from "../types";
+import { StatusCodes } from "http-status-codes";
 
 @injectable()
 export class DatabaseController {
@@ -113,6 +114,25 @@ export class DatabaseController {
         })
         .catch((e: Error) => {
           console.error(e.stack);
+        });
+
+      });
+
+      router.post("/login/", (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+        .getIdPassword(req.body.idmember, req.body.memberpassword)
+        .then((result: pg.QueryResult) => {
+          if(result.rows.length===1) {
+            res.status(StatusCodes.OK).json();
+          }
+          else {
+            console.log('test');
+            res.status(StatusCodes.FORBIDDEN).json();
+          }
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+          res.status(StatusCodes.INTERNAL_SERVER_ERROR).json();
         });
 
       });

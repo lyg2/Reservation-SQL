@@ -4,37 +4,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { CommunicationService } from 'src/app/services/communication.service';
-
-// const DATA : CoopMember [] = [
-//   {
-//     idMember: '007',
-//     idBankAccount: 'DDD',
-//     memberName: 'John Doe',
-//     preferredParking: 'Ghetto',
-//     memberPassword: 'password',
-//     licenseNo: '0123456',
-//     entityType: 'PERSON',
-//     birthDate: '2000/02/22',
-//     lastAccidentDate: '2020/01/01',
-//     mailingAdress: 'johndoe@example.com',
-//     email: 'johndoe@example.com',
-//     annualMembership : 50,
-//   },
-//   {
-//     idMember: '007',
-//     idBankAccount: 'DDD',
-//     memberName: 'John Doe',
-//     preferredParking: 'Ghetto',
-//     memberPassword: 'password',
-//     licenseNo: '0123456',
-//     entityType: 'PERSON',
-//     birthDate: '2000/02/22',
-//     lastAccidentDate: '2020/01/01',
-//     mailingAdress: 'Enfer',
-//     email: 'johndoe@example.com',
-//     annualMembership : 50,
-//   }
-// ]
+import { Authentification } from '../../../../../common/communication/authentification';
+import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-member-page',
@@ -46,6 +17,11 @@ export class MemberPageComponent implements OnInit {
     query: string;
     obs: Observable<CoopMember[]>;
     dataSource: MatTableDataSource<CoopMember>;
+
+    id: string;
+    password: string;
+
+
 
     constructor(private changeDetectorRef: ChangeDetectorRef, private readonly communicationService: CommunicationService) {}
 
@@ -67,6 +43,22 @@ export class MemberPageComponent implements OnInit {
 
     sendQuery(): void {
       this.getMembersWithName();
+    }
+
+    postLogin(): void {
+      const authentification: Authentification = {idmember: this.id, memberpassword: this.password} as Authentification;
+      this.communicationService.postLogin(authentification).subscribe((response)=> {
+        console.log('test');
+        if(response.ok) {
+          window.alert('Connextion réussie');
+        }
+        else if (response.status===HttpStatusCode.Forbidden) {
+          window.alert('Accès refusé');
+        }
+        else {
+          window.alert('Erreur');
+        }
+      });
     }
 
     private setUpData(members: CoopMember[]): void {

@@ -1,9 +1,10 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject, of } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { CoopMember } from "../../../../common/tables/coop-member";
 import {Reservation} from "../../../../common/tables/reservation"
+import {Authentification} from '../../../../common/communication/authentification'
 import { Parking } from "../../../../common/tables/parking";
 import { Car } from "../../../../common/tables/car";
 
@@ -42,6 +43,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Reservation[]>("getReservations")));
   }
 
+  postLogin(authentification: Authentification): Observable<HttpResponse<string>> {
+    return this.http.post(this.BASE_URL+'/login/', authentification, {
+        observe: 'response',
+        responseType: 'text',
+    });
+}
   getAllParkingNames(): Observable<Parking[]> {
     return this.http
       .get<Parking[]>(this.BASE_URL + "/parkings/name")
