@@ -66,6 +66,7 @@ export class DatabaseService {
   async getAllCars(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText: string = `SELECT licensePlate, parkingName, modelName, brand FROM CARSHARING_DB.Car;`
+    // TODO: verify that cars are not already reserved
     const res = await client.query(queryText);
     client.release();
     return res;
