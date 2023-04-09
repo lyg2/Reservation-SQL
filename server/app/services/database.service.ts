@@ -101,8 +101,8 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const condition = `Car.parkingName = $1 
     AND (
-      ($2 < (CARSHARING_DB.Reservation.reservedPeriod).periodStart AND $3 < (CARSHARING_DB.Reservation.reservedPeriod).periodEnd) 
-      OR ($2 > (CARSHARING_DB.Reservation.reservedPeriod).periodStart AND $3 > (CARSHARING_DB.Reservation.reservedPeriod).periodEnd)
+      ($2 < (CARSHARING_DB.Reservation.reservedPeriod).periodStart AND $3 < (CARSHARING_DB.Reservation.reservedPeriod).periodStart) 
+      OR ($2 > (CARSHARING_DB.Reservation.reservedPeriod).periodEnd AND $3 > (CARSHARING_DB.Reservation.reservedPeriod).periodEnd)
       )`;
     const values = [location, firstPeriod,secondPeriod];
     const queryText: string = `SELECT DISTINCT licensePlate, parkingName, modelName, brand
