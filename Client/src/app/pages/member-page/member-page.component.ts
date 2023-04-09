@@ -48,7 +48,6 @@ export class MemberPageComponent implements OnInit {
     postLogin(): void {
       const authentification: Authentification = {idmember: this.id, memberpassword: this.password} as Authentification;
       this.communicationService.postLogin(authentification).subscribe((response)=> {
-        console.log('test');
         if(response.ok) {
           window.alert('Connextion réussie');
         }

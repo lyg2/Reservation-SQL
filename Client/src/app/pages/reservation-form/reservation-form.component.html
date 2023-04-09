@@ -13,12 +13,6 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-select id="reservations">
-      <mat-option *ngFor="let reservation of reservations" [value]="reservation.reservedperiod"> {{ reservation.reservedperiod }} </mat-option>
-    </mat-select>
-  </mat-form-field>
-
   <label for="date">Date de réservation</label>
   <mat-form-field appearance="fill">
     <mat-label>Choisissez une date</mat-label>
@@ -44,6 +38,9 @@
   <mat-form-field>
     <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
   </mat-form-field>
+
+  <label for="reservations">Heure des réservations déjà prises pour la voiture</label>
+      <p *ngFor="let reservation of reservations" [value]="reservation.reservedperiod"> {{ reservation.reservedperiod }}</p>
 </div>
 
 <div class="form-group" *ngIf="submitted">

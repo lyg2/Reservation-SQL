@@ -26,7 +26,7 @@ export class ReservationFormComponent implements OnInit {
   locations: Parking[];
   location: Parking;
   filteredCars: Car[];
-  reservations: Reservation [];
+  reservations: Reservation [] = [];
 
   constructor( private reservationService:ReservationService, private communicationService: CommunicationService) {}
 
@@ -58,13 +58,18 @@ export class ReservationFormComponent implements OnInit {
     // this.filteredCars = this.cars.filter((car: Car) => {
     //   return car.parkingname === this.location.parkingname;
     // })
+    this.reservations = [];
     this.communicationService.getCarsByParkingName(this.location.parkingname).subscribe(cars => this.filteredCars = cars);
-
   }
 
   manageCarChoice(event: any): void {
     const licensePlate: string = event.value;
-    this.communicationService.getReservationsByLicensePlate(licensePlate).subscribe(reservations => this.reservations = reservations);
-    console.log(this.reservations);
-  }
+    console.log(licensePlate);
+    this.communicationService.getReservationsByLicensePlate(licensePlate).subscribe((reservations: Reservation [])=> {
+      this.reservations = reservations;
+      console.log(this.reservations);
+    });
 }
+
+}
+

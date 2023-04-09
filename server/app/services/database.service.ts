@@ -54,6 +54,7 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const condition = "licensePlate = $1";
     const values = [licensePlate];
+    // Verity that we only take reservation for which have for which the the current date is after the reserved period.
     const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation WHERE ${condition};`;
     const res = await client.query(queryText, values);
     console.log(res.rows);
