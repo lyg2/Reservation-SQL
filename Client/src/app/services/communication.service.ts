@@ -5,6 +5,7 @@ import { catchError } from "rxjs/operators";
 import { CoopMember } from "../../../../common/tables/coop-member";
 import {Reservation} from "../../../../common/tables/reservation"
 import {Authentification} from '../../../../common/communication/authentification'
+import { Parking } from "../../../../common/tables/parking";
 
 @Injectable()
 export class CommunicationService {
@@ -30,7 +31,7 @@ export class CommunicationService {
 
   getMembersWithName(name: string): Observable<CoopMember[]> {
     return this.http
-      .get<CoopMember[]>(this.BASE_URL + "/members/"+name)
+      .get<CoopMember[]>(this.BASE_URL + "/members/" + name)
       .pipe(catchError(this.handleError<CoopMember[]>("getMembersWithName")));
   }
 
@@ -46,6 +47,11 @@ export class CommunicationService {
         responseType: 'text',
     });
 }
+  getAllParkingNames(): Observable<Parking[]> {
+    return this.http
+      .get<Parking[]>(this.BASE_URL + "/parkings/name")
+      .pipe(catchError(this.handleError<Parking[]>("getAllParkingNames")));
+  }
   
   private handleError<T>(
     request: string,

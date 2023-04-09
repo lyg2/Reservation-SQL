@@ -32,7 +32,6 @@ export class MemberPageComponent implements OnInit {
     getAllMembers(): void {
       this.communicationService.getAllMembers().subscribe((members: CoopMember [])=> {
         this.setUpData(members);
-
       });
     }
 
