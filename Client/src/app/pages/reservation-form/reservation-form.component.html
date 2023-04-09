@@ -8,10 +8,10 @@
 
   <label for="date">Date de réservation</label>
   <mat-form-field appearance="fill">
-    <mat-label>Choisissez une date</mat-label>
+    <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
   <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="manageFreeCars()" required>
+  <mat-hint></mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker">
-    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
   </mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>

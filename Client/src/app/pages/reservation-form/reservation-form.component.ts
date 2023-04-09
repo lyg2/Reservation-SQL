@@ -99,9 +99,6 @@ export class ReservationFormComponent implements OnInit {
     .subscribe((cars : Car [])=> {
       this.filteredCars=cars;
     });
-    
-    
-    
   }
 
   private getDriverMembers() : void {
@@ -127,8 +124,6 @@ export class ReservationFormComponent implements OnInit {
       return true;
     }
     return false;
-  }
-
- 
+  } 
 }
 
