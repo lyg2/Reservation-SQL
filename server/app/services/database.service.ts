@@ -41,4 +41,12 @@ export class DatabaseService {
     client.release();
     return res;
   }
+
+  async getIdPassword(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT idMember, memberPassword  FROM CARSHARING_DB.CoopMember;`
+    const res = await client.query(queryText);
+    client.release();
+    return res;
+  }
 }
