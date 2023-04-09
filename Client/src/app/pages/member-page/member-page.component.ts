@@ -59,7 +59,6 @@ export class MemberPageComponent implements OnInit {
         this.changeDetectorRef.detectChanges();
         this.obs = this.dataSource.connect();
         this.dataSource.paginator = this.paginator;
-
       });
     }
 

@@ -24,11 +24,19 @@ export class DatabaseService {
     return res;
   }
 
-  async getMembersWithName(memberName: string) {
+  async getMembersWithName(memberName: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember WHERE memberName LIKE $1 ;`
     const pattern: string [] = [`%${memberName}%`];
     const res = await client.query(queryText, pattern);
+    client.release();
+    return res;
+  }
+
+  async getAllParkingNames(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT parkingName FROM CARSHARING_DB.Parking;`
+    const res = await client.query(queryText);
     client.release();
     return res;
   }
