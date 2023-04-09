@@ -65,7 +65,7 @@ export class DatabaseService {
     const condition = "licensePlate = $1  AND (reservedPeriod).periodStart > $2 AND (reservedPeriod).periodEnd < $2 ";
     const now = "NOW()"
     const values = [licensePlate, now];
-    // Verity that we only take reservation for which have for which the the current date is after the reserved period.
+    // Verity that we only take reservation for which the current date is after the reserved period.
     const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation WHERE ${condition};`;
     const res = await client.query(queryText, values);
     console.log(res.rows);
@@ -73,18 +73,18 @@ export class DatabaseService {
     return res;
   }
 
-  async getIdPassword(id: string, password: string): Promise<pg.QueryResult> {
-    console.log(id);
-    console.log(password);
-    const condition = "idMember = $1 AND memberPassword = $2";
-    const values = [id, password];
-    const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE ${condition};`
-    const res = await client.query(queryText, values);
-    console.log(res.rows);
-    client.release();
-    return res;
-  }
+  // async getIdPassword(id: string, password: string): Promise<pg.QueryResult> {
+  //   console.log(id);
+  //   console.log(password);
+  //   const condition = "idMember = $1 AND memberPassword = $2";
+  //   const values = [id, password];
+  //   const client = await this.pool.connect();
+  //   const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE ${condition};`
+  //   const res = await client.query(queryText, values);
+  //   console.log(res.rows);
+  //   client.release();
+  //   return res;
+  // }
 
   async getAllCars(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();

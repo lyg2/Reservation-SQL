@@ -25,7 +25,6 @@ export class ReservationFormComponent implements OnInit {
   // locations=['Gare d\'autocars de Sainte-Catherine','Gare d\'autocars de Saint-Sauveur','Gare d\'autocars de Champlain' ]
   //fetch postal adresses
   postalAdresses=['H3B 1A6','H4N 3K1', 'H8N 1X1'];
-  submitted = false;
   locations: Parking[];
   location: Parking;
   filteredCars: Car[];
@@ -49,7 +48,7 @@ export class ReservationFormComponent implements OnInit {
       this.onSubmit();
   }
 
-  onSubmit(): void { this.submitted = true; }
+  onSubmit(): void {  }
 
   private getAllParkingNames(): void {
     this.communicationService.getAllParkingNames().subscribe(parkingNames => this.locations = parkingNames)
@@ -112,7 +111,6 @@ export class ReservationFormComponent implements OnInit {
   private isValidDate(startDate : Date) {
     const currentDate = new Date();
     return startDate.getTime() > currentDate.getTime();
-
   }
 
   private isValidPeriod(firstDate: Date, secondDate : Date) : boolean {

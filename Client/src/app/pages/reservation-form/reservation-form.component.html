@@ -1,4 +1,4 @@
-<div class="form-group" *ngIf="!submitted">
+<div class="form-group">
   <label for="place">Emplacement</label>
   <mat-form-field>
     <mat-select id="place" required (selectionChange)="manageLocationChoice($event)">
@@ -45,22 +45,4 @@
   <mat-form-field>
     <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
   </mat-form-field>
-</div>
-
-<div class="form-group" *ngIf="submitted">
-  <label for="numeroId">ID:</label>
-  <mat-form-field>
-
-    <input matInput type="text" id="numeroId" required name="numeroId">
-  </mat-form-field>
-
-  <label for="password">Mot de passe:</label>
-  <mat-form-field>
-    <input matInput type="text" id="password" required name="password">
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
-  </mat-form-field>
-
 </div>

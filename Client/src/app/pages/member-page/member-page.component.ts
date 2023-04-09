@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { CommunicationService } from 'src/app/services/communication.service';
-import { Authentification } from '../../../../../common/communication/authentification';
-import { HttpStatusCode } from '@angular/common/http';
+// import { Authentification } from '../../../../../common/communication/authentification';
+// import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-member-page',
@@ -45,20 +45,20 @@ export class MemberPageComponent implements OnInit {
       this.getMembersWithName();
     }
 
-    postLogin(): void {
-      const authentification: Authentification = {idmember: this.id, memberpassword: this.password} as Authentification;
-      this.communicationService.postLogin(authentification).subscribe((response)=> {
-        if(response.ok) {
-          window.alert('Connextion réussie');
-        }
-        else if (response.status===HttpStatusCode.Forbidden) {
-          window.alert('Accès refusé');
-        }
-        else {
-          window.alert('Erreur');
-        }
-      });
-    }
+    // postLogin(): void {
+    //   const authentification: Authentification = {idmember: this.id, memberpassword: this.password} as Authentification;
+    //   this.communicationService.postLogin(authentification).subscribe((response)=> {
+    //     if(response.ok) {
+    //       window.alert('Connextion réussie');
+    //     }
+    //     else if (response.status===HttpStatusCode.Forbidden) {
+    //       window.alert('Accès refusé');
+    //     }
+    //     else {
+    //       window.alert('Erreur');
+    //     }
+    //   });
+    // }
 
     private setUpData(members: CoopMember[]): void {
       this.dataSource = new MatTableDataSource<CoopMember>(members);
