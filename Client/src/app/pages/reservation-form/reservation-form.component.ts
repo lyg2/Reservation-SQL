@@ -5,7 +5,7 @@ import { Input } from '@angular/core';
 import { CommunicationService } from 'src/app/services/communication.service';
 import { Parking } from '../../../../../common/tables/parking'
 import { Car } from '../../../../../common/tables/car';
-import { Reservation } from '../../../../../common/tables/reservation';
+//import { Reservation } from '../../../../../common/tables/reservation';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -28,8 +28,8 @@ export class ReservationFormComponent implements OnInit {
   locations: Parking[];
   location: Parking;
   filteredCars: Car[];
-  reservations: Reservation [] = [];
   selectedDate: Date;
+  //reservations: Reservation [] = [];
 
   constructor( private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe) {}
 
@@ -58,23 +58,20 @@ export class ReservationFormComponent implements OnInit {
 
   manageLocationChoice(event: any): void {
     this.location = event.value;
-    // this.filteredCars = this.cars.filter((car: Car) => {
-    //   return car.parkingname === this.location.parkingname;
-    // })
-    this.reservations = [];
     this.manageFreeCars();
   }
 
-  manageCarChoice(event: any): void {
-    const licensePlate: string = event.value;
-    console.log(licensePlate);
-    this.communicationService.getReservationsByLicensePlate(licensePlate).subscribe((reservations: Reservation [])=> {
-      this.reservations = reservations;
-      console.log(this.reservations);
-    });
-  }
+  // manageCarChoice(event: any): void {
+  //   const licensePlate: string = event.value;
+  //   console.log(licensePlate);
+  //   this.communicationService.getReservationsByLicensePlate(licensePlate).subscribe((reservations: Reservation [])=> {
+  //     this.reservations = reservations;
+  //     console.log(this.reservations);
+  //   });
+  // }
 
   manageFreeCars(): void {
+    this.filteredCars = [];
     if (!this.hasDefinedInput()) {
       return;
     }
@@ -87,10 +84,14 @@ export class ReservationFormComponent implements OnInit {
 
     const startDateString = `${selectedDateString} ${this.startTime}:00`;
     const endDateString = `${selectedDateString} ${this.endTime}:00`;
-    console.log(startDateString);
 
-    // const firstDate = new Date(startDateString.replace(/-/g, '/'));
-    // const secondDate = new Date(endDateString.replace(/-/g, '/'));
+    const firstDate = new Date(startDateString.replace(/-/g, '/'));
+    const secondDate = new Date(endDateString.replace(/-/g, '/'));
+
+    if(!this.isValidPeriod(firstDate,secondDate) || !this.isValidDate(firstDate)) {
+      return;
+    }
+    
     this.communicationService.postFreeCars(this.location.parkingname, startDateString, endDateString)
     .subscribe((cars : Car [])=> {
       this.filteredCars=cars;
@@ -100,11 +101,20 @@ export class ReservationFormComponent implements OnInit {
     
   }
 
+  private isValidDate(startDate : Date) {
+    const currentDate = new Date();
+    return startDate.getTime() > currentDate.getTime();
+
+  }
+
+  private isValidPeriod(firstDate: Date, secondDate : Date) : boolean {
+    return firstDate.getTime() < secondDate.getTime();
+  }
+
   private hasDefinedInput(): boolean {
     if(this.selectedDate && this.location && this.startTime && this.endTime) {
       return true;
     }
-    console.log('end');
     return false;
   }
 

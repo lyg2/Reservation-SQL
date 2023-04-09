@@ -28,9 +28,9 @@
       (change)="manageFreeCars()" required>
   </mat-form-field>
 
-  <label for="cars">Voiture</label>
+  <label for="cars">Voitures disponibles</label>
   <mat-form-field>
-    <mat-select id="cars" required (selectionChange)="manageCarChoice($event)">
+    <mat-select id="cars" required>
       <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.brand }} </mat-option>
     </mat-select>
   </mat-form-field>
@@ -38,9 +38,6 @@
   <mat-form-field>
     <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
   </mat-form-field>
-
-  <label for="reservations">Heure des réservations déjà prises pour la voiture</label>
-      <p *ngFor="let reservation of reservations" [value]="reservation.reservedperiod"> {{ reservation.reservedperiod }}</p>
 </div>
 
 <div class="form-group" *ngIf="submitted">
