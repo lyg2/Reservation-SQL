@@ -7,6 +7,7 @@ import { Parking } from '../../../../../common/tables/parking'
 import { Car } from '../../../../../common/tables/car';
 //import { Reservation } from '../../../../../common/tables/reservation';
 import { DatePipe } from '@angular/common';
+import { CoopMember } from '../../../../../common/tables/coop-member';
 
 @Component({
   selector: 'app-reservation-form',
@@ -29,6 +30,7 @@ export class ReservationFormComponent implements OnInit {
   location: Parking;
   filteredCars: Car[];
   selectedDate: Date;
+  members: CoopMember [];
   //reservations: Reservation [] = [];
 
   constructor( private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe) {}
@@ -36,6 +38,7 @@ export class ReservationFormComponent implements OnInit {
   ngOnInit(): void {
     this.getAllParkingNames();
     this.getAllCars();
+    this.getDriverMembers();
   }
 
   onValidate(): void {
@@ -99,6 +102,14 @@ export class ReservationFormComponent implements OnInit {
     
     
     
+  }
+
+  private getDriverMembers() : void {
+    this.communicationService.getDriverMembers()
+    .subscribe((members : CoopMember [])=> {
+      this.members=members;
+      console.log(this.members);
+    });
   }
 
   private isValidDate(startDate : Date) {

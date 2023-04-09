@@ -37,6 +37,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<CoopMember[]>("getMembersWithName")));
   }
 
+  getDriverMembers(): Observable<CoopMember[]> {
+    return this.http
+      .get<CoopMember[]>(this.BASE_URL + "/members/drivers")
+      .pipe(catchError(this.handleError<CoopMember[]>("getDriverMembers")));
+  }
+
   getReservations(): Observable<Reservation[]> {
     return this.http
       .get<Reservation[]>(this.BASE_URL + "/reservations/")

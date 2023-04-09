@@ -31,6 +31,18 @@ export class DatabaseController {
         });
       });
 
+      router.get("/members/drivers", (req: Request, res: Response, _: NextFunction) => {
+        console.log('members');
+          this.databaseService
+          .getDriverMembers()
+          .then((result: pg.QueryResult) => {
+            res.json(result.rows as CoopMember[]);
+          })
+          .catch((e: Error) => {
+            console.error(e.stack);
+          });
+        });
+
       router.get("/members/:name", (req: Request, res: Response, _: NextFunction) => {
         console.log(req.params.name);
           this.databaseService

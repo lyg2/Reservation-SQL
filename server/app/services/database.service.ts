@@ -33,6 +33,15 @@ export class DatabaseService {
     return res;
   }
 
+  async getDriverMembers():  Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE licenseNo IS NOT NULL ;`;
+    const res = await client.query(queryText);
+    console.log(res);
+    client.release();
+    return res;
+  }
+
   async getAllParkingNames(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText: string = `SELECT parkingName FROM CARSHARING_DB.Parking;`
