@@ -89,3 +89,6 @@ INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirem
 INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
 	VALUES(('2023-01-23 09:00:00', '2023-01-23 12:00:00'), '1', '1', 'G010A2', NULL);
 	
+-- UPDATE Car SET odometer = 200000 WHERE licensePlate = 'COOKIE';
+
+-- UPDATE Reservation SET odometerEnd = 15 WHERE idMember = '1' AND licensePlate = 'COOKIE';

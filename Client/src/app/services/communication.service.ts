@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, Subject, of } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { CoopMember } from "../../../../common/tables/coop-member";
+import {Reservation} from "../../../../common/tables/reservation"
 import { Parking } from "../../../../common/tables/parking";
 
 @Injectable()
@@ -31,6 +32,12 @@ export class CommunicationService {
     return this.http
       .get<CoopMember[]>(this.BASE_URL + "/members/" + name)
       .pipe(catchError(this.handleError<CoopMember[]>("getMembersWithName")));
+  }
+
+  getReservations(): Observable<Reservation[]> {
+    return this.http
+      .get<Reservation[]>(this.BASE_URL + "/reservations/")
+      .pipe(catchError(this.handleError<Reservation[]>("getReservations")));
   }
 
   getAllParkingNames(): Observable<Parking[]> {

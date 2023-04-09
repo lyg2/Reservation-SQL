@@ -26,7 +26,7 @@ export class DatabaseService {
 
   async getMembersWithName(memberName: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember WHERE memberName LIKE $1 ;`
+    const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember WHERE LOWER(memberName) LIKE $1 ;`
     const pattern: string [] = [`%${memberName}%`];
     const res = await client.query(queryText, pattern);
     client.release();
@@ -36,6 +36,23 @@ export class DatabaseService {
   async getAllParkingNames(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText: string = `SELECT parkingName FROM CARSHARING_DB.Parking;`
+    const res = await client.query(queryText);
+    client.release();
+    return res;
+  }
+  
+  async getReservations(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation ;`;
+    const res = await client.query(queryText);
+    console.log(res.rows);
+    client.release();
+    return res;
+  }
+
+  async getIdPassword(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT idMember, memberPassword  FROM CARSHARING_DB.CoopMember;`
     const res = await client.query(queryText);
     client.release();
     return res;

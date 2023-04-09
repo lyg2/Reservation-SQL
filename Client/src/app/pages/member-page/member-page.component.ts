@@ -55,25 +55,26 @@ export class MemberPageComponent implements OnInit {
 
     getAllMembers(): void {
       this.communicationService.getAllMembers().subscribe((members: CoopMember [])=> {
-        this.dataSource = new MatTableDataSource<CoopMember>(members);
-        this.changeDetectorRef.detectChanges();
-        this.obs = this.dataSource.connect();
-        this.dataSource.paginator = this.paginator;
+        this.setUpData(members);
       });
     }
 
     getMembersWithName(): void {
-      this.communicationService.getMembersWithName(this.query).subscribe((members: CoopMember [])=> {
-        this.dataSource = new MatTableDataSource<CoopMember>(members);
-        this.changeDetectorRef.detectChanges();
-        this.obs = this.dataSource.connect();
-        this.dataSource.paginator = this.paginator;
+      this.communicationService.getMembersWithName(this.query.toLowerCase()).subscribe((members: CoopMember [])=> {
+        this.setUpData(members);
       });
     }
 
     sendQuery(): void {
-      console.log(this.query);
       this.getMembersWithName();
+    }
+
+    private setUpData(members: CoopMember[]): void {
+      this.dataSource = new MatTableDataSource<CoopMember>(members);
+      this.changeDetectorRef.detectChanges();
+      this.obs = this.dataSource.connect();
+      this.dataSource.paginator = this.paginator;
+
     }
 
 }
