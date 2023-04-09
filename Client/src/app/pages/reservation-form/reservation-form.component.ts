@@ -62,18 +62,52 @@ export class ReservationFormComponent implements OnInit {
     //   return car.parkingname === this.location.parkingname;
     // })
     this.reservations = [];
-    console.log(this.selectedDate);
-    this.communicationService.getCarsByParkingName(this.location.parkingname).subscribe(cars => this.filteredCars = cars);
+    this.manageFreeCars();
   }
 
   manageCarChoice(event: any): void {
     const licensePlate: string = event.value;
-    console.log(this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd'));
     console.log(licensePlate);
     this.communicationService.getReservationsByLicensePlate(licensePlate).subscribe((reservations: Reservation [])=> {
       this.reservations = reservations;
       console.log(this.reservations);
     });
   }
+
+  manageFreeCars(): void {
+    if (!this.hasDefinedInput()) {
+      return;
+    }
+    console.log(this.selectedDate);
+    console.log(this.location.parkingname);
+    console.log(this.startTime.hours);
+    console.log(this.endTime);
+
+    const selectedDateString = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+
+    const startDateString = `${selectedDateString} ${this.startTime}:00`;
+    const endDateString = `${selectedDateString} ${this.endTime}:00`;
+    console.log(startDateString);
+
+    // const firstDate = new Date(startDateString.replace(/-/g, '/'));
+    // const secondDate = new Date(endDateString.replace(/-/g, '/'));
+    this.communicationService.postFreeCars(this.location.parkingname, startDateString, endDateString)
+    .subscribe((cars : Car [])=> {
+      this.filteredCars=cars;
+    });
+    
+    
+    
+  }
+
+  private hasDefinedInput(): boolean {
+    if(this.selectedDate && this.location && this.startTime && this.endTime) {
+      return true;
+    }
+    console.log('end');
+    return false;
+  }
+
+ 
 }
 

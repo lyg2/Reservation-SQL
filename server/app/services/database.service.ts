@@ -96,4 +96,21 @@ export class DatabaseService {
     client.release();
     return res;
   }
+
+  async getFreeCars(location: string, firstPeriod: string, secondPeriod: string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const condition = `Car.parkingName = $1 
+    AND (
+      ($2 < (CARSHARING_DB.Reservation.reservedPeriod).periodStart AND $3 < (CARSHARING_DB.Reservation.reservedPeriod).periodEnd) 
+      OR ($2 > (CARSHARING_DB.Reservation.reservedPeriod).periodStart AND $3 > (CARSHARING_DB.Reservation.reservedPeriod).periodEnd)
+      )`;
+    const values = [location, firstPeriod,secondPeriod];
+    const queryText: string = `SELECT DISTINCT licensePlate, parkingName, modelName, brand
+    FROM CARSHARING_DB.Car NATURAL JOIN CARSHARING_DB.Reservation
+    WHERE ${condition};`
+    const res = await client.query(queryText, values);
+    console.log(res.rows);
+    client.release();
+    return res;
+  }
 }

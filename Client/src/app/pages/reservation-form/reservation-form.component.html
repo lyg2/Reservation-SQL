@@ -9,7 +9,7 @@
   <label for="date">Date de réservation</label>
   <mat-form-field appearance="fill">
     <mat-label>Choisissez une date</mat-label>
-  <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+  <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="manageFreeCars()" required>
   <mat-datepicker-toggle matIconSuffix [for]="picker">
     <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
   </mat-datepicker-toggle>
@@ -19,13 +19,13 @@
   <label for="periodStart">Heure de début: </label>
   <mat-form-field>
     <input [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart" min="09:00"
-      max="22:00" required>
+      max="22:00" (change)="manageFreeCars()" required>
   </mat-form-field>
 
   <label for="periodEnd">Heure de fin: </label>
   <mat-form-field>
     <input [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00"
-      required>
+      (change)="manageFreeCars()" required>
   </mat-form-field>
 
   <label for="cars">Voiture</label>

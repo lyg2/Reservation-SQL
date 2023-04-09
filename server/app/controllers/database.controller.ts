@@ -76,6 +76,18 @@ export class DatabaseController {
           console.error(e.stack);
         });;
       });
+      router.get("/cars/:location/:firstPeriod/:secondPeriod", (req: Request, res: Response, _: NextFunction) => {
+        console.log('test1');
+        console.log(req.params.firstPeriod);
+        this.databaseService
+        .getFreeCars(req.params.location, req.params.firstPeriod, req.params.secondPeriod)
+        .then((result: pg.QueryResult) => {
+          res.json(result.rows as Car[]);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });;
+      });
 
     router.get("/reservations/", (req: Request, res: Response, _: NextFunction) => {
         this.databaseService
@@ -118,6 +130,18 @@ export class DatabaseController {
           res.status(StatusCodes.INTERNAL_SERVER_ERROR).json();
         });
 
+      });
+
+      router.post("/cars/free", (req: Request, res: Response, _: NextFunction) => {
+        console.log(req.body);
+        this.databaseService
+        .getFreeCars(req.body.location, req.body.firstPeriod, req.body.secondPeriod)
+        .then((result: pg.QueryResult) => {
+          res.json(result.rows as Car[]);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });;
       });
 
     return router;
