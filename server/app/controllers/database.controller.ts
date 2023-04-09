@@ -24,49 +24,19 @@ export class DatabaseController {
         this.databaseService
         .getAllMembers()
         .then((result: pg.QueryResult) => {
-          const coopMembers: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
-            idmember: coopMember.idmember,
-            idbankaccount: coopMember.idbankaccount,
-            membername: coopMember.membername,
-            preferredparking: coopMember.preferredparking,
-            memberpassword: coopMember.memberpassword,
-            licenseno: coopMember.licenseno,
-            entitytype :coopMember.entitytype,
-            birthdate: coopMember.birthdate,
-            lastaccidentdate: coopMember.lastaccidentdate,
-            mailingaddress: coopMember.mailingaddress,
-            email: coopMember.email,
-            annualmembership : coopMember.annualmembership,
-          } as CoopMember));
-          console.log(coopMembers);
-          res.json(coopMembers);
+          res.json(result.rows as CoopMember[]);
         })
         .catch((e: Error) => {
           console.error(e.stack);
         });
       });
 
-      router.get("/members/:name?", (req: Request, res: Response, _: NextFunction) => {
+      router.get("/members/:name", (req: Request, res: Response, _: NextFunction) => {
         console.log(req.params.name);
           this.databaseService
           .getMembersWithName(req.params.name)
           .then((result: pg.QueryResult) => {
-            const coopMembers: CoopMember[] = result.rows.map((coopMember: CoopMember) => ({
-              idmember: coopMember.idmember,
-              idbankaccount: coopMember.idbankaccount,
-              membername: coopMember.membername,
-              preferredparking: coopMember.preferredparking,
-              memberpassword: coopMember.memberpassword,
-              licenseno: coopMember.licenseno,
-              entitytype :coopMember.entitytype,
-              birthdate: coopMember.birthdate,
-              lastaccidentdate: coopMember.lastaccidentdate,
-              mailingaddress: coopMember.mailingaddress,
-              email: coopMember.email,
-              annualmembership : coopMember.annualmembership,
-            } as CoopMember));
-            console.log(coopMembers);
-            res.json(coopMembers);
+            res.json(result.rows as CoopMember[]);
           })
           .catch((e: Error) => {
             console.error(e.stack);
@@ -96,21 +66,22 @@ export class DatabaseController {
         });;
       });
 
+      router.get("/cars/:name", (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+        .getCarsByParkingName(req.params.name)
+        .then((result: pg.QueryResult) => {
+          res.json(result.rows as Car[]);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });;
+      });
+
     router.get("/reservations/", (req: Request, res: Response, _: NextFunction) => {
         this.databaseService
         .getReservations()
         .then((result: pg.QueryResult) => {
-          const reservations: Reservation[] = result.rows.map((reservation: Reservation) => ({
-            reservedperiod : reservation.reservedperiod,
-            idmember : reservation.idmember,
-            licenseplate: reservation.licenseplate,
-            requirements : reservation.requirements,
-            idbill : reservation.idbill,
-            fee : reservation.fee,
-            odometerstart : reservation.odometerstart,
-            odometerend : reservation.odometerend,
-          } as Reservation));
-          res.json(reservations);
+          res.json(result.rows as Reservation[]);
         })
         .catch((e: Error) => {
           console.error(e.stack);
@@ -138,7 +109,5 @@ export class DatabaseController {
       });
 
     return router;
-
-    return router;    
   }
 }

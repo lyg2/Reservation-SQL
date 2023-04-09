@@ -14,7 +14,7 @@ import { HttpStatusCode } from '@angular/common/http';
 })
 export class MemberPageComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    query: string;
+    query: string= '';
     obs: Observable<CoopMember[]>;
     dataSource: MatTableDataSource<CoopMember>;
 

@@ -60,6 +60,13 @@ export class CommunicationService {
       .get<Car[]>(this.BASE_URL + "/cars")
       .pipe(catchError(this.handleError<Car[]>("getAllCars")));
   }
+
+  getCarsByParkingName(name: string): Observable<Car[]> {
+    console.log(name);
+    return this.http
+    .get<Car[]>(this.BASE_URL + "/cars/" + name)
+    .pipe(catchError(this.handleError<Car[]>("getCarsByParkingName")));
+  }
   
   private handleError<T>(
     request: string,

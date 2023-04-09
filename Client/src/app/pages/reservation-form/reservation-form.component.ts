@@ -53,8 +53,10 @@ export class ReservationFormComponent implements OnInit {
 
   manageLocationChoice(event: any): void {
     this.location = event.value;
-    this.filteredCars = this.cars.filter((car: Car) => {
-      return car.parkingname === this.location.parkingname;
-    })
+    // this.filteredCars = this.cars.filter((car: Car) => {
+    //   return car.parkingname === this.location.parkingname;
+    // })
+    this.communicationService.getCarsByParkingName(this.location.parkingname).subscribe(cars => this.filteredCars = cars);
+
   }
 }
