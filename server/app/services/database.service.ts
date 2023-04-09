@@ -53,7 +53,7 @@ export class DatabaseService {
   async getReservationsByLicensePlate(licensePlate: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
 
-    const condition = "licensePlate = $1 AND (reservedPeriod).periodEnd > $2";
+    const condition = "licensePlate = $1  AND (reservedPeriod).periodStart > $2 AND (reservedPeriod).periodEnd < $2 ";
     const now = "NOW()"
     const values = [licensePlate, now];
     // Verity that we only take reservation for which have for which the the current date is after the reserved period.
