@@ -8,8 +8,14 @@
 
   <label for="cars">Voiture</label>
   <mat-form-field>
-    <mat-select id="cars" required>
+    <mat-select id="cars" required (selectionChange)="manageCarChoice($event)">
       <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.brand }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select id="reservations">
+      <mat-option *ngFor="let reservation of reservations" [value]="reservation.reservedperiod"> {{ reservation.reservedperiod }} </mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -55,4 +61,5 @@
   <mat-form-field>
     <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
   </mat-form-field>
+
 </div>

@@ -5,6 +5,7 @@ import { Input } from '@angular/core';
 import { CommunicationService } from 'src/app/services/communication.service';
 import { Parking } from '../../../../../common/tables/parking'
 import { Car } from '../../../../../common/tables/car';
+import { Reservation } from '../../../../../common/tables/reservation';
 
 @Component({
   selector: 'app-reservation-form',
@@ -25,6 +26,7 @@ export class ReservationFormComponent implements OnInit {
   locations: Parking[];
   location: Parking;
   filteredCars: Car[];
+  reservations: Reservation [];
 
   constructor( private reservationService:ReservationService, private communicationService: CommunicationService) {}
 
@@ -58,5 +60,11 @@ export class ReservationFormComponent implements OnInit {
     // })
     this.communicationService.getCarsByParkingName(this.location.parkingname).subscribe(cars => this.filteredCars = cars);
 
+  }
+
+  manageCarChoice(event: any): void {
+    const licensePlate: string = event.value;
+    this.communicationService.getReservationsByLicensePlate(licensePlate).subscribe(reservations => this.reservations = reservations);
+    console.log(this.reservations);
   }
 }

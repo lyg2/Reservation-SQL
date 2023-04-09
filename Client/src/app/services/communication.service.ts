@@ -43,6 +43,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Reservation[]>("getReservations")));
   }
 
+  getReservationsByLicensePlate(licensePlate: string): Observable<Reservation[]> {
+    return this.http
+      .get<Reservation[]>(this.BASE_URL + "/reservations/"+licensePlate)
+      .pipe(catchError(this.handleError<Reservation[]>("getReservations")));
+  }
+
   postLogin(authentification: Authentification): Observable<HttpResponse<string>> {
     return this.http.post(this.BASE_URL+'/login/', authentification, {
         observe: 'response',

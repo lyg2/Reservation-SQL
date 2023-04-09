@@ -88,6 +88,18 @@ export class DatabaseController {
         });
 
       });
+    
+      router.get("/reservations/:licensePlate", (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+        .getReservationsByLicensePlate(req.params.licensePlate)
+        .then((result: pg.QueryResult) => {
+          res.json(result.rows as Reservation[]);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+
+      });
 
       router.post("/login/", (req: Request, res: Response, _: NextFunction) => {
         this.databaseService

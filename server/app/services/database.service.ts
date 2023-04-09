@@ -50,6 +50,17 @@ export class DatabaseService {
     return res;
   }
 
+  async getReservationsByLicensePlate(licensePlate: string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const condition = "licensePlate = $1";
+    const values = [licensePlate];
+    const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation WHERE ${condition};`;
+    const res = await client.query(queryText, values);
+    console.log(res.rows);
+    client.release();
+    return res;
+  }
+
   async getIdPassword(id: string, password: string): Promise<pg.QueryResult> {
     console.log(id);
     console.log(password);
