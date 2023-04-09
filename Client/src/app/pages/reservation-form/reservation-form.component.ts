@@ -18,7 +18,7 @@ import { CoopMember } from '../../../../../common/tables/coop-member';
 export class ReservationFormComponent implements OnInit {
   @Input('startHour') startTime:Time;
   @Input('endHour') endTime:Time;
-  cars: Car[];
+  // cars: Car[];
   // cars = ['Tesla', 'Mazda', 'BMW', 'Subaru', 'Porsche', 'Honda', 'Lexus', 'Toyota', 'Chrysler', 'Buick',  'Hyundai'];
   models = ['Hybride', 'Automobile régulières', 'Mini-camionettes'];
   //fetch locations
@@ -36,7 +36,7 @@ export class ReservationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllParkingNames();
-    this.getAllCars();
+    // this.getAllCars();
     this.getDriverMembers();
   }
 
@@ -54,9 +54,9 @@ export class ReservationFormComponent implements OnInit {
     this.communicationService.getAllParkingNames().subscribe(parkingNames => this.locations = parkingNames)
   }
 
-  private getAllCars(): void {
-    this.communicationService.getAllCars().subscribe(cars => this.cars = cars)
-  }
+  // private getAllCars(): void {
+  //   this.communicationService.getAllCars().subscribe(cars => this.cars = cars)
+  // }
 
   manageLocationChoice(event: any): void {
     this.location = event.value;

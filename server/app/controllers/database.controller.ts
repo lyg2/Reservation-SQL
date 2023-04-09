@@ -67,16 +67,16 @@ export class DatabaseController {
         });;
       });
 
-      router.get("/cars", (req: Request, res: Response, _: NextFunction) => {
-        this.databaseService
-        .getAllCars()
-        .then((result: pg.QueryResult) => {
-          res.json(result.rows as Car[]);
-        })
-        .catch((e: Error) => {
-          console.error(e.stack);
-        });;
-      });
+      // router.get("/cars", (req: Request, res: Response, _: NextFunction) => {
+      //   this.databaseService
+      //   .getAllCars()
+      //   .then((result: pg.QueryResult) => {
+      //     res.json(result.rows as Car[]);
+      //   })
+      //   .catch((e: Error) => {
+      //     console.error(e.stack);
+      //   });;
+      // });
 
       router.get("/cars/:name", (req: Request, res: Response, _: NextFunction) => {
         this.databaseService
@@ -88,6 +88,7 @@ export class DatabaseController {
           console.error(e.stack);
         });;
       });
+
       router.get("/cars/:location/:firstPeriod/:secondPeriod", (req: Request, res: Response, _: NextFunction) => {
         console.log('test1');
         console.log(req.params.firstPeriod);
@@ -122,7 +123,6 @@ export class DatabaseController {
         .catch((e: Error) => {
           console.error(e.stack);
         });
-
       });
 
       // router.post("/login/", (req: Request, res: Response, _: NextFunction) => {

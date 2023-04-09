@@ -67,11 +67,11 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Parking[]>("getAllParkingNames")));
   }
 
-  getAllCars(): Observable<Car[]> {
-    return this.http
-      .get<Car[]>(this.BASE_URL + "/cars")
-      .pipe(catchError(this.handleError<Car[]>("getAllCars")));
-  }
+  // getAllCars(): Observable<Car[]> {
+  //   return this.http
+  //     .get<Car[]>(this.BASE_URL + "/cars")
+  //     .pipe(catchError(this.handleError<Car[]>("getAllCars")));
+  // }
 
   getCarsByParkingName(name: string): Observable<Car[]> {
     console.log(name);
