@@ -42,10 +42,15 @@ export class DatabaseService {
     return res;
   }
 
-  async getIdPassword(): Promise<pg.QueryResult> {
+  async getIdPassword(id: string, password: string): Promise<pg.QueryResult> {
+    console.log(id);
+    console.log(password);
+    const condition = "idMember = $1 AND memberPassword = $2";
+    const values = [id, password];
     const client = await this.pool.connect();
-    const queryText: string = `SELECT idMember, memberPassword  FROM CARSHARING_DB.CoopMember;`
-    const res = await client.query(queryText);
+    const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE ${condition};`
+    const res = await client.query(queryText, values);
+    console.log(res.rows);
     client.release();
     return res;
   }

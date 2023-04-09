@@ -1,9 +1,10 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject, of } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { CoopMember } from "../../../../common/tables/coop-member";
 import {Reservation} from "../../../../common/tables/reservation"
+import {Authentification} from '../../../../common/communication/authentification'
 
 @Injectable()
 export class CommunicationService {
@@ -39,6 +40,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Reservation[]>("getReservations")));
   }
 
+  postLogin(authentification: Authentification): Observable<HttpResponse<string>> {
+    return this.http.post(this.BASE_URL+'/login/', authentification, {
+        observe: 'response',
+        responseType: 'text',
+    });
+}
   
   private handleError<T>(
     request: string,
