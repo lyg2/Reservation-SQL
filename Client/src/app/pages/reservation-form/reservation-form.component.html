@@ -1,5 +1,5 @@
 <div class="form-group" *ngIf="!submitted">
-  <label for="cars">Emplacement</label>
+  <label for="place">Emplacement</label>
   <mat-form-field>
     <mat-select id="place" required (selectionChange)="manageLocationChoice($event)">
       <mat-option *ngFor="let location of locations" [value]="location">{{location.parkingname}}</mat-option>
@@ -32,6 +32,13 @@
   <mat-form-field>
     <mat-select id="cars" required>
       <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.brand }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <label for="members">Membres pouvant conduire</label>
+  <mat-form-field>
+    <mat-select id="members" required>
+      <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername }}</mat-option>
     </mat-select>
   </mat-form-field>
 
