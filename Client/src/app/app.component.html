@@ -3,9 +3,9 @@
     <a class="navbar-brand title" href="/" matTooltip="Retournez à l'accueil">INF3710 - TP4</a>
     <div class="navbar-expand mr-auto">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" routerLink="/ROUTEUR_À_IMPLÉMENTER">LIEN 1</a>
-        <a class="nav-item nav-link active" routerLink="/ROUTEUR_À_IMPLÉMENTER">LIEN 2</a>
-        <a class="nav-item nav-link active" routerLink="/ROUTEUR_À_IMPLÉMENTER">LIEN 3</a>
+        <a class="nav-item nav-link active" routerLink="/member-page">Membres</a>
+        <a class="nav-item nav-link active" routerLink="/reservations">Reservations</a>
+        <a class="nav-item nav-link active" routerLink="/reservations/create">Réserver</a>
       </div>
     </div>
   </nav>
@@ -15,7 +15,7 @@
       AutoPartageQuébec
     </p>
     <button mat-raised-button color="primary" class="btn" routerLink="/member-page">Afficher les membres<mat-icon>arrow_right</mat-icon></button>
-    <button mat-raised-button color="primary" class="btn" routerLink="/reservation">Afficher les réservations<mat-icon>arrow_right</mat-icon></button>
+    <button mat-raised-button color="primary" class="btn" routerLink="/reservations">Afficher les réservations<mat-icon>arrow_right</mat-icon></button>
   </div>
   <router-outlet></router-outlet>
 </div>

@@ -8,8 +8,8 @@ import { MemberPageComponent } from "../pages/member-page/member-page.component"
 
 const routes: Routes = [
   { path: "app", component: AppComponent },
-  { path: "reservation", component: ReservationComponent },
-  { path: "reservation/create", component: CreateReservationComponent },
+  { path: "reservations", component: ReservationComponent },
+  { path: "reservations/create", component: CreateReservationComponent },
   { path: "member-page", component: MemberPageComponent}
 ];
 
