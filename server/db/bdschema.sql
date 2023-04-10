@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS Reservation(
 	idMember VARCHAR(10) NOT NULL,
 	licensePlate CHAR(6) NOT NULL,
 	requirements TEXT,
-	idBill VARCHAR(10) NOT NULL,
+	idBill VARCHAR(10),
 	fee FLOAT DEFAULT 0 NOT NULL,
 	odometerStart INT DEFAULT 0 NOT NULL,
 	odometerEnd INT,
