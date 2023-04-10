@@ -15,6 +15,7 @@ import { ReservationFormComponent } from './pages/reservation-form/reservation-f
 import { MaterialModule } from './modules/material.module';
 import { ReservationCardComponent } from './components/reservation-card/reservation-card.component';
 import { MAT_DATE_LOCALE } from "@angular/material/core";
+import { SuccessfulReservationComponent } from "./pages/successful-reservation-page/successful-reservation-page.component.ts";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { MAT_DATE_LOCALE } from "@angular/material/core";
     MemberCardComponent,
     ReservationFormComponent,
     ReservationCardComponent,
+    SuccessfulReservationComponent,
   ],
   imports: [
     CommonModule,

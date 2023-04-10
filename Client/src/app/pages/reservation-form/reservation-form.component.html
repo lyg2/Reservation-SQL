@@ -1,4 +1,4 @@
-<div class="form-group" *ngIf="!submitted">
+<div class="form-group">
   <label for="place">Emplacement</label>
   <mat-form-field>
     <mat-select id="place" required [(value)]="location" (selectionChange)="manageFreeCars()">
@@ -61,18 +61,4 @@
   <mat-form-field>
     <input matInput (click)="onSubmit()" type="submit" value="Envoyer" />
   </mat-form-field>
-</div>
-
-<div *ngIf="submitted" class="flex-column">
-  <div class="feedback flex-row">Votre réservation a été complétée avec succès!</div>
-  <div class="flex-row">
-    <button mat-raised-button color="primary" class="btn" [routerLink]="['/reservations/create']">
-      Créer une réservation
-      <mat-icon>arrow_right</mat-icon>
-    </button>
-    <button mat-raised-button color="primary" class="btn" [routerLink]="['/reservations']">
-      Afficher les réservations
-      <mat-icon>arrow_right</mat-icon>
-    </button>
-  </div>
 </div>
