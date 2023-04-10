@@ -127,10 +127,14 @@ export class DatabaseService {
   async postReservation(reservation: Reservation): Promise<void> {
     console.log('allo');
     console.log(reservation.licenseplate);
+    let requirements = reservation.requirements;
+    if(requirements) {
+      requirements=requirements.replace("'", "''");
+    }
     const client = await this.pool.connect();
     const queryText: string = `SET search_path TO CARSHARING_DB;
     INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
-    VALUES(${reservation.reservedperiod}, ${reservation.idmember}, '${reservation.licenseplate}', ${reservation.requirements});`
+    VALUES(${reservation.reservedperiod}, ${reservation.idmember}, '${reservation.licenseplate}', '${requirements}');`
     await client.query(queryText);
     client.release();
   }

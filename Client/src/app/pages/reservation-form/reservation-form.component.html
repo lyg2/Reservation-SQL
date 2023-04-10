@@ -42,6 +42,11 @@
     </mat-select>
   </mat-form-field>
 
+  <label for="requirements">Requis</label>
+  <mat-form-field>
+    <input matInput  id="requirements" [(ngModel)]="requirements" type="text"  />
+  </mat-form-field>
+
   <mat-form-field>
     <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
   </mat-form-field>
