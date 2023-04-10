@@ -8,7 +8,6 @@ import { Car } from '../../../../../common/tables/car';
 import { DatePipe } from '@angular/common';
 import { CoopMember } from '../../../../../common/tables/coop-member';
 import { Reservation } from '../../../../../common/tables/reservation';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-form',
@@ -29,6 +28,7 @@ export class ReservationFormComponent implements OnInit {
   locations: Parking[];
   filteredCars: Car[];
   members: CoopMember [];
+  submitted: boolean;
   // cars: Car[];
   // cars = ['Tesla', 'Mazda', 'BMW', 'Subaru', 'Porsche', 'Honda', 'Lexus', 'Toyota', 'Chrysler', 'Buick',  'Hyundai'];
   // models = ['Hybride', 'Automobile régulières', 'Mini-camionettes'];
@@ -39,7 +39,7 @@ export class ReservationFormComponent implements OnInit {
   
   //reservations: Reservation [] = [];
 
-  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {}
+  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.getAllParkingNames();
@@ -53,7 +53,6 @@ export class ReservationFormComponent implements OnInit {
   }
 
   onSubmit(): void { 
-    console.log(`${this.licensePlate} + ${this.memberId} + ${this.startTimestamp} + ${this.endTimestamp}`);
     if (this.licensePlate && this.memberId) {
       const reservation: Reservation = {
         reservedperiod: `('${this.startTimestamp}','${this.endTimestamp}')`,
@@ -61,11 +60,14 @@ export class ReservationFormComponent implements OnInit {
         licenseplate: this.licensePlate,
         requirements: this.requirements ,
       } as Reservation;
-      console.log(reservation);
-      this.communicationService.postReservation(reservation).subscribe(()=>{
-           this. router.navigate(['/reservations']);
-      });
+
+      this.communicationService.postReservation(reservation).subscribe();
+      this.submitted = true;
     }
+   }
+
+   showReservationForm(): void {
+    this.submitted = false;
    }
 
   private getAllParkingNames(): void {
