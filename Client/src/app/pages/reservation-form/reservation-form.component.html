@@ -31,7 +31,7 @@
   <label for="cars">Voitures disponibles</label>
   <mat-form-field>
     <mat-select id="cars" required [(value)]="licensePlate">
-      <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.brand }} </mat-option>
+      <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.licenseplate + ' ' + car.brand + ' ' + car.modelname }} </mat-option>
     </mat-select>
   </mat-form-field>
 

@@ -109,17 +109,32 @@ export class DatabaseService {
 
   async getFreeCars(location: string, firstPeriod: string, secondPeriod: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const condition = `Car.parkingName = $1 
-    AND (
-      ($2 < (CARSHARING_DB.Reservation.reservedPeriod).periodStart AND $3 < (CARSHARING_DB.Reservation.reservedPeriod).periodStart) 
-      OR ($2 > (CARSHARING_DB.Reservation.reservedPeriod).periodEnd AND $3 > (CARSHARING_DB.Reservation.reservedPeriod).periodEnd)
-      )`;
+    // const condition = `Car.parkingName = $1 
+    // AND (
+    //   ($2 < (CARSHARING_DB.Reservation.reservedPeriod).periodStart AND $3 <= (CARSHARING_DB.Reservation.reservedPeriod).periodStart) 
+    //   OR ($2 >= (CARSHARING_DB.Reservation.reservedPeriod).periodEnd AND $3 > (CARSHARING_DB.Reservation.reservedPeriod).periodEnd)
+    //   )`;
     const values = [location, firstPeriod,secondPeriod];
-    const queryText: string = `SELECT DISTINCT licensePlate, parkingName, modelName, brand
-    FROM CARSHARING_DB.Car NATURAL JOIN CARSHARING_DB.Reservation
-    WHERE ${condition};`
+    let  queryText: string = `SET search_path TO CARSHARING_DB;`;
+    await client.query(queryText);
+    // queryText = `SELECT licensePlate FROM Reservation NATURAL JOIN Car WHERE parkingName = $1 AND ($2 BETWEEN (Reservation.reservedPeriod).periodStart AND (Reservation.reservedPeriod).periodEnd) 
+    // OR ($3 BETWEEN (Reservation.reservedPeriod).periodStart AND (Reservation.reservedPeriod).periodEnd);`;
+    // const reservedLicenseConflicts = await client.query(queryText, values);
+    // queryText = `SELECT Reservation.licensePlate FROM Reservation NATURAL JOIN Car WHERE parkingName = '${location}';`;
+    // const reservedLicenses = await client.query(queryText);
+    queryText = `SELECT DISTINCT Car.* 
+    FROM Car
+    WHERE parkingName = $1 AND 
+    (licensePlate NOT IN (SELECT Reservation.licensePlate FROM Reservation NATURAL JOIN Car WHERE parkingName = $1) 
+    OR licensePlate NOT IN (
+      SELECT licensePlate FROM Reservation NATURAL JOIN Car WHERE parkingName = $1 
+      AND ($2 <= (Reservation.reservedPeriod).periodStart AND $3 >= (Reservation.reservedPeriod).periodEnd) 
+      OR ($2 <= (Reservation.reservedPeriod).periodStart AND $3 > (Reservation.reservedPeriod).periodStart)
+      OR ($2 < (Reservation.reservedPeriod).periodEnd AND $3 >= (Reservation.reservedPeriod).periodEnd))
+    );`
     const res = await client.query(queryText, values);
-    // console.log(res.rows);
+    console.log('test');
+    console.log(res.rows);
     client.release();
     return res;
   }
