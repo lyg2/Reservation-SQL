@@ -8,6 +8,7 @@ import { Car } from '../../../../../common/tables/car';
 import { DatePipe } from '@angular/common';
 import { CoopMember } from '../../../../../common/tables/coop-member';
 import { Reservation } from '../../../../../common/tables/reservation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-form',
@@ -38,7 +39,7 @@ export class ReservationFormComponent implements OnInit {
   
   //reservations: Reservation [] = [];
 
-  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe) {}
+  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {}
 
   ngOnInit(): void {
     this.getAllParkingNames();
@@ -61,7 +62,9 @@ export class ReservationFormComponent implements OnInit {
         requirements: this.requirements ,
       } as Reservation;
       console.log(reservation);
-      this.communicationService.postReservation(reservation).subscribe();
+      this.communicationService.postReservation(reservation).subscribe(()=>{
+           this. router.navigate(['/reservations']);
+      });
     }
    }
 

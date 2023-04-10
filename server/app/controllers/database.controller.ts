@@ -107,7 +107,7 @@ export class DatabaseController {
         this.databaseService
         .postReservation(req.body)
         .then(() => {
-          res.send(STATUS_CODES.NO_CONTENT);
+          res.send(STATUS_CODES.NO_CONTENT).json();
         })
         .catch((e: Error) => {
           console.error(e.stack);
