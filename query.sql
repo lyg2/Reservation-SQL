@@ -45,7 +45,7 @@ ORDER BY parkingName;
 --    réservés)
 
 SELECT DISTINCT licensePlate 
-FROM Reservation NATURAL JOIN Route;
+FROM Reservation WHERE odometerEnd IS NOT NULL;
 
 -- 7. Retournez toutes les informations des membres (personnes physiques) vivant dans une 
 --    ville avec un emplacement qui a des voitures hybrides 
@@ -59,9 +59,15 @@ AND Car.modelName = 'HYBRID';
 -- 8. Retournez toutes les informations des véhicules à l’emplacement Montréal qui sont libres 
 --    le 23/01/2023 à 10 h
 
-SELECT Car.* 
-FROM Car NATURAL JOIN Reservation NATURAL JOIN Route
-WHERE '2023-01-23 10:00:00' NOT BETWEEN (Route.traveledPeriod).periodStart AND (Route.traveledPeriod).periodEnd;
+SELECT DISTINCT Car.* 
+FROM Car
+WHERE licensePlate NOT IN (SELECT licensePlate FROM Reservation) OR 
+licensePlate NOT IN (
+	SELECT licensePlate 
+	FROM Reservation 
+	WHERE '2023-01-23 10:00:00' >= (Reservation.reservedPeriod).periodStart 
+	AND '2023-01-23 10:00:00' < (Reservation.reservedPeriod).periodEnd
+);
 
 -- 9. Retournez les plaques d’immatriculation et le nombre de réservations de chaque véhicule 
 --    (y compris ceux sans réservation, c’est-à-dire que le nombre de réservations est 0)
