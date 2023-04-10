@@ -7,6 +7,7 @@ import { Parking } from '../../../common/tables/parking'
 import {Reservation} from '../../../common/tables/reservation';
 import * as pg from "pg";
 import Types from "../types";
+import { STATUS_CODES } from "http";
 // import { StatusCodes } from "http-status-codes";
 
 @injectable()
@@ -20,7 +21,7 @@ export class DatabaseController {
     const router: Router = Router();
 
     router.get("/members/", (req: Request, res: Response, _: NextFunction) => {
-      console.log('members');
+      // console.log('members');
         this.databaseService
         .getAllMembers()
         .then((result: pg.QueryResult) => {
@@ -32,7 +33,7 @@ export class DatabaseController {
       });
 
       router.get("/members/drivers", (req: Request, res: Response, _: NextFunction) => {
-        console.log('members');
+        // console.log('members');
           this.databaseService
           .getDriverMembers()
           .then((result: pg.QueryResult) => {
@@ -44,7 +45,7 @@ export class DatabaseController {
         });
 
       router.get("/members/:name", (req: Request, res: Response, _: NextFunction) => {
-        console.log(req.params.name);
+        // console.log(req.params.name);
           this.databaseService
           .getMembersWithName(req.params.name)
           .then((result: pg.QueryResult) => {
@@ -59,7 +60,7 @@ export class DatabaseController {
         this.databaseService
         .getAllParkingNames()
         .then((result: pg.QueryResult) => {
-          console.log(result.rows as Parking[]);
+          // console.log(result.rows as Parking[]);
           res.json(result.rows as Parking[]);
         })
         .catch((e: Error) => {
@@ -90,12 +91,23 @@ export class DatabaseController {
       });
 
       router.get("/cars/:location/:firstPeriod/:secondPeriod", (req: Request, res: Response, _: NextFunction) => {
-        console.log('test1');
-        console.log(req.params.firstPeriod);
+        // console.log('test1');
+        // console.log(req.params.firstPeriod);
         this.databaseService
         .getFreeCars(req.params.location, req.params.firstPeriod, req.params.secondPeriod)
         .then((result: pg.QueryResult) => {
           res.json(result.rows as Car[]);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });;
+      });
+
+      router.post("/reservation", (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+        .postReservation(req.body)
+        .then(() => {
+          res.send(STATUS_CODES.NO_CONTENT);
         })
         .catch((e: Error) => {
           console.error(e.stack);
@@ -145,7 +157,7 @@ export class DatabaseController {
       // });
 
       router.post("/cars/free", (req: Request, res: Response, _: NextFunction) => {
-        console.log(req.body);
+        // console.log(req.body);
         this.databaseService
         .getFreeCars(req.body.location, req.body.firstPeriod, req.body.secondPeriod)
         .then((result: pg.QueryResult) => {

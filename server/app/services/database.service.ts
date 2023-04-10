@@ -1,6 +1,7 @@
 import { injectable } from "inversify";
 import * as pg from "pg";
 import "reflect-metadata";
+import { Reservation } from "../../../common/tables/reservation";
 
 @injectable()
 export class DatabaseService {
@@ -19,7 +20,7 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember ;`;
     const res = await client.query(queryText);
-    console.log(res);
+    // console.log(res);
     client.release();
     return res;
   }
@@ -37,7 +38,7 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE licenseNo IS NOT NULL ;`;
     const res = await client.query(queryText);
-    console.log(res);
+    // console.log(res);
     client.release();
     return res;
   }
@@ -54,7 +55,7 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation ;`;
     const res = await client.query(queryText);
-    console.log(res.rows);
+    // console.log(res.rows);
     client.release();
     return res;
   }
@@ -68,7 +69,7 @@ export class DatabaseService {
     // Verity that we only take reservation for which the current date is after the reserved period.
     const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation WHERE ${condition};`;
     const res = await client.query(queryText, values);
-    console.log(res.rows);
+    // console.log(res.rows);
     client.release();
     return res;
   }
@@ -118,8 +119,19 @@ export class DatabaseService {
     FROM CARSHARING_DB.Car NATURAL JOIN CARSHARING_DB.Reservation
     WHERE ${condition};`
     const res = await client.query(queryText, values);
-    console.log(res.rows);
+    // console.log(res.rows);
     client.release();
     return res;
+  }
+
+  async postReservation(reservation: Reservation): Promise<void> {
+    console.log('allo');
+    console.log(reservation.licenseplate);
+    const client = await this.pool.connect();
+    const queryText: string = `SET search_path TO CARSHARING_DB;
+    INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
+    VALUES(${reservation.reservedperiod}, ${reservation.idmember}, '${reservation.licenseplate}', ${reservation.requirements});`
+    await client.query(queryText);
+    client.release();
   }
 }

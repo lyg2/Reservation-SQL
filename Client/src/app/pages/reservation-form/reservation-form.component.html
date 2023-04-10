@@ -1,7 +1,7 @@
 <div class="form-group">
   <label for="place">Emplacement</label>
   <mat-form-field>
-    <mat-select id="place" required (selectionChange)="manageLocationChoice($event)">
+    <mat-select id="place" required [(value)]="location" (selectionChange)="manageFreeCars()">
       <mat-option *ngFor="let location of locations" [value]="location">{{location.parkingname}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -9,7 +9,7 @@
   <label for="date">Date de réservation</label>
   <mat-form-field appearance="fill">
     <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
-  <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="manageFreeCars()" required>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="manageFreeCars()" required>
   <mat-hint></mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker">
   </mat-datepicker-toggle>
@@ -30,14 +30,14 @@
 
   <label for="cars">Voitures disponibles</label>
   <mat-form-field>
-    <mat-select id="cars" required>
+    <mat-select id="cars" required [(value)]="licensePlate">
       <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.brand }} </mat-option>
     </mat-select>
   </mat-form-field>
 
   <label for="members">Membres pouvant conduire</label>
   <mat-form-field>
-    <mat-select id="members" required>
+    <mat-select id="members" required [(value)]="memberId">
       <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername }}</mat-option>
     </mat-select>
   </mat-form-field>

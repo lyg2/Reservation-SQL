@@ -74,28 +74,34 @@ export class CommunicationService {
   // }
 
   getCarsByParkingName(name: string): Observable<Car[]> {
-    console.log(name);
+    // console.log(name);
     return this.http
     .get<Car[]>(this.BASE_URL + "/cars/" + name)
     .pipe(catchError(this.handleError<Car[]>("getCarsByParkingName")));
   }
 
-  getFreeCars(location: string, firstPeriod: string, secondPeriod: string) {
-    const url = `${this.BASE_URL}/cars/location=${location}&firstPeriod=${firstPeriod}&secondPeriod=${secondPeriod}`;
-    console.log(url);
-    return this.http
-    .get<Car[]>(url)
-    .pipe(catchError(this.handleError<Car[]>("getFreeCars")));
-  }
+  // getFreeCars(location: string, firstPeriod: string, secondPeriod: string) {
+  //   const url = `${this.BASE_URL}/cars/location=${location}&firstPeriod=${firstPeriod}&secondPeriod=${secondPeriod}`;
+  //   console.log(url);
+  //   return this.http
+  //   .get<Car[]>(url)
+  //   .pipe(catchError(this.handleError<Car[]>("getFreeCars")));
+  // }
 
-  postFreeCars(location: string, firstPeriod: string, secondPeriod: string): Observable<Car []> {
+  postFreeCars(location: string, firstPeriod: string, secondPeriod: string): Observable<Car[]> {
     return this.http
-        .post<Car []>(this.BASE_URL + "/cars/free", {
+        .post<Car[]>(this.BASE_URL + "/cars/free", {
             location: location,
             firstPeriod: firstPeriod,
             secondPeriod: secondPeriod,
         })
         .pipe(catchError(this.handleError<Car []>('postFreeCars')));
+}
+
+postReservation(reservation: Reservation): Observable<HttpResponse<string>> {
+  return this.http
+    .post<HttpResponse<string>>(this.BASE_URL + "/reservation", reservation)
+    .pipe(catchError(this.handleError<HttpResponse<string>>("postReservation")));
 }
   
   private handleError<T>(

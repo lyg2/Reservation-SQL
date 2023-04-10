@@ -1,13 +1,13 @@
 import { ReservationService } from './../../services/reservation.service';
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Input } from '@angular/core';
 import { CommunicationService } from 'src/app/services/communication.service';
 import { Parking } from '../../../../../common/tables/parking'
 import { Car } from '../../../../../common/tables/car';
 //import { Reservation } from '../../../../../common/tables/reservation';
 import { DatePipe } from '@angular/common';
 import { CoopMember } from '../../../../../common/tables/coop-member';
+import { Reservation } from '../../../../../common/tables/reservation';
 
 @Component({
   selector: 'app-reservation-form',
@@ -16,23 +16,29 @@ import { CoopMember } from '../../../../../common/tables/coop-member';
   providers: [DatePipe],
 })
 export class ReservationFormComponent implements OnInit {
-  @Input('startHour') startTime:Time;
-  @Input('endHour') endTime:Time;
+  memberId: string;
+  licensePlate: string;
+  startTime:Time;
+  endTime:Time;
+  startTimestamp: string;
+  endTimestamp: string;
+  location: Parking;
+  date: Date;
+  requirements: string | null = null;
+  locations: Parking[];
+  filteredCars: Car[];
+  members: CoopMember [];
   // cars: Car[];
   // cars = ['Tesla', 'Mazda', 'BMW', 'Subaru', 'Porsche', 'Honda', 'Lexus', 'Toyota', 'Chrysler', 'Buick',  'Hyundai'];
-  models = ['Hybride', 'Automobile régulières', 'Mini-camionettes'];
+  // models = ['Hybride', 'Automobile régulières', 'Mini-camionettes'];
   //fetch locations
   // locations=['Gare d\'autocars de Sainte-Catherine','Gare d\'autocars de Saint-Sauveur','Gare d\'autocars de Champlain' ]
   //fetch postal adresses
-  postalAdresses=['H3B 1A6','H4N 3K1', 'H8N 1X1'];
-  locations: Parking[];
-  location: Parking;
-  filteredCars: Car[];
-  selectedDate: Date;
-  members: CoopMember [];
+  // postalAdresses=['H3B 1A6','H4N 3K1', 'H8N 1X1'];
+  
   //reservations: Reservation [] = [];
 
-  constructor( private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe) {}
+  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.getAllParkingNames();
@@ -41,14 +47,23 @@ export class ReservationFormComponent implements OnInit {
   }
 
   onValidate(): void {
-    console.log(this.startTime);
-    const startTime:Time=this.startTime;
-    const endTime:Time=this.endTime;
-    if (this.reservationService.validate(startTime, endTime))
+    if (this.reservationService.validate(this.startTime, this.endTime))
       this.onSubmit();
   }
 
-  onSubmit(): void {  }
+  onSubmit(): void { 
+    console.log(`${this.licensePlate} + ${this.memberId} + ${this.startTimestamp} + ${this.endTimestamp}`);
+    if (this.licensePlate && this.memberId) {
+      const reservation: Reservation = {
+        reservedperiod: `('${this.startTimestamp}','${this.endTimestamp}')`,
+        idmember: this.memberId,
+        licenseplate: this.licensePlate,
+        requirements: this.requirements ,
+      } as Reservation;
+      console.log(reservation);
+      this.communicationService.postReservation(reservation).subscribe();
+    }
+   }
 
   private getAllParkingNames(): void {
     this.communicationService.getAllParkingNames().subscribe(parkingNames => this.locations = parkingNames)
@@ -57,11 +72,6 @@ export class ReservationFormComponent implements OnInit {
   // private getAllCars(): void {
   //   this.communicationService.getAllCars().subscribe(cars => this.cars = cars)
   // }
-
-  manageLocationChoice(event: any): void {
-    this.location = event.value;
-    this.manageFreeCars();
-  }
 
   // manageCarChoice(event: any): void {
   //   const licensePlate: string = event.value;
@@ -77,34 +87,41 @@ export class ReservationFormComponent implements OnInit {
     if (!this.hasDefinedInput()) {
       return;
     }
-    console.log(this.selectedDate);
-    console.log(this.location.parkingname);
-    console.log(this.startTime.hours);
-    console.log(this.endTime);
+    // TODO: allow user to reserved for multiple days
 
-    const selectedDateString = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+    const selectedDateString = this.datePipe.transform(this.date, 'yyyy-MM-dd');
 
-    const startDateString = `${selectedDateString} ${this.startTime}:00`;
-    const endDateString = `${selectedDateString} ${this.endTime}:00`;
+    this.startTimestamp = this.buildTimestamp(selectedDateString as string, this.startTime);
+    this.endTimestamp = this.buildTimestamp(selectedDateString as string, this.endTime);
 
-    const firstDate = new Date(startDateString.replace(/-/g, '/'));
-    const secondDate = new Date(endDateString.replace(/-/g, '/'));
+    const firstDate: Date = this.extractDateFromTimestamp(this.startTimestamp);
+    const secondDate: Date = this.extractDateFromTimestamp(this.endTimestamp);
 
-    if(!this.isValidPeriod(firstDate,secondDate) || !this.isValidDate(firstDate)) {
+    if(!this.isValidPeriod(firstDate, secondDate) || !this.isValidDate(firstDate)) {
+      this.licensePlate = '';
       return;
     }
     
-    this.communicationService.postFreeCars(this.location.parkingname, startDateString, endDateString)
+    //TODO: use get instead of post
+    this.communicationService.postFreeCars(this.location.parkingname, this.startTimestamp, this.endTimestamp)
     .subscribe((cars : Car [])=> {
       this.filteredCars=cars;
     });
+  }
+
+  private buildTimestamp(dateString: string, time: Time): string {
+    return `${dateString} ${time}:00`;
+  }
+
+  private extractDateFromTimestamp(dateString: string): Date {
+    return new Date(dateString.replace(/-/g, '/'));
   }
 
   private getDriverMembers() : void {
     this.communicationService.getDriverMembers()
     .subscribe((members : CoopMember [])=> {
       this.members=members;
-      console.log(this.members);
+      // console.log(this.members);
     });
   }
 
@@ -118,7 +135,7 @@ export class ReservationFormComponent implements OnInit {
   }
 
   private hasDefinedInput(): boolean {
-    if(this.selectedDate && this.location && this.startTime && this.endTime) {
+    if(this.date && this.location && this.startTime && this.endTime) {
       return true;
     }
     return false;
