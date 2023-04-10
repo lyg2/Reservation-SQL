@@ -80,13 +80,13 @@ export class CommunicationService {
     .pipe(catchError(this.handleError<Car[]>("getCarsByParkingName")));
   }
 
-  // getFreeCars(location: string, firstPeriod: string, secondPeriod: string) {
-  //   const url = `${this.BASE_URL}/cars/location=${location}&firstPeriod=${firstPeriod}&secondPeriod=${secondPeriod}`;
-  //   console.log(url);
-  //   return this.http
-  //   .get<Car[]>(url)
-  //   .pipe(catchError(this.handleError<Car[]>("getFreeCars")));
-  // }
+  getFreeCars(location: string, firstPeriod: string, secondPeriod: string) {
+    const url = `${this.BASE_URL}/cars/+`;
+    console.log(url);
+    return this.http
+    .get<Car[]>(this.BASE_URL+"/cars/"+`${location}/${firstPeriod}/${secondPeriod}`)
+    .pipe(catchError(this.handleError<Car[]>("getFreeCars")));
+  }
 
   postFreeCars(location: string, firstPeriod: string, secondPeriod: string): Observable<Car[]> {
     return this.http

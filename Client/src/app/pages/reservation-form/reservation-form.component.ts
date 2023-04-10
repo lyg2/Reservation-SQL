@@ -108,7 +108,7 @@ export class ReservationFormComponent implements OnInit {
     }
     
     //TODO: use get instead of post
-    this.communicationService.postFreeCars(this.location.parkingname, this.startTimestamp, this.endTimestamp)
+    this.communicationService.getFreeCars(this.location.parkingname, this.startTimestamp, this.endTimestamp)
     .subscribe((cars : Car [])=> {
       this.filteredCars=cars;
     });
