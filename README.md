@@ -6,7 +6,9 @@ Veuillez vous assurer d'avoir  installer PostgresSQL (la version 15.1.1 est util
 Veuillez vous assurer d'avoir installer NodeJS (la version ^18.15.5)
 
 À partir de la racine du projet:
+
 1- Aller dans le sous répertoire /server et lancer npm install pour installer les dépendances.
+
 2- Aller dans le sous répertoire /client et lancer npm install pour installer les dépendances.
 
 Dans /server/app/services/database.service.ts, il y a un attribut connectionConfig.
