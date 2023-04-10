@@ -8,7 +8,6 @@ import { Car } from '../../../../../common/tables/car';
 import { DatePipe } from '@angular/common';
 import { CoopMember } from '../../../../../common/tables/coop-member';
 import { Reservation } from '../../../../../common/tables/reservation';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-form',
@@ -40,7 +39,7 @@ export class ReservationFormComponent implements OnInit {
   
   //reservations: Reservation [] = [];
 
-  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {}
+  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.getAllParkingNames();
