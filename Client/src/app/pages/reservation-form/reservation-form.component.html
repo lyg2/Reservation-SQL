@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group" *ngIf="!submitted">
   <label for="place">Emplacement</label>
   <mat-form-field>
     <mat-select id="place" required [(value)]="location" (selectionChange)="manageFreeCars()">
@@ -9,11 +9,11 @@
   <label for="date">Date de réservation</label>
   <mat-form-field appearance="fill">
     <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
-  <input matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="manageFreeCars()" required>
-  <mat-hint></mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker">
-  </mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="manageFreeCars()" required>
+    <mat-hint></mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker">
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <label for="periodStart">Heure de début: </label>
@@ -38,11 +38,26 @@
   <label for="members">Membres pouvant conduire</label>
   <mat-form-field>
     <mat-select id="members" required [(value)]="memberId">
-      <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername }}</mat-option>
+      <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername
+        }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
     <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
   </mat-form-field>
+</div>
+
+<div *ngIf="submitted" class="flex-column">
+  <div class="feedback flex-row">Votre réservation a été complétée avec succès!</div>
+  <div class="flex-row">
+    <button mat-raised-button color="primary" class="btn" [routerLink]="['/reservations/create']">
+      Créer une réservation
+      <mat-icon>arrow_right</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" class="btn" [routerLink]="['/reservations']">
+      Afficher les réservations
+      <mat-icon>arrow_right</mat-icon>
+    </button>
+  </div>
 </div>
