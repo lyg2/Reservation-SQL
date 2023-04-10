@@ -78,7 +78,7 @@ INSERT INTO Bill(idBill, dateBill, dueDate, isPaid, total)
 	VALUES('1', '2023-04-02', '2023-04-12', false, 0);
 	
 INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
-	VALUES(('2023-03-27 12:00:00', '2023-03-27 13:00:00'), '1', '1', 'COOKIE', NULL);
+	VALUES(('2023-03-27 12:00:00', '2023-03-27 12:30:00'), '1', '1', 'COOKIE', NULL);
 	
 INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
 	VALUES(('2023-03-27 14:00:00', '2023-03-27 18:00:00'), '1', '1', '000002', NULL);

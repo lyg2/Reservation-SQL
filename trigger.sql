@@ -36,8 +36,13 @@ FOR EACH ROW EXECUTE FUNCTION set_total();
 
 
 CREATE FUNCTION set_fee() RETURNS trigger AS $onReservationInsert$
+	DECLARE 
+		hours FLOAT := EXTRACT(HOUR FROM ((NEW.reservedPeriod).periodEnd - (NEW.reservedPeriod).periodStart));
+		minutes FLOAT := EXTRACT(MINUTE FROM ((NEW.reservedPeriod).periodEnd - (NEW.reservedPeriod).periodStart));
+		floatTime FLOAT;
 	BEGIN
-		NEW.fee = EXTRACT(HOUR FROM ((NEW.reservedPeriod).periodEnd - (NEW.reservedPeriod).periodStart)) * (
+		floatTime = hours + (minutes / 60);
+		NEW.fee = floatTime * (
 		SELECT hourlyPrice FROM MODEL NATURAL JOIN Car WHERE licensePlate = NEW.licensePlate
 		);
 		RETURN NEW;
