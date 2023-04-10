@@ -13,7 +13,6 @@ import { STATUS_CODES } from "http";
 @injectable()
 export class DatabaseController {
   public constructor(
-    // @ts-ignore -- À ENLEVER LORSQUE L'IMPLÉMENTATION EST TERMINÉE
     @inject(Types.DatabaseService) private readonly databaseService: DatabaseService
   ) {}
 
@@ -67,17 +66,6 @@ export class DatabaseController {
           console.error(e.stack);
         });;
       });
-
-      // router.get("/cars", (req: Request, res: Response, _: NextFunction) => {
-      //   this.databaseService
-      //   .getAllCars()
-      //   .then((result: pg.QueryResult) => {
-      //     res.json(result.rows as Car[]);
-      //   })
-      //   .catch((e: Error) => {
-      //     console.error(e.stack);
-      //   });;
-      // });
 
       router.get("/cars/:name", (req: Request, res: Response, _: NextFunction) => {
         this.databaseService
@@ -136,25 +124,6 @@ export class DatabaseController {
           console.error(e.stack);
         });
       });
-
-      // router.post("/login/", (req: Request, res: Response, _: NextFunction) => {
-      //   this.databaseService
-      //   .getIdPassword(req.body.idmember, req.body.memberpassword)
-      //   .then((result: pg.QueryResult) => {
-      //     if(result.rows.length===1) {
-      //       res.status(StatusCodes.OK).json();
-      //     }
-      //     else {
-      //       console.log('test');
-      //       res.status(StatusCodes.FORBIDDEN).json();
-      //     }
-      //   })
-      //   .catch((e: Error) => {
-      //     console.error(e.stack);
-      //     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json();
-      //   });
-
-      // });
 
       router.post("/cars/free", (req: Request, res: Response, _: NextFunction) => {
         // console.log(req.body);

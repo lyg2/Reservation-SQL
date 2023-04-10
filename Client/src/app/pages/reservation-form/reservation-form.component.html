@@ -6,20 +6,30 @@
     </mat-select>
   </mat-form-field>
 
-  <label for="date">Date de réservation</label>
+  <label for="startDate">Date de réservation</label>
   <mat-form-field appearance="fill">
     <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="manageFreeCars()" required>
+    <input matInput [matDatepicker]="picker1" [(ngModel)]="startDate" (dateChange)="manageFreeCars()" required>
     <mat-hint></mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker1">
     </mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
 
   <label for="periodStart">Heure de début: </label>
   <mat-form-field>
     <input [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart" min="09:00"
       max="22:00" (change)="manageFreeCars()" required>
+  </mat-form-field>
+
+  <label for="endDate">Date de réservation</label>
+  <mat-form-field appearance="fill">
+    <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
+    <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" (dateChange)="manageFreeCars()" required>
+    <mat-hint></mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker2">
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
 
   <label for="periodEnd">Heure de fin: </label>
@@ -49,7 +59,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput (click)="onValidate()" type="submit" value="Envoyer" />
+    <input matInput (click)="onSubmit()" type="submit" value="Envoyer" />
   </mat-form-field>
 </div>
 

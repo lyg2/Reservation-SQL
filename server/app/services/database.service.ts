@@ -74,28 +74,6 @@ export class DatabaseService {
     return res;
   }
 
-  // async getIdPassword(id: string, password: string): Promise<pg.QueryResult> {
-  //   console.log(id);
-  //   console.log(password);
-  //   const condition = "idMember = $1 AND memberPassword = $2";
-  //   const values = [id, password];
-  //   const client = await this.pool.connect();
-  //   const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE ${condition};`
-  //   const res = await client.query(queryText, values);
-  //   console.log(res.rows);
-  //   client.release();
-  //   return res;
-  // }
-
-  // async getAllCars(): Promise<pg.QueryResult> {
-  //   const client = await this.pool.connect();
-  //   const queryText: string = `SELECT licensePlate, parkingName, modelName, brand FROM CARSHARING_DB.Car;`
-  //   // TODO: verify that cars are not already reserved
-  //   const res = await client.query(queryText);
-  //   client.release();
-  //   return res;
-  // }
-
   async getCarsByParkingName(parkingName : string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const condition = "parkingName = $1";
@@ -109,19 +87,9 @@ export class DatabaseService {
 
   async getFreeCars(location: string, firstPeriod: string, secondPeriod: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    // const condition = `Car.parkingName = $1 
-    // AND (
-    //   ($2 < (CARSHARING_DB.Reservation.reservedPeriod).periodStart AND $3 <= (CARSHARING_DB.Reservation.reservedPeriod).periodStart) 
-    //   OR ($2 >= (CARSHARING_DB.Reservation.reservedPeriod).periodEnd AND $3 > (CARSHARING_DB.Reservation.reservedPeriod).periodEnd)
-    //   )`;
     const values = [location, firstPeriod,secondPeriod];
     let  queryText: string = `SET search_path TO CARSHARING_DB;`;
     await client.query(queryText);
-    // queryText = `SELECT licensePlate FROM Reservation NATURAL JOIN Car WHERE parkingName = $1 AND ($2 BETWEEN (Reservation.reservedPeriod).periodStart AND (Reservation.reservedPeriod).periodEnd) 
-    // OR ($3 BETWEEN (Reservation.reservedPeriod).periodStart AND (Reservation.reservedPeriod).periodEnd);`;
-    // const reservedLicenseConflicts = await client.query(queryText, values);
-    // queryText = `SELECT Reservation.licensePlate FROM Reservation NATURAL JOIN Car WHERE parkingName = '${location}';`;
-    // const reservedLicenses = await client.query(queryText);
     queryText = `SELECT DISTINCT Car.* 
     FROM Car
     WHERE parkingName = $1 AND 

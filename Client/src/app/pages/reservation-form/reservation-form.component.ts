@@ -23,7 +23,8 @@ export class ReservationFormComponent implements OnInit {
   startTimestamp: string;
   endTimestamp: string;
   location: Parking;
-  date: Date;
+  startDate: Date;
+  endDate: Date;
   requirements: string | null = null;
   locations: Parking[];
   filteredCars: Car[];
@@ -47,10 +48,10 @@ export class ReservationFormComponent implements OnInit {
     this.getDriverMembers();
   }
 
-  onValidate(): void {
-    if (this.reservationService.validate(this.startTime, this.endTime))
-      this.onSubmit();
-  }
+  // onValidate(): void {
+  //   if (this.reservationService.validate(this.startTime, this.endTime))
+  //     this.onSubmit();
+  // }
 
   onSubmit(): void { 
     if (this.licensePlate && this.memberId) {
@@ -74,19 +75,6 @@ export class ReservationFormComponent implements OnInit {
     this.communicationService.getAllParkingNames().subscribe(parkingNames => this.locations = parkingNames)
   }
 
-  // private getAllCars(): void {
-  //   this.communicationService.getAllCars().subscribe(cars => this.cars = cars)
-  // }
-
-  // manageCarChoice(event: any): void {
-  //   const licensePlate: string = event.value;
-  //   console.log(licensePlate);
-  //   this.communicationService.getReservationsByLicensePlate(licensePlate).subscribe((reservations: Reservation [])=> {
-  //     this.reservations = reservations;
-  //     console.log(this.reservations);
-  //   });
-  // }
-
   manageFreeCars(): void {
     this.filteredCars = [];
     if (!this.hasDefinedInput()) {
@@ -94,18 +82,22 @@ export class ReservationFormComponent implements OnInit {
     }
     // TODO: allow user to reserved for multiple days
 
-    const selectedDateString = this.datePipe.transform(this.date, 'yyyy-MM-dd');
+    const startDateString = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
+    const endDateString = this.datePipe.transform(this.endDate, 'yyyy-MM-dd');
 
-    this.startTimestamp = this.buildTimestamp(selectedDateString as string, this.startTime);
-    this.endTimestamp = this.buildTimestamp(selectedDateString as string, this.endTime);
+    this.startTimestamp = this.buildTimestamp(startDateString as string, this.startTime);
+    this.endTimestamp = this.buildTimestamp(endDateString as string, this.endTime);
 
     const firstDate: Date = this.extractDateFromTimestamp(this.startTimestamp);
     const secondDate: Date = this.extractDateFromTimestamp(this.endTimestamp);
 
-    if(!this.isValidPeriod(firstDate, secondDate) || !this.isValidDate(firstDate)) {
+    if(!this.reservationService.isValidPeriod(firstDate, secondDate) || !this.reservationService.isValidDate(firstDate)) {
       this.licensePlate = '';
       return;
     }
+
+    console.log(this.startTimestamp);
+    console.log(this.endTimestamp);
     
     //TODO: use get instead of post
     this.communicationService.getFreeCars(this.location.parkingname, this.startTimestamp, this.endTimestamp)
@@ -130,20 +122,12 @@ export class ReservationFormComponent implements OnInit {
     });
   }
 
-  private isValidDate(startDate : Date) {
-    const currentDate = new Date();
-    return startDate.getTime() > currentDate.getTime();
-  }
-
-  private isValidPeriod(firstDate: Date, secondDate : Date) : boolean {
-    return firstDate.getTime() < secondDate.getTime();
-  }
-
   private hasDefinedInput(): boolean {
-    if(this.date && this.location && this.startTime && this.endTime) {
-      return true;
-    }
-    return false;
+    return this.startDate 
+    && this.endDate 
+    && this.location 
+    && this.startTime != undefined 
+    && this.endTime != undefined;
   } 
 }
 

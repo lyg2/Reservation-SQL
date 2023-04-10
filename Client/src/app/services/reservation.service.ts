@@ -1,4 +1,3 @@
-import { Time } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,7 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class ReservationService {
 
-  validate(startTime:Time, endTime:Time){
-    return startTime<endTime;
+  // validate(startTime:Time, endTime:Time){
+  //   return startTime<endTime;
+  // }
+
+  isValidPeriod(firstDate: Date, secondDate : Date) : boolean {
+    return firstDate.getTime() < secondDate.getTime();
+  }
+
+  isValidDate(startDate : Date) {
+    const currentDate = new Date();
+    return startDate.getTime() > currentDate.getTime();
   }
 }
