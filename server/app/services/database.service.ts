@@ -134,7 +134,7 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const queryText: string = `SET search_path TO CARSHARING_DB;
     INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
-    VALUES(${reservation.reservedperiod}, ${reservation.idmember}, '${reservation.licenseplate}', '${requirements}');`
+    VALUES(${reservation.reservedperiod}, ${reservation.idmember}, '${reservation.licenseplate}', '${reservation.requirements}');`
     await client.query(queryText);
     client.release();
   }
