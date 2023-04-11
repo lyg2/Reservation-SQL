@@ -5,6 +5,7 @@ import { Car } from '../../../common/tables/car'
 import {CoopMember} from '../../../common/tables/coop-member';
 import { Parking } from '../../../common/tables/parking'
 import {Reservation} from '../../../common/tables/reservation';
+import {Share} from '../../../common/communication/share';
 import * as pg from "pg";
 import Types from "../types";
 import { STATUS_CODES } from "http";
@@ -19,34 +20,37 @@ export class DatabaseController {
   public get router(): Router {
     const router: Router = Router();
 
-    router.get("/members/", (req: Request, res: Response, _: NextFunction) => {
+    router.get("/members/:name?", async (req: Request, res: Response, _: NextFunction) => {
       // console.log('members');
-        this.databaseService
-        .getAllMembers()
-        .then((result: pg.QueryResult) => {
-          res.json(result.rows as CoopMember[]);
-        })
-        .catch((e: Error) => {
-          console.error(e.stack);
-        });
+      try {
+        let members: CoopMember []=[];
+        let filter = req.params.name;
+        if(!req.params.name) {
+          filter='';
+        }
+        const resultMembers = await this.databaseService.getMembersWithName(filter);
+        members = resultMembers.rows as CoopMember [];
+        const detailsPromises =members.map(async (member: CoopMember)=>{
+          const resultMemberShip= await this.databaseService.getAnnualMemberShipById(member.idmember);
+          member.annualmembership = resultMemberShip.rows[0]?.annualmembership as number|null;
+          const resultShares = await this.databaseService.getSharesById(member.idmember);
+          member.shares = resultShares.rows as Share [];
+      });
+      await Promise.all(detailsPromises);
+      console.log(members);
+      res.json(members);
+
+      }
+      catch (e) {
+        console.error(e.stack);
+      }
+      
       });
 
       router.get("/members/drivers", (req: Request, res: Response, _: NextFunction) => {
         // console.log('members');
           this.databaseService
           .getDriverMembers()
-          .then((result: pg.QueryResult) => {
-            res.json(result.rows as CoopMember[]);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-          });
-        });
-
-      router.get("/members/:name", (req: Request, res: Response, _: NextFunction) => {
-        // console.log(req.params.name);
-          this.databaseService
-          .getMembersWithName(req.params.name)
           .then((result: pg.QueryResult) => {
             res.json(result.rows as CoopMember[]);
           })

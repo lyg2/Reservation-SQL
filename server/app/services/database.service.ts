@@ -18,7 +18,7 @@ export class DatabaseService {
 
   async getAllMembers(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember ;`;
+    const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember;`;
     const res = await client.query(queryText);
     // console.log(res);
     client.release();
@@ -27,9 +27,30 @@ export class DatabaseService {
 
   async getMembersWithName(memberName: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM (CARSHARING_DB.CoopMember NATURAL LEFT JOIN CARSHARING_DB.CarShareMember) NATURAL LEFT JOIN CARSHARING_DB.ShareMember WHERE LOWER(memberName) LIKE $1 ;`
+    const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE LOWER(memberName) LIKE $1 ;`
     const pattern: string [] = [`%${memberName}%`];
     const res = await client.query(queryText, pattern);
+    console.log(res);
+    client.release();
+    return res;
+  }
+
+  async getAnnualMemberShipById(id: string) :Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const condition = `idMember = $1`;
+    const queryText: string = `SELECT annualMemberShip FROM CARSHARING_DB.CarShareMember WHERE ${condition};`
+    const values: string [] = [id];
+    const res = await client.query(queryText, values);
+    client.release();
+    return res;
+  }
+
+  async getSharesById(id: string) :Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const condition = `idMember = $1`;
+    const queryText: string = `SELECT individualSum FROM CARSHARING_DB.CoopShare WHERE ${condition};`
+    const values: string [] = [id];
+    const res = await client.query(queryText, values);
     client.release();
     return res;
   }

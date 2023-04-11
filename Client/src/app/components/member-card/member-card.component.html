@@ -14,10 +14,16 @@
             <p>Dernier accident: {{memberCard.lastaccidentdate}}</p>
             <p>Adresse postale: {{memberCard.mailingaddress}}</p>
             <p>Email: {{memberCard.email}}</p>
-            <p>Cotisation annuelle: {{memberCard.annualmembership}}</p>
             <!-- TODO: add share holders details -->
-            <p *ngIf="memberCard.annualmembership">Membre de l'autopartage</p>
-            <p *ngIf="!memberCard.annualmembership">Membre de la coopérative</p>
+            <p *ngIf="memberCard.annualmembership">Membre de l'autopartage: Oui</p>
+            <p *ngIf="!memberCard.annualmembership">Membre de l'autopartage: Non</p>
+            <p *ngIf="memberCard.annualmembership">Cotisation annuelle: {{memberCard.annualmembership}}</p>
+            <p *ngIf="!memberCard.annualmembership">Cotisation annuelle: N/A</p>
+            <p *ngIf="memberCard.shares.length">Membre de la coopérative: Oui</p>
+            <p *ngIf="!memberCard.shares.length">Membre de la coopérative: Non</p>
+            <p *ngIf="memberCard.shares.length">Liste des parts:</p>
+            <p *ngIf="!memberCard.shares.length">Liste des parts: N/A</p>
+            <p *ngFor="let share of memberCard.shares ; index as i">Part {{i+1}}. Montant individuel: {{share.individualsum}}</p>
         </mat-card-content>
     </div>
     

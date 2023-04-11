@@ -1,3 +1,5 @@
+import { Share } from "../communication/share";
+
 export interface CoopMember {
     idmember: string;
     idbankaccount: string;
@@ -11,4 +13,5 @@ export interface CoopMember {
     mailingaddress: string;
     email: string;
     annualmembership : number|null;
+    shares: Share [];
 }
