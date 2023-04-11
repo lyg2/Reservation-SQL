@@ -37,7 +37,6 @@ export class DatabaseController {
           member.shares = resultShares.rows as Share [];
       });
       await Promise.all(detailsPromises);
-      console.log(members);
       res.json(members);
 
       }
