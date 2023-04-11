@@ -15,15 +15,27 @@
             <p>Adresse postale: {{memberCard.mailingaddress}}</p>
             <p>Email: {{memberCard.email}}</p>
             <!-- TODO: add share holders details -->
-            <p *ngIf="memberCard.annualmembership">Membre de l'autopartage: Oui</p>
-            <p *ngIf="!memberCard.annualmembership">Membre de l'autopartage: Non</p>
-            <p *ngIf="memberCard.annualmembership">Cotisation annuelle: {{memberCard.annualmembership}}</p>
-            <p *ngIf="!memberCard.annualmembership">Cotisation annuelle: N/A</p>
-            <p *ngIf="memberCard.shares.length">Membre de la coopérative: Oui</p>
-            <p *ngIf="!memberCard.shares.length">Membre de la coopérative: Non</p>
-            <p *ngIf="memberCard.shares.length">Liste des parts:</p>
-            <p *ngIf="!memberCard.shares.length">Liste des parts: N/A</p>
-            <p *ngFor="let share of memberCard.shares ; index as i">Part {{i+1}}. Montant individuel: {{share.individualsum}}</p>
+            <div *ngIf="memberCard.annualmembership">
+                <p>Membre de l'autopartage: Oui</p>
+                <p>Cotisation annuelle: {{memberCard.annualmembership}}</p>
+            </div>
+
+            <div *ngIf="!memberCard.annualmembership">
+                <p>Membre de l'autopartage: Non</p>
+                <p>Cotisation annuelle: N/A</p>
+            </div>
+
+            <div *ngIf="memberCard.shares.length">
+                <p>Membre de la coopérative: Oui</p>
+                <p>Liste des parts:</p>
+                <p *ngFor="let share of memberCard.shares ; index as i">Part {{i+1}}  # Montant individuel: {{share.individualsum}}</p>
+            </div>
+
+            <div *ngIf="!memberCard.shares.length">
+                <p>Membre de la coopérative: Non</p>
+                <p>Liste des parts: N/A</p>
+            </div>
+
         </mat-card-content>
     </div>
     
