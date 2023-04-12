@@ -1,11 +1,10 @@
-/* #member-info-container {
+#member-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 83%;
+    grid-template-columns: 50% 50%;
+    height: 50%;
 }
 
-.member-info-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-} */
+.member-card {
+    margin: 5px;
+    padding: 15px 6px;
+}

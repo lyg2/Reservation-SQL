@@ -2,9 +2,9 @@
     <mat-icon>arrow_right</mat-icon>
 </button>
 
-<div id="member-container">
-    <mat-card *ngFor="let reservationCard of obs | async" class="member-card">
+<div id="reservation-container">
+    <mat-card *ngFor="let reservationCard of obs | async" class="reservation-card">
         <app-reservation-card [reservationCard]="reservationCard"></app-reservation-card>
     </mat-card>
-    <mat-paginator [pageSize]="4" [pageSizeOptions]="[4]" aria-label="Select page" mat-raised-button color="primary"></mat-paginator>
 </div>
+<mat-paginator [pageSize]="4" [pageSizeOptions]="[4]" aria-label="Select page" mat-raised-button color="primary"></mat-paginator>

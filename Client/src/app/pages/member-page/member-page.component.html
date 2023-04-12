@@ -1,16 +1,11 @@
 <div>
     <input type="text" [(ngModel)]="query"/>
     <button type="button" mat-raised-button color="primary" (click)="sendQuery()">Chercher par nom</button>
-    <!-- <div>
-        <input type="text" [(ngModel)]="id"/>
-        <input type="text" [(ngModel)]="password"/>
-        <button type="button" mat-raised-button color="primary" (click)="postLogin()">Connexion</button>
-    </div> -->
 
 </div>
-<div id="reservation-card-container">
-    <mat-card *ngFor="let memberCard of obs | async" class="reservation-card">
+<div id="member-container">
+    <mat-card *ngFor="let memberCard of obs | async" class="member-card">
         <app-member-card [memberCard]="memberCard"></app-member-card>
     </mat-card>
-    <mat-paginator [pageSize]="4" [pageSizeOptions]="[4]" aria-label="Select page" mat-raised-button color="primary"></mat-paginator>
 </div>
+<mat-paginator [pageSize]="4" [pageSizeOptions]="[4]" aria-label="Select page" mat-raised-button color="primary"></mat-paginator>
