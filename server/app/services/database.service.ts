@@ -16,6 +16,14 @@ export class DatabaseService {
 
   public pool: pg.Pool = new pg.Pool(this.connectionConfig);
 
+  async getAllMembers(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember;`
+    const res = await client.query(queryText);
+    client.release();
+    return res;
+  }
+
   async getMembersWithName(memberName: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE LOWER(memberName) LIKE $1 ;`

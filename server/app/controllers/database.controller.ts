@@ -25,19 +25,14 @@ export class DatabaseController {
       async (req: Request, res: Response, _: NextFunction) => {
         try {
           let members: CoopMember[] = [];
-          let filter = req.params.name;
-          if (!req.params.name) {
-            filter = "";
-          }
+          const filter = req.params.name;
           const drivers = req.query.drivers;
           if (drivers === "true") {
             const driversMembers =
               await this.databaseService.getDriverMembers();
             res.json(driversMembers.rows as CoopMember[]);
           } else {
-            const resultMembers = await this.databaseService.getMembersWithName(
-              filter
-            );
+            const resultMembers = filter ? await this.databaseService.getMembersWithName(filter): await this.databaseService.getAllMembers() ;
             members = resultMembers.rows as CoopMember[];
             const detailsPromises = members.map(async (member: CoopMember) => {
               const resultMemberShip =
