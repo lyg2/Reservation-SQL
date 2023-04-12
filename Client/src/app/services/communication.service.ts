@@ -33,7 +33,7 @@ export class CommunicationService {
 
   getDriverMembers(): Observable<CoopMember[]> {
     return this.http
-      .get<CoopMember[]>(this.BASE_URL + "/members/drivers")
+      .get<CoopMember[]>(this.BASE_URL + "/members?drivers=true")
       .pipe(catchError(this.handleError<CoopMember[]>("getDriverMembers")));
   }
 

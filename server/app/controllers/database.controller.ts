@@ -28,9 +28,15 @@ export class DatabaseController {
         if(!req.params.name) {
           filter='';
         }
-        const resultMembers = await this.databaseService.getMembersWithName(filter);
-        members = resultMembers.rows as CoopMember [];
-        const detailsPromises =members.map(async (member: CoopMember)=>{
+        const drivers = req.query.drivers;
+        if(drivers==='true') {
+          const driversMembers = await this.databaseService.getDriverMembers();
+          res.json(driversMembers.rows as CoopMember[]);
+        }
+        else {
+          const resultMembers = await this.databaseService.getMembersWithName(filter);
+          members = resultMembers.rows as CoopMember [];
+          const detailsPromises =members.map(async (member: CoopMember)=>{
           const resultMemberShip= await this.databaseService.getAnnualMemberShipById(member.idmember);
           member.annualmembership = resultMemberShip.rows[0]?.annualmembership as number|null;
           const resultShares = await this.databaseService.getSharesById(member.idmember);
@@ -38,6 +44,9 @@ export class DatabaseController {
       });
       await Promise.all(detailsPromises);
       res.json(members);
+          
+        }
+        
 
       }
       catch (e) {
@@ -46,7 +55,7 @@ export class DatabaseController {
       
       });
 
-      router.get("/members/drivers", (req: Request, res: Response, _: NextFunction) => {
+      router.get("/members/:name?/drivers", (req: Request, res: Response, _: NextFunction) => {
         // console.log('members');
           this.databaseService
           .getDriverMembers()
