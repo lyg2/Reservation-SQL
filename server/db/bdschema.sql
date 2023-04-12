@@ -39,7 +39,7 @@ CREATE TYPE ADDRESS AS (
 );
 
 CREATE TABLE IF NOT EXISTS Parking(
-	parkingName VARCHAR(30) NOT NULL,
+	parkingName VARCHAR(50) NOT NULL,
 	carLimit INT NOT NULL,
 	parkingAddress ADDRESS NOT NULL,
 	coordinates COORD NOT NULL,
@@ -59,8 +59,8 @@ ALTER TABLE Model ADD CONSTRAINT kilometerPriceConstraint CHECK (kilometerPrice>
 ALTER TABLE Model ADD CONSTRAINT kilometerLimitConstraint CHECK (kilometerLimit>0);
 
 CREATE TABLE IF NOT EXISTS Car(
-	licensePlate CHAR(6) NOT NULL,
-	parkingName VARCHAR(30),
+	licensePlate CHAR(7) NOT NULL,
+	parkingName VARCHAR(50),
 	modelName CARTYPE NOT NULL,
 	brand VARCHAR(30) NOT NULL,
 	startingDate DATE NOT NULL,
@@ -77,6 +77,8 @@ ALTER TABLE Car ADD CONSTRAINT powerRechargeConstraint CHECK
  (powerRecharge IS NULL AND modelName!='HYBRID'));
 ALTER TABLE Car ADD CONSTRAINT gazConsumptionConstraint CHECK (gazConsumption>0);
 ALTER TABLE Car ADD CONSTRAINT odometerConstraint CHECK (odometer>=0);
+ALTER TABLE Car ADD CONSTRAINT licensePlateConstraint CHECK (LENGTH(licensePlate) BETWEEN 5 AND 7);
+
 
 CREATE TABLE IF NOT EXISTS Insurance(
 	idInsurance VARCHAR(10) NOT NULL,
@@ -85,7 +87,7 @@ CREATE TABLE IF NOT EXISTS Insurance(
 );
 
 CREATE TABLE IF NOT EXISTS InsuranceHistory(
-	licensePlate CHAR(6) NOT NULL,
+	licensePlate CHAR(7) NOT NULL,
 	idInsurance VARCHAR(10) NOT NULL,
 	dateStart DATE NOT NULL,
 	dateEnd DATE,
@@ -106,7 +108,7 @@ CREATE TABLE IF NOT EXISTS CoopMember(
 	idMember VARCHAR(10) NOT NULL,
 	idBankAccount VARCHAR(10) NOT NULL,
 	memberName VARCHAR(60) NOT NULL,
-	preferredParking VARCHAR(30),
+	preferredParking VARCHAR(50),
 	memberPassword VARCHAR(20) NOT NULL,
 	licenseNo VARCHAR(16),
 	entityType ENTITY NOT NULL,
@@ -163,7 +165,7 @@ ALTER TABLE Bill ADD CONSTRAINT totalConstraint CHECK (total>=0);
 CREATE TABLE IF NOT EXISTS Reservation(
 	reservedPeriod PERIOD_TIMESTAMP NOT NULL,
 	idMember VARCHAR(10) NOT NULL,
-	licensePlate CHAR(6) NOT NULL,
+	licensePlate CHAR(7) NOT NULL,
 	requirements TEXT,
 	idBill INT,
 	fee FLOAT DEFAULT 0 NOT NULL,
