@@ -127,3 +127,9 @@ INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
 	
 INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
 	VALUES(('2005-01-23 09:00:00', '2005-01-23 12:00:00'), '4', '666666', NULL);
+	
+INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements, odometerEnd)
+	VALUES(('2002-01-23 09:00:00', '2002-01-23 12:00:00'), '4', '666666', NULL, 30);
+
+INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements, odometerEnd)
+	VALUES(('1990-01-23 09:00:00', '1990-01-23 12:00:00'), '4', 'POLY00', NULL, 80);
