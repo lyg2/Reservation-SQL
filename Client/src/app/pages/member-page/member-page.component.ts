@@ -30,6 +30,8 @@ export class MemberPageComponent implements OnInit {
       });
     }
 
+    
+
     sendQuery(): void {
       this.getMembersWithName();
     }
