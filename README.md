@@ -1,7 +1,9 @@
 # TP4 INF3710
 Repo pour les TPs de INF3710
+**Important : Il faut exécuter les fichiers schema.sql, trigger.sql et data.sql dans l'ordre. Sinon, l'application ne pourra fonctionne correctement.**
 
 **Consignes d'installation et démarrage**
+
 Veuillez vous assurer d'avoir  installer PostgresSQL (la version 15.1.1 est utilisé).
 Veuillez vous assurer d'avoir installer NodeJS (la version ^18.15.5)
 
