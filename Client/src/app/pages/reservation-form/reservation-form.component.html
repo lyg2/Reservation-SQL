@@ -4,11 +4,14 @@
     <label for="startDate">Date de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
-      <input matInput [matDatepicker]="picker1" [(ngModel)]="startDate" (dateChange)="manageFreeCars()" required>
-      <mat-hint></mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker1">
-      </mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
+      <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate" [(ngModel)]="startDate" (dateChange)="manageFreeCars()" required>
+      
+  
+
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+  
+
     </mat-form-field>  
      </div>
   <div class="div3">
@@ -21,7 +24,7 @@
     <label for="endDate">Date de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
-      <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" (dateChange)="manageFreeCars()" required>
+      <input matInput [min]="startDate" [max]="maxDate" [matDatepicker]="picker2" [(ngModel)]="endDate" (dateChange)="manageFreeCars()" required>
       <mat-hint></mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker2">
       </mat-datepicker-toggle>
