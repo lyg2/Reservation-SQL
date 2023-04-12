@@ -15,7 +15,7 @@ export class MemberCardComponent  {
       case PersonType.Physical:
           return 'Physique';
       case PersonType.Moral:
-          return 'Morale;';
+          return 'Morale';
       default:
         return 'N/A';
   }

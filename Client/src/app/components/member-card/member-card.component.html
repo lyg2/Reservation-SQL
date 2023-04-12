@@ -10,7 +10,8 @@
             <p>Numéro de permis: {{memberCard.licenseno}}</p>
             <p>Numéro de banque: {{memberCard.idbankaccount}}</p>
             <p>Type de personne: {{getPersonType(memberCard.entitytype)}}</p>
-            <p>Date de naissance: {{memberCard.birthdate}}</p>
+            <p *ngIf="memberCard.birthdate">Date de naissance: {{memberCard.birthdate}}</p>
+            <p *ngIf="!memberCard.birthdate">Date de naissance: N/A</p>
             <p>Dernier accident: {{memberCard.lastaccidentdate}}</p>
             <p>Adresse postale: {{memberCard.mailingaddress}}</p>
             <p>Email: {{memberCard.email}}</p>

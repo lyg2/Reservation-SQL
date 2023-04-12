@@ -69,6 +69,12 @@ INSERT INTO BankAccount(idBankAccount, bank)
 	
 INSERT INTO BankAccount(idBankAccount, bank)
 	VALUES('000000', 'Banque Royale');
+
+INSERT INTO BankAccount(idBankAccount, bank)
+	VALUES('666666', 'Banque Desjardins');
+	
+INSERT INTO BankAccount(idBankAccount, bank)
+	VALUES('111111', 'Banque Poly');
 	
 INSERT INTO CoopMember(idMember, idBankAccount, memberName, preferredParking, memberPassword, licenseNo, entityType,
 	birthDate, lastAccidentDate, mailingAddress, email)
@@ -80,14 +86,20 @@ INSERT INTO CoopMember(idMember, idBankAccount, memberName, preferredParking, me
 
 INSERT INTO CoopMember(idMember, idBankAccount, memberName, preferredParking, memberPassword, licenseNo, entityType,
 	birthDate, lastAccidentDate, mailingAddress, email)
-	VALUES('3', '000000', 'Juliette Legault', 'Parking Poly', 'password', '67589', 'PERSON', '1997-04-10', '2012-11-01', ('2500', 'Jean-Talon E', 'Montréal', 'H2A1T7'), 'juliette@hotmail.com');
+	VALUES('3', '666666', 'Juliette Legault', 'Parking Poly', 'password', '44444', 'PERSON', '1997-04-10', '2012-11-01', ('2500', 'Jean-Talon E', 'Montréal', 'H2A1T7'), 'juliette@hotmail.com');
 
+INSERT INTO CoopMember(idMember, idBankAccount, memberName, preferredParking, memberPassword, licenseNo, entityType,
+	birthDate, lastAccidentDate, mailingAddress, email)
+	VALUES('4', '111111', 'Polytechnique', 'Parking Poly', 'polipoly', '66666', 'CORPORATION', NULL, '2012-11-01', ('2500', 'Chem. de Polytechnique', 'Montréal', 'H3T1J4'), 'poly@hotmail.com');
 
 INSERT INTO ShareMember(idMember)
 	VALUES('1');
 	
 INSERT INTO ShareMember(idMember)
 	VALUES('3');
+	
+INSERT INTO ShareMember(idMember)
+	VALUES('4');
 	
 INSERT INTO CoopShare(idShare, idMember, individualSum)
 	VALUES('1', '1', 26);
