@@ -6,7 +6,8 @@ import { CoopMember } from '../../../../../common/tables/coop-member';
   templateUrl: './member-card.component.html',
   styleUrls: ['./member-card.component.css']
 })
-export class MemberCardComponent {
+export class MemberCardComponent  {
   @Input() memberCard: CoopMember;
+  
   
 }

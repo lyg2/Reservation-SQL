@@ -36,8 +36,13 @@ FOR EACH ROW EXECUTE FUNCTION set_total();
 
 
 CREATE FUNCTION set_fee() RETURNS trigger AS $onReservationInsert$
+	DECLARE 
+		hours FLOAT := EXTRACT(HOUR FROM ((NEW.reservedPeriod).periodEnd - (NEW.reservedPeriod).periodStart));
+		minutes FLOAT := EXTRACT(MINUTE FROM ((NEW.reservedPeriod).periodEnd - (NEW.reservedPeriod).periodStart));
+		floatTime FLOAT;
 	BEGIN
-		NEW.fee = EXTRACT(HOUR FROM ((NEW.reservedPeriod).periodEnd - (NEW.reservedPeriod).periodStart)) * (
+		floatTime = hours + (minutes / 60);
+		NEW.fee = floatTime * (
 		SELECT hourlyPrice FROM MODEL NATURAL JOIN Car WHERE licensePlate = NEW.licensePlate
 		);
 		RETURN NEW;
@@ -91,4 +96,20 @@ CREATE TRIGGER setOdometerStart BEFORE INSERT ON Reservation
 FOR EACH ROW EXECUTE FUNCTION set_odometer_start();
 
 
--- Use of Angular observable to check if end of reservation is met
+CREATE FUNCTION set_membership() RETURNS trigger AS $onCarShareMemberInsert$
+	DECLARE birthDate Date := (SELECT birthDate FROM CoopMember WHERE idMember=NEW.idMember);
+	DECLARE lastAccidentDate Date := (SELECT lastAccidentDate FROM CoopMember WHERE idMember=NEW.idMember);
+	DECLARE age INT := (CURRENT_DATE - birthDate) / 360;
+	DECLARE yearsSinceLastAccident INT := (CURRENT_DATE - lastAccidentDate) / 360;
+	BEGIN
+		IF age > 25 AND (yearsSinceLastAccident IS NULL OR yearsSinceLastAccident >= 1) THEN
+			NEW.annualMembership = 75;
+		ELSE
+			NEW.annualMembership = 100;
+		END IF;
+		RETURN NEW;
+	END; $onCarShareMemberInsert$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER setMembership BEFORE INSERT ON CarShareMember
+FOR EACH ROW EXECUTE FUNCTION set_membership();

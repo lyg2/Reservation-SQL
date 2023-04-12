@@ -1,25 +1,24 @@
-<div class="parent"  *ngIf="!submitted">
+
+<div class="parent" >
   <div class="div2">
-    <label for="startDate">Début de réservation</label>
-    <mat-form-field [size.width.px]=500 appearance="fill">
+    <label for="startDate">Date de réservation</label>
+    <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
       <input matInput [matDatepicker]="picker1" [(ngModel)]="startDate" (dateChange)="manageFreeCars()" required>
       <mat-hint></mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker1">
       </mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-  
+    </mat-form-field>  
      </div>
   <div class="div3">
-      <label for="periodStart">Heure de début: </label>
+    <label for="periodStart">Heure de début: </label>
     <mat-form-field>
       <input [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart" min="09:00"
         max="22:00" (change)="manageFreeCars()" required>
-    </mat-form-field>
-   </div>
+    </mat-form-field>   </div>
   <div class="div4">
-    <label for="endDate">Fin de réservation</label>
+    <label for="endDate">Date de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
       <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" (dateChange)="manageFreeCars()" required>
@@ -27,66 +26,44 @@
       <mat-datepicker-toggle matIconSuffix [for]="picker2">
       </mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
-  
-   </div>
+    </mat-form-field>   </div>
   <div class="div5">   
     <label for="periodEnd">Heure de fin: </label>
     <mat-form-field>
       <input [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00"
         (change)="manageFreeCars()" required>
-    </mat-form-field>
-  </div>
+    </mat-form-field>  </div>
   <div class="div6">
     <label for="cars">Voitures disponibles</label>
     <mat-form-field>
       <mat-select id="cars" required [(value)]="licensePlate">
         <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.licenseplate + ' ' + car.brand + ' ' + car.modelname }} </mat-option>
       </mat-select>
-    </mat-form-field>
-  
-   </div>
+    </mat-form-field>   </div>
   <div class="div7"> 
-     <label for="members">Membres pouvant conduire</label>
+    <label for="members">Membres pouvant conduire</label>
     <mat-form-field>
       <mat-select id="members" required [(value)]="memberId">
         <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername
           }}</mat-option>
       </mat-select>
-    </mat-form-field>
-   </div>
+    </mat-form-field>     </div>
   <div class="div1"> 
-     <label for="place">Emplacement</label>
+    <label for="place">Emplacement</label>
     <mat-form-field>
       <mat-select id="place" required [(value)]="location" (selectionChange)="manageFreeCars()">
         <mat-option *ngFor="let location of locations" [value]="location">{{location.parkingname}}</mat-option>
       </mat-select>
-    </mat-form-field>
-  
-   </div>
+    </mat-form-field>   </div>
   <div class="div8">
-       <label for="requirements">Requis</label>
+    <label for="requirements">Requis</label>
     <mat-form-field>
       <input matInput  id="requirements" [(ngModel)]="requirements" type="text"  />
-    </mat-form-field>
-  </div>
+    </mat-form-field>  </div>
   <div class="div9">
     <mat-form-field>
       <input matInput (click)="onSubmit()" type="submit" value="Envoyer" />
     </mat-form-field>  
   </div>
 </div>
-  <div *ngIf="submitted" class="flex-column">
-    <div class="feedback flex-row">Votre réservation a été complétée avec succès!</div>
-    <div class="flex-row">
-      <button mat-raised-button color="primary" class="btn" [routerLink]="['/reservations/create']">
-        Créer une réservation
-        <mat-icon>arrow_right</mat-icon>
-      </button>
-      <button mat-raised-button color="primary" class="btn" [routerLink]="['/reservations']">
-        Afficher les réservations
-        <mat-icon>arrow_right</mat-icon>
-      </button>
-    </div>    
-  </div>
   

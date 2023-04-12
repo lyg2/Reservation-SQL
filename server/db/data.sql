@@ -63,7 +63,7 @@ INSERT INTO CoopMember(idMember, idBankAccount, memberName, preferredParking, me
 	
 INSERT INTO CoopMember(idMember, idBankAccount, memberName, preferredParking, memberPassword, licenseNo, entityType,
 	birthDate, lastAccidentDate, mailingAddress, email)
-	VALUES('2', '234567', 'Haroun Mili', 'Parking 2', 'password', '67589', 'PERSON', '1999-05-13', '2012-11-01', ('2374', 'Rue Sainte-Catherine', 'Montréal', 'E1F2G3'), 'haroun@hotmail.com');
+	VALUES('2', '234567', 'Haroun Mili', 'Parking 2', 'password', '67589', 'PERSON', '1997-04-10', '2012-11-01', ('2374', 'Rue Sainte-Catherine', 'Montréal', 'E1F2G3'), 'haroun@hotmail.com');
 	
 INSERT INTO ShareMember(idMember)
 	VALUES('1');
@@ -71,14 +71,14 @@ INSERT INTO ShareMember(idMember)
 INSERT INTO CoopShare(idShare, idMember, individualSum)
 	VALUES('1', '1', 26);
 	
-INSERT INTO CarShareMember(idMember, annualMembership)
-	VALUES('2', 250);
+INSERT INTO CarShareMember(idMember)
+	VALUES('2');
 	
 INSERT INTO Bill(idBill, dateBill, dueDate, isPaid, total)
 	VALUES('1', '2023-04-02', '2023-04-12', false, 0);
 	
 INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
-	VALUES(('2023-03-27 12:00:00', '2023-03-27 13:00:00'), '1', '1', 'COOKIE', NULL);
+	VALUES(('2023-03-27 12:00:00', '2023-03-27 12:30:00'), '1', '1', 'COOKIE', NULL);
 	
 INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
 	VALUES(('2023-03-27 14:00:00', '2023-03-27 18:00:00'), '1', '1', '000002', NULL);
@@ -88,7 +88,3 @@ INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirem
 	
 INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
 	VALUES(('2023-01-23 09:00:00', '2023-01-23 12:00:00'), '1', '1', 'G010A2', NULL);
-	
--- UPDATE Car SET odometer = 200000 WHERE licensePlate = 'COOKIE';
-
--- UPDATE Reservation SET odometerEnd = 15 WHERE idMember = '1' AND licensePlate = 'COOKIE';

@@ -26,14 +26,8 @@ export class MemberPageComponent implements OnInit {
     constructor(private changeDetectorRef: ChangeDetectorRef, private readonly communicationService: CommunicationService) {}
 
     ngOnInit(): void {
-      this.getAllMembers();
+      this.getMembersWithName();
     };
-
-    getAllMembers(): void {
-      this.communicationService.getAllMembers().subscribe((members: CoopMember [])=> {
-        this.setUpData(members);
-      });
-    }
 
     getMembersWithName(): void {
       this.communicationService.getMembersWithName(this.query.toLowerCase()).subscribe((members: CoopMember [])=> {

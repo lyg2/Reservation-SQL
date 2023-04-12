@@ -102,7 +102,6 @@ CREATE TABLE IF NOT EXISTS BankAccount(
 	PRIMARY KEY (idBankAccount)
 );
 
--- Ask for pattern matching @
 CREATE TABLE IF NOT EXISTS CoopMember(
 	idMember VARCHAR(10) NOT NULL,
 	idBankAccount VARCHAR(10) NOT NULL,
@@ -142,7 +141,7 @@ ALTER TABLE CoopShare ADD CONSTRAINT sumConstraint CHECK (individualSum>0);
 
 CREATE TABLE IF NOT EXISTS CarShareMember(
 	idMember VARCHAR(10) NOT NULL,
-	annualMembership INT NOT NULL,
+	annualMembership INT NOT NULL DEFAULT 0,
 	PRIMARY KEY (idMember),
 	FOREIGN KEY (idMember) REFERENCES CoopMember(idMember)
 );
