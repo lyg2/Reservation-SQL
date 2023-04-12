@@ -179,4 +179,3 @@ ALTER TABLE Reservation ADD CONSTRAINT periodConstraint
 CHECK ((reservedPeriod).periodStart < (reservedPeriod).periodEnd);
 ALTER TABLE Reservation ADD CONSTRAINT feeConstraint CHECK (fee>=0);
 ALTER TABLE Reservation ADD CONSTRAINT odometerStartConstraint CHECK (odometerStart>=0);
-

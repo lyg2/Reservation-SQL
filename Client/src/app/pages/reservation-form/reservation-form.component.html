@@ -1,40 +1,36 @@
-
-<div class="parent" >
+<div class="parent">
   <div class="div2">
     <label for="startDate">Date de début de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
-      <input matInput [formControl]="startDateFormControl" [errorStateMatcher]="matcher"
-       [matDatepicker]="picker1" [min]="minDate" [max]="maxDate" [(ngModel)]="startDate" 
-       (dateChange)="manageFreeCars()" required>
+      <input matInput [formControl]="startDateFormControl" [errorStateMatcher]="matcher" [matDatepicker]="picker1"
+        [min]="minDate" [max]="maxDate" [(ngModel)]="startDate" (dateChange)="manageFreeCars()" required>
       <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1 disabled="false"></mat-datepicker>
       <mat-error *ngIf="startDateFormControl.hasError('required')">
         La date de départ est <strong>requise</strong>
       </mat-error>
-    </mat-form-field >
-  </div >
+    </mat-form-field>
+  </div>
 
   <div class="div3">
     <label for="periodStart">Heure de début: </label>
     <mat-form-field>
-      <input matInput [formControl]="startHourFormControl" [errorStateMatcher]="matcher"
-      [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart"
-       min="09:00"
-        max="22:00" (change)="manageFreeCars()" required>
-        <mat-error *ngIf="startHourFormControl.hasError('required')">
-          L'heure de départ est <strong>requise</strong>
-        </mat-error>
-  
-    </mat-form-field>   </div>
+      <input matInput [formControl]="startHourFormControl" [errorStateMatcher]="matcher" [(ngModel)]="startTime"
+        matInput type="time" step="900" id="periodStart" name="periodStart" min="09:00" max="22:00"
+        (change)="manageFreeCars()" required>
+      <mat-error *ngIf="startHourFormControl.hasError('required')">
+        L'heure de départ est <strong>requise</strong>
+      </mat-error>
+
+    </mat-form-field>
+  </div>
   <div class="div4">
     <label for="endDate">Date de fin de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
-      <input matInput
-      [formControl]="endDateFormControl" [errorStateMatcher]="matcher"
-       [min]="startDate" [max]="maxDate" [matDatepicker]="picker2" [(ngModel)]="endDate"
-        (dateChange)="manageFreeCars()" required>
+      <input matInput [formControl]="endDateFormControl" [errorStateMatcher]="matcher" [min]="startDate" [max]="maxDate"
+        [matDatepicker]="picker2" [(ngModel)]="endDate" (dateChange)="manageFreeCars()" required>
       <mat-datepicker-toggle matIconSuffix [for]="picker2">
       </mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
@@ -42,60 +38,70 @@
         La date de retour est <strong>requise</strong>
       </mat-error>
 
-    </mat-form-field>   </div>
-  <div class="div5">   
+    </mat-form-field>
+  </div>
+  <div class="div5">
     <label for="periodEnd">Heure de fin: </label>
     <mat-form-field>
-      <input  [formControl]="endHourFormControl" [errorStateMatcher]="matcher"
-      [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00"
-        (change)="manageFreeCars()" required>
-        <mat-error *ngIf="endHourFormControl.hasError('required')">
-          L'heure de retour est <strong>requise</strong>
-        </mat-error>
-  
-    </mat-form-field>  </div>
+      <input [formControl]="endHourFormControl" [errorStateMatcher]="matcher" [(ngModel)]="endTime" matInput type="time"
+        step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00" (change)="manageFreeCars()" required>
+      <mat-error *ngIf="endHourFormControl.hasError('required')">
+        L'heure de retour est <strong>requise</strong>
+      </mat-error>
+
+    </mat-form-field>
+  </div>
   <div class="div6">
     <label for="cars">Voitures disponibles</label>
     <mat-form-field>
-      <mat-select [formControl]="carSelectFormControl"  placeholder="Choisissez un véhicule" id="cars" required [(value)]="licensePlate">
-        <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.licenseplate + ' ' + car.brand + ' ' + car.modelname }} </mat-option>
+      <mat-select [formControl]="carSelectFormControl" placeholder="Choisissez un véhicule" id="cars" required
+        [(value)]="licensePlate">
+        <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.licenseplate + ' ' + car.brand +
+          ' ' + car.modelname }} </mat-option>
       </mat-select>
-      <mat-error *ngIf="!hasDefinedInput()" >
-         Veuillez choisir une plage horaire 
+      <mat-error *ngIf="!hasDefinedInput()">
+        Veuillez choisir une plage horaire valide
       </mat-error>
-          <mat-error *ngIf="hasDefinedInput()&&this.filteredCars.length===0">
+      <mat-error *ngIf="hasDefinedInput()&&this.filteredCars.length===0">
         Aucun véhicule disponible à cette plage horaire
       </mat-error>
 
 
-    </mat-form-field>   </div>
-  <div class="div7"> 
+    </mat-form-field>
+  </div>
+  <div class="div7">
     <label for="members">Conducteur</label>
     <mat-form-field>
       <mat-select placeholder="Choisissez un membre" id="members" required [(value)]="memberId">
-        <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername
+        <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{
+          member.membername
           }}</mat-option>
       </mat-select>
-    </mat-form-field>     </div>
-  <div class="div1"> 
+    </mat-form-field>
+  </div>
+  <div class="div1">
     <label for="place">Emplacement</label>
     <mat-form-field>
-      <mat-select [formControl]="locationFormControl" [errorStateMatcher]="matcher" placeholder="Choisissez un emplacement" id="place" required [(value)]="location" (selectionChange)="manageFreeCars()">
+      <mat-select [formControl]="locationFormControl" [errorStateMatcher]="matcher"
+        placeholder="Choisissez un emplacement" id="place" required [(value)]="location"
+        (selectionChange)="manageFreeCars()">
         <mat-option *ngFor="let location of locations" [value]="location">{{location.parkingname}}</mat-option>
       </mat-select>
       <mat-error *ngIf="locationFormControl.hasError('required')">
         L'emplacement de location est <strong>requis</strong>
       </mat-error>
-    </mat-form-field>   </div>
+    </mat-form-field>
+  </div>
   <div class="div8">
     <label for="requirements">Requis</label>
     <mat-form-field>
-      <input placeholder="(Optionnel)" matInput  id="requirements" [(ngModel)]="requirements" type="text"  />
-    </mat-form-field>  </div>
+      <input placeholder="(Optionnel)" matInput id="requirements" [(ngModel)]="requirements" type="text" />
+    </mat-form-field>
+  </div>
   <div class="div9">
     <mat-form-field>
       <input matInput (click)="onSubmit()" type="submit" value="Envoyer" />
-    </mat-form-field>  
+    </mat-form-field>
   </div>
 </div>
   
