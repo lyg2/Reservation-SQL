@@ -55,18 +55,6 @@ export class DatabaseController {
       
       });
 
-      router.get("/members/:name?/drivers", (req: Request, res: Response, _: NextFunction) => {
-        // console.log('members');
-          this.databaseService
-          .getDriverMembers()
-          .then((result: pg.QueryResult) => {
-            res.json(result.rows as CoopMember[]);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-          });
-        });
-
       router.get("/parkings/name", (req: Request, res: Response, _: NextFunction) => {
         this.databaseService
         .getAllParkingNames()
@@ -135,18 +123,6 @@ export class DatabaseController {
         .catch((e: Error) => {
           console.error(e.stack);
         });
-      });
-
-      router.post("/cars/free", (req: Request, res: Response, _: NextFunction) => {
-        // console.log(req.body);
-        this.databaseService
-        .getFreeCars(req.body.location, req.body.firstPeriod, req.body.secondPeriod)
-        .then((result: pg.QueryResult) => {
-          res.json(result.rows as Car[]);
-        })
-        .catch((e: Error) => {
-          console.error(e.stack);
-        });;
       });
 
     return router;
