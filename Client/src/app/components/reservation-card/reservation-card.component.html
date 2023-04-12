@@ -7,7 +7,7 @@
             <p>Numéro membre: {{reservationCard.idmember}}</p>
             <p>Plaque: {{reservationCard.licenseplate}}</p>
             <p>Requis: {{reservationCard.requirements}}</p>
-            <p>Frais: {{reservationCard.fee}}</p>
+            <p>Frais: {{changeFormat(reservationCard.fee)}}</p>
             <p>Odomètre début: {{reservationCard.odometerstart}}</p>
             <p>Odomètre fin: {{reservationCard.odometerend}}</p>
         </mat-card-content>

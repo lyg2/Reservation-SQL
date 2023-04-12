@@ -8,5 +8,11 @@ import { Reservation } from '../../../../../common/tables/reservation';
 })
 export class ReservationCardComponent {
   @Input() reservationCard: Reservation;
+  changeFormat(num:number|null){
+    if (num)
+    return (Math.round(num * 100) / 100).toFixed(2);
+    return "0.00"
+
+  }
 
 }

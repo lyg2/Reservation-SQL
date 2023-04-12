@@ -10,6 +10,17 @@ import { CoopMember } from '../../../../../common/tables/coop-member';
 import { Reservation } from '../../../../../common/tables/reservation';
 import { Router } from '@angular/router';
 
+import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
@@ -25,22 +36,32 @@ export class ReservationFormComponent implements OnInit {
   endTimestamp: string;
   location: Parking;
   startDate: Date;
+  minDate: Date;
+  maxDate: Date;
   endDate: Date;
   requirements: string | null = null;
   locations: Parking[];
   filteredCars: Car[];
   members: CoopMember [];
-  // cars: Car[];
-  // cars = ['Tesla', 'Mazda', 'BMW', 'Subaru', 'Porsche', 'Honda', 'Lexus', 'Toyota', 'Chrysler', 'Buick',  'Hyundai'];
-  // models = ['Hybride', 'Automobile régulières', 'Mini-camionettes'];
-  //fetch locations
-  // locations=['Gare d\'autocars de Sainte-Catherine','Gare d\'autocars de Saint-Sauveur','Gare d\'autocars de Champlain' ]
-  //fetch postal adresses
-  // postalAdresses=['H3B 1A6','H4N 3K1', 'H8N 1X1'];
-  
-  //reservations: Reservation [] = [];
 
-  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {}
+  startDateFormControl = new FormControl('', [Validators.required]);
+  endDateFormControl = new FormControl('', [Validators.required]);
+  startHourFormControl = new FormControl('', [Validators.required]);
+  endHourFormControl  = new FormControl('', [Validators.required]);
+  locationFormControl =  new FormControl('', [Validators.required]);
+  carSelectFormControl=  new FormControl('', [Validators.required]);
+  matcher = new MyErrorStateMatcher();
+
+  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getUTCMonth();
+    const currentDay = new Date().getUTCDate()+1;
+    console.log(currentDay+" "+ currentMonth+" "+ currentYear);
+
+    this.minDate = new Date(currentYear, currentMonth, currentDay);
+    this.maxDate = new Date(currentYear, 11, 31);
+
+  }
 
   ngOnInit(): void {
     this.getAllParkingNames();
@@ -54,6 +75,7 @@ export class ReservationFormComponent implements OnInit {
   // }
 
   onSubmit(): void { 
+    console.log(this.startDate);
     if (this.licensePlate && this.memberId) {
       const reservation: Reservation = {
         reservedperiod: `('${this.startTimestamp}','${this.endTimestamp}')`,
@@ -61,7 +83,6 @@ export class ReservationFormComponent implements OnInit {
         licenseplate: this.licensePlate,
         requirements: this.requirements ,
       } as Reservation;
-
       this.communicationService.postReservation(reservation).subscribe(() => {
         this.router.navigate(['/reservations/create/successful']);
       });
@@ -119,7 +140,7 @@ export class ReservationFormComponent implements OnInit {
     });
   }
 
-  private hasDefinedInput(): boolean {
+  public hasDefinedInput(): boolean {
     return this.startDate 
     && this.endDate 
     && this.location 
