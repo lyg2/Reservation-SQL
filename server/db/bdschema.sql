@@ -149,10 +149,10 @@ CREATE TABLE IF NOT EXISTS CarShareMember(
 ALTER TABLE CarShareMember ADD CONSTRAINT membershipConstraint CHECK (annualMembership>0);
 
 CREATE TABLE IF NOT EXISTS Bill(
-	idBill VARCHAR(10) NOT NULL,
+	idBill SERIAL NOT NULL,
 	dateBill DATE NOT NULL,
 	dueDate DATE NOT NULL,
-	isPaid BOOL NOT NULL,
+	isPaid BOOL  DEFAULT false NOT NULL,
 	total FLOAT DEFAULT 0 NOT NULL,
 	PRIMARY KEY (idBill)
 );
@@ -165,17 +165,18 @@ CREATE TABLE IF NOT EXISTS Reservation(
 	idMember VARCHAR(10) NOT NULL,
 	licensePlate CHAR(6) NOT NULL,
 	requirements TEXT,
-	idBill VARCHAR(10),
+	idBill INT,
 	fee FLOAT DEFAULT 0 NOT NULL,
 	odometerStart INT DEFAULT 0 NOT NULL,
 	odometerEnd INT,
 	PRIMARY KEY (reservedPeriod, idMember, licensePlate),
 	FOREIGN KEY (idMember) REFERENCES CoopMember(idMember),
 	FOREIGN KEY (licensePlate) REFERENCES Car(licensePlate),
-	FOREIGN KEY (idBill) REFERENCES Bill(idBill)
+	FOREIGN KEY (idBill) REFERENCES Bill(idBill) DEFERRABLE INITIALLY DEFERRED
 );
 
 ALTER TABLE Reservation ADD CONSTRAINT periodConstraint 
 CHECK ((reservedPeriod).periodStart < (reservedPeriod).periodEnd);
 ALTER TABLE Reservation ADD CONSTRAINT feeConstraint CHECK (fee>=0);
 ALTER TABLE Reservation ADD CONSTRAINT odometerStartConstraint CHECK (odometerStart>=0);
+

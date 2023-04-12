@@ -74,17 +74,14 @@ INSERT INTO CoopShare(idShare, idMember, individualSum)
 INSERT INTO CarShareMember(idMember)
 	VALUES('2');
 	
-INSERT INTO Bill(idBill, dateBill, dueDate, isPaid, total)
-	VALUES('1', '2023-04-02', '2023-04-12', false, 0);
+INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
+	VALUES(('2023-03-27 12:00:00', '2023-03-27 12:30:00'), '1', 'COOKIE', NULL);
 	
-INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
-	VALUES(('2023-03-27 12:00:00', '2023-03-27 12:30:00'), '1', '1', 'COOKIE', NULL);
+INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
+	VALUES(('2023-03-27 14:00:00', '2023-03-27 18:00:00'), '1', '000002', NULL);
 	
-INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
-	VALUES(('2023-03-27 14:00:00', '2023-03-27 18:00:00'), '1', '1', '000002', NULL);
+INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
+	VALUES(('2023-03-25 09:00:00', '2023-03-25 12:00:00'), '1', 'G010A2', NULL);
 	
-INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
-	VALUES(('2023-03-25 09:00:00', '2023-03-25 12:00:00'), '1', '1', 'G010A2', NULL);
-	
-INSERT INTO Reservation(reservedPeriod, idMember, idBill, licensePlate, requirements)
-	VALUES(('2023-01-23 09:00:00', '2023-01-23 12:00:00'), '1', '1', 'G010A2', NULL);
+INSERT INTO Reservation(reservedPeriod, idMember, licensePlate, requirements)
+	VALUES(('2023-01-23 09:00:00', '2023-01-23 12:00:00'), '1', 'G010A2', NULL);

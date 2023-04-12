@@ -21,6 +21,31 @@ LANGUAGE plpgsql;
 CREATE TRIGGER checkForCarSale AFTER UPDATE ON Car
 FOR EACH ROW EXECUTE FUNCTION check_for_car_sale();
 
+CREATE FUNCTION link_reservation_to_bill() RETURNS trigger AS $onReservationInsert$
+	DECLARE billIdCount INT := 
+		(SELECT COUNT(idBill) FROM Reservation 
+		WHERE idMember=NEW.idMember 
+		AND EXTRACT(MONTH FROM(reservedPeriod).periodStart)=EXTRACT(MONTH FROM(NEW.reservedPeriod).periodStart) 
+		AND EXTRACT(YEAR FROM(reservedPeriod).periodStart)=EXTRACT(YEAR FROM(NEW.reservedPeriod).periodStart));
+		billId INT := (SELECT idBill FROM Reservation 
+		WHERE idMember=NEW.idMember 
+		AND EXTRACT(MONTH FROM(reservedPeriod).periodStart)=EXTRACT(MONTH FROM(NEW.reservedPeriod).periodStart) 
+		AND EXTRACT(YEAR FROM(reservedPeriod).periodStart)=EXTRACT(YEAR FROM(NEW.reservedPeriod).periodStart)
+		LIMIT 1);
+	BEGIN
+		IF billIdCount=0 THEN
+			INSERT INTO Bill(dateBill, dueDate)
+			VALUES(((NEW.reservedPeriod).periodStart)::DATE, ((NEW.reservedPeriod).periodStart+INTERVAL '30 days')::DATE)
+			RETURNING idBill INTO billId;
+		END IF;
+			NEW.idBill = billId;
+		RETURN NEW;
+	END; $onReservationInsert$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER linkReservationToBill BEFORE INSERT ON Reservation
+FOR EACH ROW EXECUTE FUNCTION link_reservation_to_bill();
+
 
 CREATE FUNCTION set_total() RETURNS trigger AS $onBillInsert$
 	BEGIN
