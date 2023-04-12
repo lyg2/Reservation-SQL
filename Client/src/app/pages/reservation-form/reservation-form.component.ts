@@ -10,6 +10,17 @@ import { CoopMember } from '../../../../../common/tables/coop-member';
 import { Reservation } from '../../../../../common/tables/reservation';
 import { Router } from '@angular/router';
 
+import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
@@ -32,15 +43,14 @@ export class ReservationFormComponent implements OnInit {
   locations: Parking[];
   filteredCars: Car[];
   members: CoopMember [];
-  // cars: Car[];
-  // cars = ['Tesla', 'Mazda', 'BMW', 'Subaru', 'Porsche', 'Honda', 'Lexus', 'Toyota', 'Chrysler', 'Buick',  'Hyundai'];
-  // models = ['Hybride', 'Automobile régulières', 'Mini-camionettes'];
-  //fetch locations
-  // locations=['Gare d\'autocars de Sainte-Catherine','Gare d\'autocars de Saint-Sauveur','Gare d\'autocars de Champlain' ]
-  //fetch postal adresses
-  // postalAdresses=['H3B 1A6','H4N 3K1', 'H8N 1X1'];
-  
-  //reservations: Reservation [] = [];
+
+  startDateFormControl = new FormControl('', [Validators.required]);
+  endDateFormControl = new FormControl('', [Validators.required]);
+  startHourFormControl = new FormControl('', [Validators.required]);
+  endHourFormControl  = new FormControl('', [Validators.required]);
+  locationFormControl =  new FormControl('', [Validators.required]);
+
+  matcher = new MyErrorStateMatcher();
 
   constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {
     const currentYear = new Date().getFullYear();
@@ -65,6 +75,7 @@ export class ReservationFormComponent implements OnInit {
   // }
 
   onSubmit(): void { 
+    console.log(this.startDate);
     if (this.licensePlate && this.memberId) {
       const reservation: Reservation = {
         reservedperiod: `('${this.startTimestamp}','${this.endTimestamp}')`,
