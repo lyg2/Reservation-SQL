@@ -5,10 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ReservationService {
 
-  // validate(startTime:Time, endTime:Time){
-  //   return startTime<endTime;
-  // }
-
   isValidPeriod(firstDate: Date, secondDate : Date) : boolean {
     return firstDate.getTime() < secondDate.getTime();
   }

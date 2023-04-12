@@ -21,7 +21,6 @@ export class DatabaseService {
     const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE LOWER(memberName) LIKE $1 ;`
     const pattern: string [] = [`%${memberName}%`];
     const res = await client.query(queryText, pattern);
-    console.log(res);
     client.release();
     return res;
   }
@@ -50,7 +49,6 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const queryText: string = `SELECT * FROM CARSHARING_DB.CoopMember WHERE licenseNo IS NOT NULL ;`;
     const res = await client.query(queryText);
-    // console.log(res);
     client.release();
     return res;
   }
@@ -67,32 +65,6 @@ export class DatabaseService {
     const client = await this.pool.connect();
     const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation ;`;
     const res = await client.query(queryText);
-    // console.log(res.rows);
-    client.release();
-    return res;
-  }
-
-  async getReservationsByLicensePlate(licensePlate: string): Promise<pg.QueryResult> {
-    const client = await this.pool.connect();
-
-    const condition = "licensePlate = $1  AND (reservedPeriod).periodStart > $2 AND (reservedPeriod).periodEnd < $2 ";
-    const now = "NOW()"
-    const values = [licensePlate, now];
-    // Verity that we only take reservation for which the current date is after the reserved period.
-    const queryText: string = `SELECT * FROM CARSHARING_DB.Reservation WHERE ${condition};`;
-    const res = await client.query(queryText, values);
-    // console.log(res.rows);
-    client.release();
-    return res;
-  }
-
-  async getCarsByParkingName(parkingName : string): Promise<pg.QueryResult> {
-    const client = await this.pool.connect();
-    const condition = "parkingName = $1";
-    const values = [parkingName]
-    const queryText: string = `SELECT licensePlate, parkingName, modelName, brand FROM CARSHARING_DB.Car WHERE ${condition};`
-    // TODO: verify that cars are not already reserved
-    const res = await client.query(queryText, values);
     client.release();
     return res;
   }
@@ -113,15 +85,11 @@ export class DatabaseService {
       OR ($2 < (Reservation.reservedPeriod).periodEnd AND $3 >= (Reservation.reservedPeriod).periodEnd))
     );`
     const res = await client.query(queryText, values);
-    console.log('test');
-    console.log(res.rows);
     client.release();
     return res;
   }
 
   async postReservation(reservation: Reservation): Promise<void> {
-    console.log('allo');
-    console.log(reservation.licenseplate);
     let requirements = reservation.requirements;
     if(requirements) {
       requirements=requirements.replace("'", "''");

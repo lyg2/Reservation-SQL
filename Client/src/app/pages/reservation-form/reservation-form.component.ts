@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommunicationService } from 'src/app/services/communication.service';
 import { Parking } from '../../../../../common/tables/parking'
 import { Car } from '../../../../../common/tables/car';
-//import { Reservation } from '../../../../../common/tables/reservation';
 import { DatePipe } from '@angular/common';
 import { CoopMember } from '../../../../../common/tables/coop-member';
 import { Reservation } from '../../../../../common/tables/reservation';
@@ -56,7 +55,6 @@ export class ReservationFormComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getUTCMonth();
     const currentDay = new Date().getUTCDate()+1;
-    console.log(currentDay+" "+ currentMonth+" "+ currentYear);
 
     this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.maxDate = new Date(currentYear, 11, 31);
@@ -65,17 +63,10 @@ export class ReservationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllParkingNames();
-    // this.getAllCars();
     this.getDriverMembers();
   }
 
-  // onValidate(): void {
-  //   if (this.reservationService.validate(this.startTime, this.endTime))
-  //     this.onSubmit();
-  // }
-
   onSubmit(): void { 
-    console.log(this.startDate);
     if (this.licensePlate && this.memberId) {
       const reservation: Reservation = {
         reservedperiod: `('${this.startTimestamp}','${this.endTimestamp}')`,
@@ -98,7 +89,6 @@ export class ReservationFormComponent implements OnInit {
     if (!this.hasDefinedInput()) {
       return;
     }
-    // TODO: allow user to reserved for multiple days
 
     const startDateString = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
     const endDateString = this.datePipe.transform(this.endDate, 'yyyy-MM-dd');
@@ -114,10 +104,6 @@ export class ReservationFormComponent implements OnInit {
       return;
     }
 
-    console.log(this.startTimestamp);
-    console.log(this.endTimestamp);
-    
-    //TODO: use get instead of post
     this.communicationService.getFreeCars(this.location.parkingname, this.startTimestamp, this.endTimestamp)
     .subscribe((cars : Car [])=> {
       this.filteredCars=cars;
@@ -136,7 +122,6 @@ export class ReservationFormComponent implements OnInit {
     this.communicationService.getDriverMembers()
     .subscribe((members : CoopMember [])=> {
       this.members=members;
-      // console.log(this.members);
     });
   }
 

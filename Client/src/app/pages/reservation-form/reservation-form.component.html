@@ -1,7 +1,7 @@
 
 <div class="parent" >
   <div class="div2">
-    <label for="startDate">Date de réservation</label>
+    <label for="startDate">Date de début de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
       <input matInput [formControl]="startDateFormControl" [errorStateMatcher]="matcher"
@@ -28,7 +28,7 @@
   
     </mat-form-field>   </div>
   <div class="div4">
-    <label for="endDate">Date de réservation</label>
+    <label for="endDate">Date de fin de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
       <input matInput
@@ -70,7 +70,7 @@
 
     </mat-form-field>   </div>
   <div class="div7"> 
-    <label for="members">Membres pouvant conduire</label>
+    <label for="members">Conducteur</label>
     <mat-form-field>
       <mat-select placeholder="Choisissez un membre" id="members" required [(value)]="memberId">
         <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername
