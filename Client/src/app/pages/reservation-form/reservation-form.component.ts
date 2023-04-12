@@ -11,7 +11,7 @@ import { Reservation } from '../../../../../common/tables/reservation';
 import { Router } from '@angular/router';
 
 import {ErrorStateMatcher} from '@angular/material/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import {  FormControl, FormGroupDirective, NgForm , Validators } from '@angular/forms';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -43,11 +43,10 @@ export class ReservationFormComponent implements OnInit {
   locations: Parking[];
   filteredCars: Car[];
   members: CoopMember [];
-
+  startHourFormControl: FormControl;
+  endHourFormControl : FormControl;
   startDateFormControl = new FormControl('', [Validators.required]);
   endDateFormControl = new FormControl('', [Validators.required]);
-  startHourFormControl = new FormControl('', [Validators.required]);
-  endHourFormControl  = new FormControl('', [Validators.required]);
   locationFormControl =  new FormControl('', [Validators.required]);
   carSelectFormControl=  new FormControl('', [Validators.required]);
   matcher = new MyErrorStateMatcher();
@@ -56,12 +55,20 @@ export class ReservationFormComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getUTCMonth();
     const currentDay = new Date().getUTCDate()+1;
-    console.log(currentDay+" "+ currentMonth+" "+ currentYear);
-
     this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.maxDate = new Date(currentYear, 11, 31);
+    this.startHourFormControl = new FormControl('', [Validators.required, ()=>{
+     return this.reservationService.isValidHour(this.startTime, this.endTime, 
+      this.startDate, this.endDate );
+        }
+    ]);
+    this.endHourFormControl = new FormControl('', [Validators.required, ()=>{
+      return this.reservationService.isValidHour(this.startTime, this.endTime, 
+       this.startDate, this.endDate );
+         }
+     ]);
+   }
 
-  }
 
   ngOnInit(): void {
     this.getAllParkingNames();
@@ -75,7 +82,6 @@ export class ReservationFormComponent implements OnInit {
   // }
 
   onSubmit(): void { 
-    console.log(this.startDate);
     if (this.licensePlate && this.memberId) {
       const reservation: Reservation = {
         reservedperiod: `('${this.startTimestamp}','${this.endTimestamp}')`,
@@ -114,8 +120,6 @@ export class ReservationFormComponent implements OnInit {
       return;
     }
 
-    console.log(this.startTimestamp);
-    console.log(this.endTimestamp);
     
     //TODO: use get instead of post
     this.communicationService.getFreeCars(this.location.parkingname, this.startTimestamp, this.endTimestamp)
@@ -136,7 +140,6 @@ export class ReservationFormComponent implements OnInit {
     this.communicationService.getDriverMembers()
     .subscribe((members : CoopMember [])=> {
       this.members=members;
-      // console.log(this.members);
     });
   }
 

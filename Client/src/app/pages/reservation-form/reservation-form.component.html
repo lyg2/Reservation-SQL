@@ -18,13 +18,17 @@
   <div class="div3">
     <label for="periodStart">Heure de début: </label>
     <mat-form-field>
-      <input matInput [formControl]="startHourFormControl" [errorStateMatcher]="matcher"
+      <input type="time" [formControl]="startHourFormControl" [errorStateMatcher]="matcher"
       [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart"
        min="09:00"
         max="22:00" (change)="manageFreeCars()" required>
         <mat-error *ngIf="startHourFormControl.hasError('required')">
           L'heure de départ est <strong>requise</strong>
         </mat-error>
+        <mat-error  *ngIf="!startHourFormControl.hasError('required')" >
+          L'heure de départ doit <strong>précéder</strong> l'heure de retour
+        </mat-error>
+
   
     </mat-form-field>   </div>
   <div class="div4">
@@ -52,7 +56,10 @@
         <mat-error *ngIf="endHourFormControl.hasError('required')">
           L'heure de retour est <strong>requise</strong>
         </mat-error>
-  
+        <mat-error  *ngIf="!endHourFormControl.hasError('required')" >
+          L'heure de retour doit être <strong>après</strong> l'heure de commencement
+        </mat-error>
+
     </mat-form-field>  </div>
   <div class="div6">
     <label for="cars">Voitures disponibles</label>
