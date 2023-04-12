@@ -1,5 +1,5 @@
 # TP4 INF3710
-**Important : Il faut exécuter les fichiers schema.sql, trigger.sql et data.sql dans l'ordre. Sinon, l'application ne pourra  pas fonctionner correctement.**
+**Important : Il faut exécuter les fichiers bdschema.sql, trigger.sql et data.sql dans l'ordre. Sinon, l'application ne pourra  pas fonctionner correctement.**
 
 **Consignes d'installation et démarrage**
 
@@ -25,7 +25,7 @@ public connectionConfig: pg.ConnectionConfig = {
 ```
 Modifier le user, database et password en conséquence. 
 
-**Il est nécessaire de lancer pgAdmin4 par la suite et de populer la DB  TP4 en exécutant les scripts schema.sql, trigger.sql puis data.sql dans.**
+**Il est nécessaire de lancer pgAdmin4 par la suite et de populer la DB  TP4 en exécutant les scripts bdschema.sql, trigger.sql puis data.sql dans.**
 Ces scripts sql se trouvent dans server/app/db.
 
 Dans ```/server```, il faut exécuter la commande npm start, cela lancera le serveur sur le port ```localhost:3000```.
