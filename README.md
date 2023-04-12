@@ -30,4 +30,5 @@ Ces scripts sql se trouvent dans server/app/db.
 
 Dans ```/server```, il faut exécuter la commande npm start, cela lancera le serveur sur le port ```localhost:3000```.
 
+
 Dans ```/client```, il faut exécuter la commande npm start, cela lancera le client sur le port ```localhost:4200```.
