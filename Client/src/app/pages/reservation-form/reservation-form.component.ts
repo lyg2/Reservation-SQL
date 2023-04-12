@@ -38,7 +38,7 @@ export class ReservationFormComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   endDate: Date;
-  requirements: string | null = null;
+  requirements: string | null;
   locations: Parking[];
   filteredCars: Car[];
   members: CoopMember [];
@@ -59,6 +59,7 @@ export class ReservationFormComponent implements OnInit {
     this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.maxDate = new Date(currentYear, 11, 31);
 
+    this.setDefaultValues(currentYear);
   }
 
   ngOnInit(): void {
@@ -108,6 +109,15 @@ export class ReservationFormComponent implements OnInit {
     .subscribe((cars : Car [])=> {
       this.filteredCars=cars;
     });
+  }
+
+  private setDefaultValues(currentYear: number): void {
+    this.startDate = new Date(currentYear, 10, 12);
+    this.endDate = new Date(currentYear, 10, 12);
+    // this.startTime = { hours: 9, minutes: 0 };
+    // this.endTime= { hours: 10, minutes: 0 };
+    this.memberId = '1';
+    this.requirements= 'Voiture automatique';
   }
 
   private buildTimestamp(dateString: string, time: Time): string {
