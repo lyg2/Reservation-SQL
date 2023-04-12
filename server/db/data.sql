@@ -10,7 +10,13 @@ INSERT INTO Parking(parkingName, carLimit, parkingAddress, coordinates)
 	VALUES('Parking 3', 10, ('2391', 'Rue Sherbrooke', 'Québec', 'C1D2E3'), (20, 20));
 	
 INSERT INTO Parking(parkingName, carLimit, parkingAddress, coordinates) 
-	VALUES('Parking Poly', 10, ('2500', 'Chem. de Polytechnique', 'Montréal', 'H3T1J4'), (20, 20));
+	VALUES('Parking Poly', 10, ('2500', 'Chem. de Polytechnique', 'Montréal', 'H3T1J4'), (50, 70));
+
+INSERT INTO Parking(parkingName, carLimit, parkingAddress, coordinates) 
+	VALUES('ETS Carless', 10, ('1100', 'R. Notre Dame O', 'Montréal', 'H3C1K3'), (120, 20));
+
+INSERT INTO Parking(parkingName, carLimit, parkingAddress, coordinates) 
+	VALUES('Village Inuit Sans Voiture', 6, ('1100', 'R. Village', 'Kuujjuaq', 'J0M1C0'), (0, 0));
 	
 INSERT INTO Model(modelName, hourlyPrice, kilometerPrice, kilometerLimit)
 	VALUES('HYBRID', 20, 5, 200000);
