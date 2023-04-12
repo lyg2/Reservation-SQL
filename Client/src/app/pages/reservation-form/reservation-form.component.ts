@@ -49,7 +49,7 @@ export class ReservationFormComponent implements OnInit {
   startHourFormControl = new FormControl('', [Validators.required]);
   endHourFormControl  = new FormControl('', [Validators.required]);
   locationFormControl =  new FormControl('', [Validators.required]);
-
+  carSelectFormControl=  new FormControl('', [Validators.required]);
   matcher = new MyErrorStateMatcher();
 
   constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {
@@ -83,7 +83,6 @@ export class ReservationFormComponent implements OnInit {
         licenseplate: this.licensePlate,
         requirements: this.requirements ,
       } as Reservation;
-
       this.communicationService.postReservation(reservation).subscribe(() => {
         this.router.navigate(['/reservations/create/successful']);
       });
@@ -141,7 +140,7 @@ export class ReservationFormComponent implements OnInit {
     });
   }
 
-  private hasDefinedInput(): boolean {
+  public hasDefinedInput(): boolean {
     return this.startDate 
     && this.endDate 
     && this.location 
