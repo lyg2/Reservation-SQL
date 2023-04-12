@@ -25,6 +25,8 @@ export class ReservationFormComponent implements OnInit {
   endTimestamp: string;
   location: Parking;
   startDate: Date;
+  minDate: Date;
+  maxDate: Date;
   endDate: Date;
   requirements: string | null = null;
   locations: Parking[];
@@ -40,7 +42,16 @@ export class ReservationFormComponent implements OnInit {
   
   //reservations: Reservation [] = [];
 
-  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {}
+  constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getUTCMonth();
+    const currentDay = new Date().getUTCDate()+1;
+    console.log(currentDay+" "+ currentMonth+" "+ currentYear);
+
+    this.minDate = new Date(currentYear, currentMonth, currentDay);
+    this.maxDate = new Date(currentYear, 11, 31);
+
+  }
 
   ngOnInit(): void {
     this.getAllParkingNames();
