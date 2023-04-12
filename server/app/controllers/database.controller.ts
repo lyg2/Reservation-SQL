@@ -5,7 +5,7 @@ import { Car } from "../../../common/tables/car";
 import { CoopMember } from "../../../common/tables/coop-member";
 import { Parking } from "../../../common/tables/parking";
 import { Reservation } from "../../../common/tables/reservation";
-import { Share } from "../../../common/communication/share";
+import { Share } from "../../../common/other/share";
 import * as pg from "pg";
 import Types from "../types";
 import { STATUS_CODES } from "http";

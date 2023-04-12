@@ -1,4 +1,4 @@
-import { Share } from "../communication/share";
+import { Share } from "../other/share";
 
 export interface CoopMember {
     idmember: string;
