@@ -61,14 +61,13 @@ export class ReservationFormComponent implements OnInit {
     this.maxDate = new Date(currentYear, 11, 31);
     this.startHourFormControl = new FormControl('', [Validators.required]);
     this.endHourFormControl = new FormControl('', [Validators.required]);
-    this.setDefaultValues();
-    console.log(this.minDate);
    }
 
 
   ngOnInit(): void {
     this.getAllParkingNames();
     this.getDriverMembers();
+    this.setDefaultValues();
   }
 
   onSubmit(): void { 
@@ -122,11 +121,11 @@ export class ReservationFormComponent implements OnInit {
 
   private setDefaultValues(): void {
     this.startDate = new Date(this.minDate.getFullYear(), this.minDate.getMonth(), this.minDate.getUTCDate());
-    console.log(this.startDate);
     this.endDate = new Date(this.minDate.getFullYear(), this.minDate.getMonth(), this.minDate.getUTCDate());
+    this.memberSelectFormControl.setValue('1');
     // this.startTime = { hours: 9, minutes: 0 };
     // this.endTime= { hours: 10, minutes: 0 };
-    this.memberId = '1';
+    // this.memberId = '1';
     // this.requirements = 'Voiture Automatique';
   }
 
