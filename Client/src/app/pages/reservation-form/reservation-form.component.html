@@ -1,6 +1,7 @@
-<div class="parent">
-  <div class="div2">
-    <label for="startDate">Date de début de réservation</label>
+
+<div class="reservationForm" >
+  <div class="startDate">
+    <label for="startDate">Date de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
       <input matInput [formControl]="startDateFormControl" [errorStateMatcher]="matcher" [matDatepicker]="picker1"
@@ -13,20 +14,24 @@
     </mat-form-field>
   </div>
 
-  <div class="div3">
-    <label for="periodStart">Heure de début: </label>
-    <mat-form-field>
-      <input matInput [formControl]="startHourFormControl" [errorStateMatcher]="matcher" [(ngModel)]="startTime"
-        matInput type="time" step="900" id="periodStart" name="periodStart" min="09:00" max="22:00"
-        (change)="manageFreeCars()" required>
-      <mat-error *ngIf="startHourFormControl.hasError('required')">
-        L'heure de départ est <strong>requise</strong>
-      </mat-error>
+  <div class="periodStart">
+    <label style="display:block; align-self: center;" for="periodStart">Heure de début: </label>
+    <mat-form-field class="periods">
+      <input style="text-align:center" type="time" [formControl]="startHourFormControl" [errorStateMatcher]="matcher"
+      [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart"
+       min="09:00"
+        max="22:00" (change)="manageFreeCars()" required>
+        <mat-error *ngIf="startHourFormControl.hasError('required')">
+          L'heure de départ est <strong>requise</strong>
+        </mat-error>
+        <mat-hint class="errorHints" *ngIf="!startHourFormControl.hasError('required')&&!isHourValid" >
+          L'heure de départ doit <strong>précéder</strong> l'heure de retour
+        </mat-hint>
 
-    </mat-form-field>
-  </div>
-  <div class="div4">
-    <label for="endDate">Date de fin de réservation</label>
+  
+    </mat-form-field>   </div>
+  <div class="endDate">
+    <label for="endDate">Date de réservation</label>
     <mat-form-field appearance="fill">
       <mat-label>Choisissez une date : JJ/MM/AAAA </mat-label>
       <input matInput [formControl]="endDateFormControl" [errorStateMatcher]="matcher" [min]="startDate" [max]="maxDate"
@@ -38,20 +43,22 @@
         La date de retour est <strong>requise</strong>
       </mat-error>
 
-    </mat-form-field>
-  </div>
-  <div class="div5">
-    <label for="periodEnd">Heure de fin: </label>
-    <mat-form-field>
-      <input [formControl]="endHourFormControl" [errorStateMatcher]="matcher" [(ngModel)]="endTime" matInput type="time"
-        step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00" (change)="manageFreeCars()" required>
-      <mat-error *ngIf="endHourFormControl.hasError('required')">
-        L'heure de retour est <strong>requise</strong>
-      </mat-error>
+    </mat-form-field>   </div>
+  <div class="periodEnd">   
+    <label style="display:block; align-self: center;" for="periodEnd">Heure de fin: </label>
+    <mat-form-field class="periods">
+      <input style="text-align:center"  [formControl]="endHourFormControl" [errorStateMatcher]="matcher"
+      [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00"
+        (change)="manageFreeCars()" required>
+        <mat-error *ngIf="endHourFormControl.hasError('required')">
+          L'heure de retour est <strong>requise</strong>
+        </mat-error>
+        <mat-hint class="errorHints" *ngIf="!endHourFormControl.hasError('required')&&!isHourValid" >
+          L'heure de retour doit être <strong>après</strong> l'heure de commencement
+        </mat-hint>
 
-    </mat-form-field>
-  </div>
-  <div class="div6">
+    </mat-form-field>  </div>
+  <div class="cars">
     <label for="cars">Voitures disponibles</label>
     <mat-form-field>
       <mat-select [formControl]="carSelectFormControl" placeholder="Choisissez un véhicule" id="cars" required
@@ -59,27 +66,28 @@
         <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.licenseplate + ' ' + car.brand +
           ' ' + car.modelname }} </mat-option>
       </mat-select>
-      <mat-error *ngIf="!hasDefinedInput()">
-        Veuillez choisir une plage horaire valide
+      <mat-error *ngIf="!hasDefinedInput()" >
+         Veuillez choisir une plage horaire et un emplacement valide 
       </mat-error>
       <mat-error *ngIf="hasDefinedInput()&&this.filteredCars.length===0">
         Aucun véhicule disponible à cette plage horaire
       </mat-error>
 
 
-    </mat-form-field>
-  </div>
-  <div class="div7">
-    <label for="members">Conducteur</label>
-    <mat-form-field>
-      <mat-select placeholder="Choisissez un membre" id="members" required [(value)]="memberId">
-        <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{
-          member.membername
+    </mat-form-field>   </div>
+  <div class="members"> 
+    <label style="display:block; align-self:center;" for="members">Membres pouvant conduire</label>
+    <mat-form-field class="periods">
+      <mat-select [formControl]="memberSelectFormControl" placeholder="Choisissez un membre" id="members" required [(value)]="memberId">
+        <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername
           }}</mat-option>
       </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="div1">
+      <mat-error *ngIf="memberSelectFormControl.hasError('required')">
+        Le choix de membre est <strong>requis</strong>
+      </mat-error>
+
+    </mat-form-field>     </div>
+  <div class="place"> 
     <label for="place">Emplacement</label>
     <mat-form-field>
       <mat-select [formControl]="locationFormControl" [errorStateMatcher]="matcher"
@@ -90,15 +98,13 @@
       <mat-error *ngIf="locationFormControl.hasError('required')">
         L'emplacement de location est <strong>requis</strong>
       </mat-error>
-    </mat-form-field>
-  </div>
-  <div class="div8">
+    </mat-form-field>   </div>
+  <div class="requirements">
     <label for="requirements">Requis</label>
     <mat-form-field>
-      <input placeholder="(Optionnel)" matInput id="requirements" [(ngModel)]="requirements" type="text" />
-    </mat-form-field>
-  </div>
-  <div class="div9">
+      <input placeholder="(Optionnel)" matInput  id="requirements" [(ngModel)]="requirements" type="text"  />
+    </mat-form-field>  </div>
+  <div class="validateReservationButton">
     <mat-form-field>
       <input matInput (click)="onSubmit()" type="submit" value="Envoyer" />
     </mat-form-field>
