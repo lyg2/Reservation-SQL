@@ -16,9 +16,9 @@
   </div >
 
   <div class="periodStart">
-    <label style="display:block" for="periodStart">Heure de début: </label>
+    <label style="display:block; align-self: center;" for="periodStart">Heure de début: </label>
     <mat-form-field class="periods">
-      <input type="time" [formControl]="startHourFormControl" [errorStateMatcher]="matcher"
+      <input style="text-align:center" type="time" [formControl]="startHourFormControl" [errorStateMatcher]="matcher"
       [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart"
        min="09:00"
         max="22:00" (change)="manageFreeCars()" required>
@@ -48,9 +48,9 @@
 
     </mat-form-field>   </div>
   <div class="periodEnd">   
-    <label style="display:block" for="periodEnd">Heure de fin: </label>
+    <label style="display:block; align-self: center;" for="periodEnd">Heure de fin: </label>
     <mat-form-field class="periods">
-      <input  [formControl]="endHourFormControl" [errorStateMatcher]="matcher"
+      <input style="text-align:center"  [formControl]="endHourFormControl" [errorStateMatcher]="matcher"
       [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00"
         (change)="manageFreeCars()" required>
         <mat-error *ngIf="endHourFormControl.hasError('required')">
@@ -77,12 +77,16 @@
 
     </mat-form-field>   </div>
   <div class="members"> 
-    <label for="members">Membres pouvant conduire</label>
-    <mat-form-field>
-      <mat-select placeholder="Choisissez un membre" id="members" required [(value)]="memberId">
+    <label style="display:block; align-self:center;" for="members">Membres pouvant conduire</label>
+    <mat-form-field class="periods">
+      <mat-select [formControl]="memberSelectFormControl" placeholder="Choisissez un membre" id="members" required [(value)]="memberId">
         <mat-option *ngFor="let member of members" [value]="member.idmember"> {{ member.idmember }} : {{ member.membername
           }}</mat-option>
       </mat-select>
+      <mat-error *ngIf="memberSelectFormControl.hasError('required')">
+        Le choix de membre est <strong>requis</strong>
+      </mat-error>
+
     </mat-form-field>     </div>
   <div class="place"> 
     <label for="place">Emplacement</label>

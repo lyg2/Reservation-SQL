@@ -50,6 +50,8 @@ export class ReservationFormComponent implements OnInit {
   endDateFormControl = new FormControl('', [Validators.required]);
   locationFormControl =  new FormControl('', [Validators.required]);
   carSelectFormControl=  new FormControl('', [Validators.required]);
+  memberSelectFormControl=  new FormControl('', [Validators.required]);
+
   matcher = new MyErrorStateMatcher();
 
   constructor(private reservationService:ReservationService, private communicationService: CommunicationService, private datePipe: DatePipe, private router: Router) {
