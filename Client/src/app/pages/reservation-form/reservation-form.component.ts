@@ -65,14 +65,8 @@ export class ReservationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllParkingNames();
-    // this.getAllCars();
     this.getDriverMembers();
   }
-
-  // onValidate(): void {
-  //   if (this.reservationService.validate(this.startTime, this.endTime))
-  //     this.onSubmit();
-  // }
 
   onSubmit(): void { 
     if (this.licensePlate && this.memberId) {
@@ -91,7 +85,7 @@ export class ReservationFormComponent implements OnInit {
   private getAllParkingNames(): void {
     this.communicationService.getAllParkingNames().subscribe(parkingNames => this.locations = parkingNames)
   }
-  isValidHour(){
+  verifyHourValidity(){
     const myFunc= ()=>{
       return this.reservationService.isValidHour(this.startTime, this.endTime, 
        this.startDate, this.endDate );
@@ -99,13 +93,11 @@ export class ReservationFormComponent implements OnInit {
     this.isHourValid= myFunc();
   }
   manageFreeCars(): void {
-    this.isValidHour();
+    this.verifyHourValidity();
     this.filteredCars = [];
     if (!this.hasDefinedInput()) {
       return;
     }
-    // TODO: allow user to reserved for multiple days
-
     const startDateString = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
     const endDateString = this.datePipe.transform(this.endDate, 'yyyy-MM-dd');
 
@@ -119,9 +111,6 @@ export class ReservationFormComponent implements OnInit {
       this.licensePlate = '';
       return;
     }
-
-    
-    //TODO: use get instead of post
     this.communicationService.getFreeCars(this.location.parkingname, this.startTimestamp, this.endTimestamp)
     .subscribe((cars : Car [])=> {
       this.filteredCars=cars;
