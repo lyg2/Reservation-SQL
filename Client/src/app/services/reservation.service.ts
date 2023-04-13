@@ -1,6 +1,5 @@
 import { Time } from '@angular/common';
 import { Injectable } from '@angular/core';
-import {  ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,8 @@ export class ReservationService {
     const currentDate = new Date();
     return startDate.getTime() > currentDate.getTime();
   }
-  isValidHour(startTime:Time, endTime:Time, startDate:Date, endDate:Date):ValidationErrors | null {
-    //return (control: AbstractControl): ValidationErrors | null => {
+  isValidHour(startTime:Time, endTime:Time, startDate:Date, endDate:Date):boolean {
+    
 
     console.log("Start time is " + startTime+ " End time is "+ endTime);
     const mastring:string= startTime+"";
@@ -37,11 +36,10 @@ export class ReservationService {
       console.log(numH1>numH2||(numH1===numH2&&numS1>numS2));
 
       if( startDate.getDate()===endDate.getDate()){
-        if (numH1>numH2||(numH1===numH2&&numS1>numS2))
-           return {forbiddenHour: 0};
+           return !(numH1>numH2||(numH1===numH2&&numS1>numS2));
       }       
     }
-    return null
+    return true
 
   //}
 }

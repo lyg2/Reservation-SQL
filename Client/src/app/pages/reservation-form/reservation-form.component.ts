@@ -43,6 +43,7 @@ export class ReservationFormComponent implements OnInit {
   locations: Parking[];
   filteredCars: Car[];
   members: CoopMember [];
+  isHourValid:boolean; 
   startHourFormControl: FormControl;
   endHourFormControl : FormControl;
   startDateFormControl = new FormControl('', [Validators.required]);
@@ -57,16 +58,8 @@ export class ReservationFormComponent implements OnInit {
     const currentDay = new Date().getUTCDate()+1;
     this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.maxDate = new Date(currentYear, 11, 31);
-    this.startHourFormControl = new FormControl('', [Validators.required, ()=>{
-     return this.reservationService.isValidHour(this.startTime, this.endTime, 
-      this.startDate, this.endDate );
-        }
-    ]);
-    this.endHourFormControl = new FormControl('', [Validators.required, ()=>{
-      return this.reservationService.isValidHour(this.startTime, this.endTime, 
-       this.startDate, this.endDate );
-         }
-     ]);
+    this.startHourFormControl = new FormControl('', [Validators.required]);
+    this.endHourFormControl = new FormControl('', [Validators.required]);
    }
 
 
@@ -98,8 +91,15 @@ export class ReservationFormComponent implements OnInit {
   private getAllParkingNames(): void {
     this.communicationService.getAllParkingNames().subscribe(parkingNames => this.locations = parkingNames)
   }
-
+  isValidHour(){
+    const myFunc= ()=>{
+      return this.reservationService.isValidHour(this.startTime, this.endTime, 
+       this.startDate, this.endDate );
+         }
+    this.isHourValid= myFunc();
+  }
   manageFreeCars(): void {
+    this.isValidHour();
     this.filteredCars = [];
     if (!this.hasDefinedInput()) {
       return;
