@@ -123,10 +123,7 @@ export class ReservationFormComponent implements OnInit {
     this.startDate = new Date(this.minDate.getFullYear(), this.minDate.getMonth(), this.minDate.getUTCDate());
     this.endDate = new Date(this.minDate.getFullYear(), this.minDate.getMonth(), this.minDate.getUTCDate());
     this.memberSelectFormControl.setValue('1');
-    // this.startTime = { hours: 9, minutes: 0 };
-    // this.endTime= { hours: 10, minutes: 0 };
-    // this.memberId = '1';
-    // this.requirements = 'Voiture Automatique';
+    this.memberId = '1';
   }
 
   private buildTimestamp(dateString: string, time: Time): string {
