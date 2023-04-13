@@ -7,7 +7,7 @@
 .mat-mdc-form-field{
     min-width: 420px;
 }
-.parent {
+.reservationForm {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -33,12 +33,6 @@
 .label{
     display:flow-root;
 }   
-.mat-hint{
-    color:red;
-}
-.mat-mdc-form-field-hint mat-mdc-form-field-bottom-align ng-star-inserted{
-    color:red;
-}
 .errorHints{
     color:red;
 }
