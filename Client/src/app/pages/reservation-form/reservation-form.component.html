@@ -16,8 +16,8 @@
   </div >
 
   <div class="periodStart">
-    <label for="periodStart">Heure de début: </label>
-    <mat-form-field>
+    <label style="display:block" for="periodStart">Heure de début: </label>
+    <mat-form-field class="periods">
       <input type="time" [formControl]="startHourFormControl" [errorStateMatcher]="matcher"
       [(ngModel)]="startTime" matInput type="time" step="900" id="periodStart" name="periodStart"
        min="09:00"
@@ -48,8 +48,8 @@
 
     </mat-form-field>   </div>
   <div class="periodEnd">   
-    <label for="periodEnd">Heure de fin: </label>
-    <mat-form-field>
+    <label style="display:block" for="periodEnd">Heure de fin: </label>
+    <mat-form-field class="periods">
       <input  [formControl]="endHourFormControl" [errorStateMatcher]="matcher"
       [(ngModel)]="endTime" matInput type="time" step="900" id="periodEnd" name="periodEnd" min="09:00" max="22:00"
         (change)="manageFreeCars()" required>
