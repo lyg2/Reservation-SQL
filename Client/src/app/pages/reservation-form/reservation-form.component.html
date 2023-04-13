@@ -68,7 +68,7 @@
         <mat-option *ngFor="let car of filteredCars" [value]="car.licenseplate"> {{ car.licenseplate + ' ' + car.brand + ' ' + car.modelname }} </mat-option>
       </mat-select>
       <mat-error *ngIf="!hasDefinedInput()" >
-         Veuillez choisir une plage horaire 
+         Veuillez choisir une plage horaire et un emplacement valide 
       </mat-error>
           <mat-error *ngIf="hasDefinedInput()&&this.filteredCars.length===0">
         Aucun véhicule disponible à cette plage horaire
