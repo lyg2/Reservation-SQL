@@ -5,7 +5,7 @@
 
 ```"build": "rimraf out && tsc --project tsconfig.app.json"``` a été remplacé par 
 
-``` "build": "rimraf out && tsc --project tsconfig.app.json && node --inspect out/server/app/www.js"``` 
+```"build": "rimraf out && tsc --project tsconfig.app.json && node --inspect out/server/app/www.js"``` 
 
 Cette modification a été effecuté en raison que le fichier www.js ne pouvait être trouvé lors de la commande ``` npm start``` .
 
