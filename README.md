@@ -1,6 +1,14 @@
 # TP4 INF3710
 **Important : Il faut exécuter les fichiers bdschema.sql, trigger.sql et data.sql dans l'ordre. Sinon, l'application ne pourra  pas fonctionner correctement.**
 
+**NOTE IMPORTANTE: ```Dans le server/package.json```, la ligne 8 
+
+```"build": "rimraf out && tsc --project tsconfig.app.json"``` a été remplacé par 
+
+``` "build": "rimraf out && tsc --project tsconfig.app.json && node --inspect out/server/app/www.js"``` 
+
+Cette modification a été effecuté en raison que le fichier www.js ne pouvait être trouvé lors de la commande ``` npm start``` .
+
 **Consignes d'installation et démarrage**
 
 Veuillez vous assurer d'avoir  installer PostgresSQL (la version 15.1.1 est utilisé).
