@@ -1,4 +1,5 @@
 # TP4 INF3710
+** Cette application permet d'effectuer des réservations de voiture en utilisant le cadriciel Angular et la base de données PostgresSQL.
 **Important : Il faut exécuter les fichiers bdschema.sql, trigger.sql et data.sql dans l'ordre. Sinon, l'application ne pourra  pas fonctionner correctement.**
 
 **NOTE IMPORTANTE: ```Dans le server/package.json```, la ligne 8 
